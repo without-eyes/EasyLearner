@@ -13,7 +13,10 @@ find_package(Qt5 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(EasyLearner main.cpp)
+add_executable(EasyLearner src/main.cpp
+        src/mainmenu.cpp
+        include/mainmenu.h
+        forms/MainMenu.ui)
 target_link_libraries(EasyLearner
         Qt5::Core
         Qt5::Gui
