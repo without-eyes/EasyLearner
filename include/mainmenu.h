@@ -20,6 +20,10 @@ public:
 
     ~MainMenu() override;
 
+public slots:
+    void pickTopic();
+    void createTopic();
+
 private:
     Ui::MainMenu *ui;
 };

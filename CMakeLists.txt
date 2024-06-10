@@ -16,7 +16,10 @@ find_package(Qt5 COMPONENTS
 add_executable(EasyLearner src/main.cpp
         src/mainmenu.cpp
         include/mainmenu.h
-        forms/MainMenu.ui)
+        forms/MainMenu.ui
+        src/createtopic.cpp
+        include/createtopic.h
+        forms/CreateTopic.ui)
 target_link_libraries(EasyLearner
         Qt5::Core
         Qt5::Gui
