@@ -12,6 +12,7 @@
 MainMenu::MainMenu(QWidget *parent) :
         QWidget(parent), ui(new Ui::MainMenu) {
     ui->setupUi(this);
+    QObject::connect(ui->createButton, &QPushButton::clicked, this, &MainMenu::createTopic);
 }
 
 MainMenu::~MainMenu() {
