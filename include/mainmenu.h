@@ -15,10 +15,14 @@ QT_END_NAMESPACE
 class MainMenu : public QWidget {
 Q_OBJECT
 
+
+
 public:
     explicit MainMenu(QWidget *parent = nullptr);
 
     ~MainMenu() override;
+
+    static void addTopicIntoList(QString topic);
 
 public slots:
     void pickTopic();
@@ -26,6 +30,9 @@ public slots:
 
 private:
     Ui::MainMenu *ui;
+    static QList<QString> topicList;
+
+    void showTableContent();
 };
 
 

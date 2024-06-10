@@ -20,8 +20,13 @@ public:
 
     ~CreateTopic() override;
 
+public slots:
+    void createNewTopic();
+
 private:
     Ui::CreateTopic *ui;
+
+    void goToMainMenu();
 };
 
 
