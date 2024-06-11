@@ -19,7 +19,10 @@ add_executable(EasyLearner src/main.cpp
         forms/MainMenu.ui
         src/createtopic.cpp
         include/createtopic.h
-        forms/CreateTopic.ui)
+        forms/CreateTopic.ui
+        src/managetopic.cpp
+        include/managetopic.h
+        forms/ManageTopic.ui)
 target_link_libraries(EasyLearner
         Qt5::Core
         Qt5::Gui
