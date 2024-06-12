@@ -1,7 +1,3 @@
-//
-// Created by without-eyes on 10.06.24.
-//
-
 #ifndef EASYLEARNER_CREATETOPIC_H
 #define EASYLEARNER_CREATETOPIC_H
 

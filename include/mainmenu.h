@@ -1,7 +1,3 @@
-//
-// Created by without-eyes on 09.06.24.
-//
-
 #ifndef EASYLEARNER_MAINMENU_H
 #define EASYLEARNER_MAINMENU_H
 

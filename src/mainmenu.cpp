@@ -1,11 +1,4 @@
-//
-// Created by without-eyes on 09.06.24.
-//
-
-// You may need to build the project (run Qt uic code generator) to get "ui_MainMenu.h" resolved
-
 #include <QStringListModel>
-#include <QStandardItemModel>
 #include "../include/mainmenu.h"
 #include "../forms/ui_MainMenu.h"
 #include "../include/createtopic.h"

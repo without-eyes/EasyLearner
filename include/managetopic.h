@@ -1,7 +1,3 @@
-//
-// Created by without-eyes on 11.06.24.
-//
-
 #ifndef EASYLEARNER_MANAGETOPIC_H
 #define EASYLEARNER_MANAGETOPIC_H
 
@@ -22,6 +18,17 @@ public:
     ~ManageTopic() override;
 
     void setTopicName(const QString& topicName);
+
+public slots:
+    void startStudy();
+
+    void addDefinition();
+
+    void addQuestion();
+
+    void showTopicQuestions();
+
+    void goBack();
 
 private:
     Ui::ManageTopic *ui;
