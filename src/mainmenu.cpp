@@ -9,6 +9,7 @@
 #include "../include/mainmenu.h"
 #include "../forms/ui_MainMenu.h"
 #include "../include/createtopic.h"
+#include "../include/managetopic.h"
 
 QList<QString> MainMenu::topicList;
 
@@ -17,6 +18,7 @@ MainMenu::MainMenu(QWidget *parent) :
     ui->setupUi(this);
     showTableContent();
 
+    QObject::connect(ui->pickButton, &QPushButton::clicked, this, &MainMenu::pickTopic);
     QObject::connect(ui->createButton, &QPushButton::clicked, this, &MainMenu::createTopic);
 }
 
@@ -25,17 +27,17 @@ MainMenu::~MainMenu() {
 }
 
 void MainMenu::showTableContent() {
-    auto* listModel = new QStandardItemModel();
-    for (int row = 0; row < topicList.size(); row++) {
-        listModel->setItem(row, new QStandardItem(topicList.at(row)));
+    for (const auto & row : topicList) {
+        ui->listWidget->addItem(row);
     }
-
-    ui->listView->setModel(listModel);
-    ui->listView->show();
+    ui->listWidget->show();
 }
 
 void MainMenu::pickTopic() {
-    // change window
+    auto* window = new ManageTopic;
+    window->setTopicName(ui->listWidget->currentItem()->text());
+    window->show();
+    close();
 }
 
 void MainMenu::createTopic() {
@@ -44,7 +46,7 @@ void MainMenu::createTopic() {
     close();
 }
 
-void MainMenu::addTopicIntoList(QString topic) {
+void MainMenu::addTopicIntoList(const QString& topic) {
     topicList.push_back(topic);
 }
 

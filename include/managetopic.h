@@ -6,6 +6,7 @@
 #define EASYLEARNER_MANAGETOPIC_H
 
 #include <QWidget>
+#include <QLabel>
 
 
 QT_BEGIN_NAMESPACE
@@ -19,6 +20,8 @@ public:
     explicit ManageTopic(QWidget *parent = nullptr);
 
     ~ManageTopic() override;
+
+    void setTopicName(const QString& topicName);
 
 private:
     Ui::ManageTopic *ui;

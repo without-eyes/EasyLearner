@@ -22,7 +22,7 @@ public:
 
     ~MainMenu() override;
 
-    static void addTopicIntoList(QString topic);
+    static void addTopicIntoList(const QString& topic);
 
 public slots:
     void pickTopic();
