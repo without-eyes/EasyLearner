@@ -9,6 +9,11 @@ QList<QString> MainMenu::topicList;
 MainMenu::MainMenu(QWidget *parent) :
         QWidget(parent), ui(new Ui::MainMenu) {
     ui->setupUi(this);
+
+    // DELETE THIS
+    topicList.push_back("Test topic");
+    // THIS IS FOR TESTING
+
     showTableContent();
 
     QObject::connect(ui->pickButton, &QPushButton::clicked, this, &MainMenu::pickTopic);

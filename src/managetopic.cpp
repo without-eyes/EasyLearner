@@ -1,6 +1,7 @@
 #include "../include/managetopic.h"
 #include "../forms/ui_ManageTopic.h"
 #include "../include/mainmenu.h"
+#include "../include/adddefinition.h"
 #include <iostream>
 
 ManageTopic::ManageTopic(QWidget *parent) :
@@ -26,7 +27,9 @@ void ManageTopic::startStudy() {
 }
 
 void ManageTopic::addDefinition() {
-
+    auto* window = new AddDefinition;
+    window->show();
+    close();
 }
 
 void ManageTopic::addQuestion() {

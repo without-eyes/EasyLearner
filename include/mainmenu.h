@@ -20,7 +20,7 @@ public:
 
     static void addTopicIntoList(const QString& topic);
 
-public slots:
+private slots:
     void pickTopic();
     void createTopic();
 

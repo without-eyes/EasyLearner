@@ -19,7 +19,7 @@ public:
 
     void setTopicName(const QString& topicName);
 
-public slots:
+private slots:
     void startStudy();
 
     void addDefinition();
