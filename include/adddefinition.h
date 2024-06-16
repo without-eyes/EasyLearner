@@ -20,6 +20,10 @@ public:
 
     ~AddDefinition() override;
 
+public slots:
+
+    void addDefinition();
+
 private:
     Ui::AddDefinition *ui;
 };

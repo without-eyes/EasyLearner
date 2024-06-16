@@ -46,4 +46,8 @@ void ManageTopic::goBack() {
     close();
 }
 
+void ManageTopic::addIntoDefinitionSet(const QString& term, const QString& definition) {
+    definitionSet[term] = definition;
+}
+
 

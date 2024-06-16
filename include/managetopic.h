@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <set>
 
 
 QT_BEGIN_NAMESPACE
@@ -19,6 +20,8 @@ public:
 
     void setTopicName(const QString& topicName);
 
+    void addIntoDefinitionSet(const QString& term, const QString& definition);
+
 private slots:
     void startStudy();
 
@@ -32,6 +35,7 @@ private slots:
 
 private:
     Ui::ManageTopic *ui;
+    std::map<QString, QString> definitionSet;
 };
 
 
