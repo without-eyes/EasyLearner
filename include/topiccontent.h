@@ -21,6 +21,8 @@ public slots:
 
     void showQuestionsAnswers();
 
+    void goBack();
+
 private:
     Ui::TopicContent *ui;
 };
