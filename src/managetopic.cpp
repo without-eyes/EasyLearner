@@ -2,6 +2,7 @@
 #include "../forms/ui_ManageTopic.h"
 #include "../include/mainmenu.h"
 #include "../include/adddefinition.h"
+#include "../include/topiccontent.h"
 #include <iostream>
 
 ManageTopic::ManageTopic(QWidget *parent) :
@@ -10,7 +11,7 @@ ManageTopic::ManageTopic(QWidget *parent) :
     QObject::connect(ui->studyButton, &QPushButton::clicked, this, &ManageTopic::startStudy);
     QObject::connect(ui->addDefinitionButton, &QPushButton::clicked, this, &ManageTopic::addDefinition);
     QObject::connect(ui->addQuestionButton, &QPushButton::clicked, this, &ManageTopic::addQuestion);
-    QObject::connect(ui->showContentButton, &QPushButton::clicked, this, &ManageTopic::showTopicQuestions);
+    QObject::connect(ui->showContentButton, &QPushButton::clicked, this, &ManageTopic::showTopicContent);
     QObject::connect(ui->goBackButton, &QPushButton::clicked, this, &ManageTopic::goBack);
 }
 
@@ -36,8 +37,10 @@ void ManageTopic::addQuestion() {
 
 }
 
-void ManageTopic::showTopicQuestions() {
-
+void ManageTopic::showTopicContent() {
+    auto* window = new TopicContent;
+    window->show();
+    close();
 }
 
 void ManageTopic::goBack() {

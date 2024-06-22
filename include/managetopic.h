@@ -29,7 +29,7 @@ private slots:
 
     void addQuestion();
 
-    void showTopicQuestions();
+    void showTopicContent();
 
     void goBack();
 

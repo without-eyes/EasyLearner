@@ -1,5 +1,5 @@
 #include "../include/topiccontent.h"
-#include "ui_TopicContent.h"
+#include "../forms/ui_TopicContent.h"
 
 
 TopicContent::TopicContent(QWidget *parent) :
