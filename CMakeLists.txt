@@ -28,7 +28,10 @@ add_executable(EasyLearner src/main.cpp
         forms/AddDefinition.ui
         src/topiccontent.cpp
         include/topiccontent.h
-        forms/TopicContent.ui)
+        forms/TopicContent.ui
+        src/topicdefinitions.cpp
+        include/topicdefinitions.h
+        forms/TopicDefinitions.ui)
 target_link_libraries(EasyLearner
         Qt5::Core
         Qt5::Gui
