@@ -5,9 +5,16 @@
 #include "../include/topiccontent.h"
 #include <iostream>
 
+std::map<QString, QString> ManageTopic::definitionSet;
+
 ManageTopic::ManageTopic(QWidget *parent) :
         QWidget(parent), ui(new Ui::ManageTopic) {
     ui->setupUi(this);
+
+    // DELETE THIS
+    definitionSet["Term"] = "definition";
+    // THIS IS FOR TESTING
+
     QObject::connect(ui->studyButton, &QPushButton::clicked, this, &ManageTopic::startStudy);
     QObject::connect(ui->addDefinitionButton, &QPushButton::clicked, this, &ManageTopic::addDefinition);
     QObject::connect(ui->addQuestionButton, &QPushButton::clicked, this, &ManageTopic::addQuestion);
@@ -51,6 +58,10 @@ void ManageTopic::goBack() {
 
 void ManageTopic::addIntoDefinitionSet(const QString& term, const QString& definition) {
     definitionSet[term] = definition;
+}
+
+std::map<QString, QString> ManageTopic::getDefinitionSet() {
+    return definitionSet;
 }
 
 

@@ -20,7 +20,9 @@ public:
 
     void setTopicName(const QString& topicName);
 
-    void addIntoDefinitionSet(const QString& term, const QString& definition);
+    static void addIntoDefinitionSet(const QString& term, const QString& definition);
+
+    static std::map<QString, QString> getDefinitionSet();
 
 private slots:
     void startStudy();
@@ -35,7 +37,7 @@ private slots:
 
 private:
     Ui::ManageTopic *ui;
-    std::map<QString, QString> definitionSet;
+    static std::map<QString, QString> definitionSet;
 };
 
 

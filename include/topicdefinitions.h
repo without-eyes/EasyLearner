@@ -11,6 +11,9 @@ QT_END_NAMESPACE
 class TopicDefinitions : public QWidget {
 Q_OBJECT
 
+public slots:
+    void goBack();
+
 public:
     explicit TopicDefinitions(QWidget *parent = nullptr);
 
@@ -18,6 +21,8 @@ public:
 
 private:
     Ui::TopicDefinitions *ui;
+
+    void showDefinitionList();
 };
 
 
