@@ -2,6 +2,7 @@
 #include "../forms/ui_TopicContent.h"
 #include "../include/managetopic.h"
 #include "../include/topicdefinitions.h"
+#include "../include/topicquestions.h"
 
 
 TopicContent::TopicContent(QWidget *parent) :
@@ -24,7 +25,9 @@ void TopicContent::showDefinition() {
 }
 
 void TopicContent::showQuestionsAnswers() {
-
+    auto* window = new TopicQuestions;
+    window->show();
+    close();
 }
 
 void TopicContent::goBack() {
