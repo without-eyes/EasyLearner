@@ -24,6 +24,10 @@ public:
 
     static std::map<QString, QString> getDefinitionSet();
 
+    static void addIntoQuestionSet(const QString& question, const QString& answer);
+
+    static std::map<QString, QString> getQuestionSet();
+
 private slots:
     void startStudy();
 
@@ -38,6 +42,7 @@ private slots:
 private:
     Ui::ManageTopic *ui;
     static std::map<QString, QString> definitionSet;
+    static std::map<QString, QString> questionSet;
 };
 
 

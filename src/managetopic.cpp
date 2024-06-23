@@ -3,9 +3,11 @@
 #include "../include/mainmenu.h"
 #include "../include/adddefinition.h"
 #include "../include/topiccontent.h"
+#include "../include/addquestion.h"
 #include <iostream>
 
 std::map<QString, QString> ManageTopic::definitionSet;
+std::map<QString, QString> ManageTopic::questionSet;
 
 ManageTopic::ManageTopic(QWidget *parent) :
         QWidget(parent), ui(new Ui::ManageTopic) {
@@ -13,6 +15,7 @@ ManageTopic::ManageTopic(QWidget *parent) :
 
     // DELETE THIS
     definitionSet["Term"] = "definition";
+    questionSet["Question"] = "answer";
     // THIS IS FOR TESTING
 
     QObject::connect(ui->studyButton, &QPushButton::clicked, this, &ManageTopic::startStudy);
@@ -41,7 +44,9 @@ void ManageTopic::addDefinition() {
 }
 
 void ManageTopic::addQuestion() {
-
+    auto* window = new AddQuestion;
+    window->show();
+    close();
 }
 
 void ManageTopic::showTopicContent() {
@@ -62,6 +67,14 @@ void ManageTopic::addIntoDefinitionSet(const QString& term, const QString& defin
 
 std::map<QString, QString> ManageTopic::getDefinitionSet() {
     return definitionSet;
+}
+
+void ManageTopic::addIntoQuestionSet(const QString& question, const QString& answer) {
+    questionSet[question] = answer;
+}
+
+std::map<QString, QString> ManageTopic::getQuestionSet() {
+    return questionSet;
 }
 
 
