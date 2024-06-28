@@ -18,7 +18,7 @@ TopicQuestions::~TopicQuestions() {
 }
 
 void TopicQuestions::showQuestionList() {
-    std::map<QString, QString> questionSet = ManageTopic::getQuestionSet();
+    std::map<QString, QString> questionSet = TopicContent::getQuestionSet();
     for (const auto & pair : questionSet) {
         ui->listWidget->addItem(pair.first + " - " + pair.second);
     }

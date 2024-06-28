@@ -18,7 +18,7 @@ TopicDefinitions::~TopicDefinitions() {
 }
 
 void TopicDefinitions::showDefinitionList() {
-    std::map<QString, QString> definitionSet = ManageTopic::getDefinitionSet();
+    std::map<QString, QString> definitionSet = TopicContent::getDefinitionSet();
     for (const auto & pair : definitionSet) {
         ui->listWidget->addItem(pair.first + " - " + pair.second);
     }

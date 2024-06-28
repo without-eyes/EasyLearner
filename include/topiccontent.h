@@ -16,6 +16,14 @@ public:
 
     ~TopicContent() override;
 
+    static void addIntoDefinitionSet(const QString& term, const QString& definition);
+
+    static std::map<QString, QString> getDefinitionSet();
+
+    static void addIntoQuestionSet(const QString& question, const QString& answer);
+
+    static std::map<QString, QString> getQuestionSet();
+
 public slots:
     void showDefinition();
 
@@ -25,6 +33,8 @@ public slots:
 
 private:
     Ui::TopicContent *ui;
+    static std::map<QString, QString> definitionSet;
+    static std::map<QString, QString> questionSet;
 };
 
 

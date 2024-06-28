@@ -2,6 +2,7 @@
 #include "../include/addquestion.h"
 #include "../forms/ui_AddQuestion.h"
 #include "../include/managetopic.h"
+#include "../include/topiccontent.h"
 
 
 AddQuestion::AddQuestion(QWidget *parent) :
@@ -16,8 +17,8 @@ AddQuestion::~AddQuestion() {
 }
 
 void AddQuestion::addQuestion() {
-    auto* window = new ManageTopic;
-    window->addIntoQuestionSet(ui->questionLineEdit->text(), ui->answerLineEdit->text());
+    auto* window = new TopicContent;
+    TopicContent::addIntoQuestionSet(ui->questionLineEdit->text(), ui->answerLineEdit->text());
     window->show();
     close();
 }
