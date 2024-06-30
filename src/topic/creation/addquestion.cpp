@@ -17,7 +17,7 @@ AddQuestion::~AddQuestion() {
 }
 
 void AddQuestion::addQuestion() {
-    auto *window = new TopicContent;
+    auto *window = new ManageTopic;
     TopicContent::addIntoQuestionMap(ui->questionLineEdit->text(), ui->answerLineEdit->text());
     window->show();
     close();

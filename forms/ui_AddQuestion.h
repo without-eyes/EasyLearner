@@ -18,8 +18,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_AddQuestion
-{
+class Ui_AddQuestion {
 public:
     QLabel *label;
     QLineEdit *questionLineEdit;
@@ -28,8 +27,7 @@ public:
     QLineEdit *answerLineEdit;
     QLabel *label_2;
 
-    void setupUi(QWidget *AddQuestion)
-    {
+    void setupUi(QWidget *AddQuestion) {
         if (AddQuestion->objectName().isEmpty())
             AddQuestion->setObjectName(QString::fromUtf8("AddQuestion"));
         AddQuestion->resize(400, 300);
@@ -62,8 +60,7 @@ public:
         QMetaObject::connectSlotsByName(AddQuestion);
     } // setupUi
 
-    void retranslateUi(QWidget *AddQuestion)
-    {
+    void retranslateUi(QWidget *AddQuestion) {
         AddQuestion->setWindowTitle(QCoreApplication::translate("AddQuestion", "AddQuestion", nullptr));
         label->setText(QCoreApplication::translate("AddQuestion", "Add new Question", nullptr));
         label_3->setText(QCoreApplication::translate("AddQuestion", "Answer:", nullptr));
@@ -74,7 +71,8 @@ public:
 };
 
 namespace Ui {
-    class AddQuestion: public Ui_AddQuestion {};
+    class AddQuestion : public Ui_AddQuestion {
+    };
 } // namespace Ui
 
 QT_END_NAMESPACE

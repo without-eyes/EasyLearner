@@ -18,8 +18,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_AddDefinition
-{
+class Ui_AddDefinition {
 public:
     QPushButton *createButton;
     QLineEdit *termLineEdit;
@@ -28,8 +27,7 @@ public:
     QLabel *label_2;
     QLabel *label_3;
 
-    void setupUi(QWidget *AddDefinition)
-    {
+    void setupUi(QWidget *AddDefinition) {
         if (AddDefinition->objectName().isEmpty())
             AddDefinition->setObjectName(QString::fromUtf8("AddDefinition"));
         AddDefinition->resize(400, 300);
@@ -62,8 +60,7 @@ public:
         QMetaObject::connectSlotsByName(AddDefinition);
     } // setupUi
 
-    void retranslateUi(QWidget *AddDefinition)
-    {
+    void retranslateUi(QWidget *AddDefinition) {
         AddDefinition->setWindowTitle(QCoreApplication::translate("AddDefinition", "AddDefinition", nullptr));
         createButton->setText(QCoreApplication::translate("AddDefinition", "Create", nullptr));
         label->setText(QCoreApplication::translate("AddDefinition", "Add new definition", nullptr));
@@ -74,7 +71,8 @@ public:
 };
 
 namespace Ui {
-    class AddDefinition: public Ui_AddDefinition {};
+    class AddDefinition : public Ui_AddDefinition {
+    };
 } // namespace Ui
 
 QT_END_NAMESPACE

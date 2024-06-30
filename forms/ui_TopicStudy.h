@@ -17,16 +17,14 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_TopicStudy
-{
+class Ui_TopicStudy {
 public:
     QLabel *label;
     QPushButton *qndButton;
     QPushButton *questionsButton;
     QPushButton *definitionsButton;
 
-    void setupUi(QWidget *TopicStudy)
-    {
+    void setupUi(QWidget *TopicStudy) {
         if (TopicStudy->objectName().isEmpty())
             TopicStudy->setObjectName(QString::fromUtf8("TopicStudy"));
         TopicStudy->resize(400, 300);
@@ -52,8 +50,7 @@ public:
         QMetaObject::connectSlotsByName(TopicStudy);
     } // setupUi
 
-    void retranslateUi(QWidget *TopicStudy)
-    {
+    void retranslateUi(QWidget *TopicStudy) {
         TopicStudy->setWindowTitle(QCoreApplication::translate("TopicStudy", "TopicStudy", nullptr));
         label->setText(QCoreApplication::translate("TopicStudy", "Study", nullptr));
         qndButton->setText(QCoreApplication::translate("TopicStudy", "Questions and definitions", nullptr));
@@ -64,7 +61,8 @@ public:
 };
 
 namespace Ui {
-    class TopicStudy: public Ui_TopicStudy {};
+    class TopicStudy : public Ui_TopicStudy {
+    };
 } // namespace Ui
 
 QT_END_NAMESPACE
