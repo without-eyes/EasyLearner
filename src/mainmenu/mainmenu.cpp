@@ -32,10 +32,12 @@ void MainMenu::showTableContent() {
 }
 
 void MainMenu::pickTopic() {
-    auto *window = new ManageTopic;
-    window->setTopicName(ui->listWidget->currentItem()->text());
-    window->show();
-    close();
+    if (ui->listWidget->selectedItems().size() != 0) {
+        auto *window = new ManageTopic;
+        window->setTopicName(ui->listWidget->currentItem()->text());
+        window->show();
+        close();
+    }
 }
 
 void MainMenu::createTopic() {
