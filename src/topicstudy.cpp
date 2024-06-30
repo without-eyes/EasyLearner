@@ -1,5 +1,8 @@
+#include <unordered_map>
 #include "../include/topicstudy.h"
 #include "../forms/ui_TopicStudy.h"
+#include "../include/studyquestions.h"
+#include "../include/topiccontent.h"
 
 
 TopicStudy::TopicStudy(QWidget *parent) :
@@ -20,7 +23,10 @@ void TopicStudy::studyQuestionsAndDefinitions() {
 }
 
 void TopicStudy::studyQuestions() {
-
+    StudyQuestions::setTaskMap(TopicContent::getQuestionMap());
+    auto* window = new StudyQuestions;
+    window->show();
+    close();
 }
 
 void TopicStudy::studyDefinitions() {

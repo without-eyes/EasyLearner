@@ -4,6 +4,7 @@
 #include "../include/adddefinition.h"
 #include "../include/topiccontent.h"
 #include "../include/addquestion.h"
+#include "../include/topicstudy.h"
 #include <iostream>
 
 
@@ -27,7 +28,9 @@ void ManageTopic::setTopicName(const QString& topicName) {
 }
 
 void ManageTopic::startStudy() {
-
+    auto* window = new TopicStudy;
+    window->show();
+    close();
 }
 
 void ManageTopic::addDefinition() {

@@ -4,16 +4,16 @@
 #include "../include/topicdefinitions.h"
 #include "../include/topicquestions.h"
 
-std::map<QString, QString> TopicContent::definitionSet;
-std::map<QString, QString> TopicContent::questionSet;
+std::map<QString, QString> TopicContent::definitionMap;
+std::map<QString, QString> TopicContent::questionMap;
 
 TopicContent::TopicContent(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicContent) {
     ui->setupUi(this);
 
     // DELETE THIS
-    definitionSet["Term"] = "definition";
-    questionSet["Question"] = "answer";
+    definitionMap["Term"] = "definition";
+    questionMap["Question"] = "answer";
     // THIS IS FOR TESTING
 
     QObject::connect(ui->definitionButton, &QPushButton::clicked, this, &TopicContent::showDefinition);
@@ -25,20 +25,20 @@ TopicContent::~TopicContent() {
     delete ui;
 }
 
-void TopicContent::addIntoDefinitionSet(const QString& term, const QString& definition) {
-    definitionSet[term] = definition;
+void TopicContent::addIntoDefinitionMap(const QString& term, const QString& definition) {
+    definitionMap[term] = definition;
 }
 
-std::map<QString, QString> TopicContent::getDefinitionSet() {
-    return definitionSet;
+std::map<QString, QString> TopicContent::getDefinitionMap() {
+    return definitionMap;
 }
 
-void TopicContent::addIntoQuestionSet(const QString& question, const QString& answer) {
-    questionSet[question] = answer;
+void TopicContent::addIntoQuestionMap(const QString& question, const QString& answer) {
+    questionMap[question] = answer;
 }
 
-std::map<QString, QString> TopicContent::getQuestionSet() {
-    return questionSet;
+std::map<QString, QString> TopicContent::getQuestionMap() {
+    return questionMap;
 }
 
 void TopicContent::showDefinition() {

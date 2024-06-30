@@ -16,8 +16,20 @@ public:
 
     ~StudyQuestions() override;
 
+    static void setTaskMap(std::map<QString, QString> taskMap);
+
+public slots:
+    void checkAnswer();
+
+    void showNextTask();
+
 private:
+    void pickRandomTask();
+
     Ui::StudyQuestions *ui;
+    static std::map<QString, QString> taskMap;
+    QString question;
+    QString answer;
 };
 
 

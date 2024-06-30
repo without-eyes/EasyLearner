@@ -16,7 +16,7 @@ AddDefinition::~AddDefinition() {
 
 void AddDefinition::addDefinition() {
     auto* window = new TopicContent;
-    TopicContent::addIntoDefinitionSet(ui->termLineEdit->text(), ui->definitionLineEdit->text());
+    TopicContent::addIntoDefinitionMap(ui->termLineEdit->text(), ui->definitionLineEdit->text());
     window->show();
     close();
 }
