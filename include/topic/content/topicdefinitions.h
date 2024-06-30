@@ -12,6 +12,7 @@ class TopicDefinitions : public QWidget {
 Q_OBJECT
 
 public slots:
+
     void goBack();
 
 public:

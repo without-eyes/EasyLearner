@@ -18,9 +18,10 @@ public:
 
     ~ManageTopic() override;
 
-    void setTopicName(const QString& topicName);
+    void setTopicName(const QString &topicName);
 
 public slots:
+
     void startStudy();
 
     void addDefinition();

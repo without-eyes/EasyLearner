@@ -17,11 +17,14 @@ public:
     ~TopicStudy() override;
 
 public slots:
+
     void studyQuestionsAndDefinitions();
 
     void studyQuestions();
 
-    void studyDefinitions();\
+    void studyDefinitions();
+
+    \
 
 private:
     Ui::TopicStudy *ui;

@@ -21,6 +21,7 @@ public:
     ~AddQuestion() override;
 
 public slots:
+
     void addQuestion();
 
 private:

@@ -17,6 +17,7 @@ public:
     ~CreateTopic() override;
 
 private slots:
+
     void createNewTopic();
 
 private:

@@ -1,7 +1,7 @@
-#include "../include/topicquestions.h"
-#include "../forms/ui_TopicQuestions.h"
-#include "../include/topiccontent.h"
-#include "../include/managetopic.h"
+#include "../../../include/topic/content/topicquestions.h"
+#include "../../../forms/ui_TopicQuestions.h"
+#include "../../../include/topic/content/topiccontent.h"
+#include "../../../include/topic/managetopic.h"
 
 
 TopicQuestions::TopicQuestions(QWidget *parent) :
@@ -19,14 +19,14 @@ TopicQuestions::~TopicQuestions() {
 
 void TopicQuestions::showQuestionList() {
     std::map<QString, QString> questionMap = TopicContent::getQuestionMap();
-    for (const auto & pair : questionMap) {
+    for (const auto &pair: questionMap) {
         ui->listWidget->addItem(pair.first + " - " + pair.second);
     }
     ui->listWidget->show();
 }
 
 void TopicQuestions::goBack() {
-    auto* window = new TopicContent;
+    auto *window = new TopicContent;
     window->show();
     close();
 }

@@ -12,16 +12,17 @@ class MainMenu : public QWidget {
 Q_OBJECT
 
 
-
 public:
     explicit MainMenu(QWidget *parent = nullptr);
 
     ~MainMenu() override;
 
-    static void addTopicIntoList(const QString& topic);
+    static void addTopicIntoList(const QString &topic);
 
 private slots:
+
     void pickTopic();
+
     void createTopic();
 
 private:

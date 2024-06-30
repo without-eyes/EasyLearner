@@ -1,6 +1,6 @@
-#include "../include/createtopic.h"
-#include "../forms/ui_CreateTopic.h"
-#include "../include/mainmenu.h"
+#include "../../include/mainmenu/createtopic.h"
+#include "../../forms/ui_CreateTopic.h"
+#include "../../include/mainmenu/mainmenu.h"
 
 
 CreateTopic::CreateTopic(QWidget *parent) :
@@ -22,7 +22,7 @@ void CreateTopic::createNewTopic() {
 }
 
 void CreateTopic::goToMainMenu() {
-    auto* window = new MainMenu;
+    auto *window = new MainMenu;
     window->show();
     close();
 }

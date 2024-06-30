@@ -1,9 +1,8 @@
-#include <utility>
 #include <iostream>
 
-#include "../include/studyquestions.h"
-#include "../forms/ui_StudyQuestions.h"
-#include "../include/topicstudy.h"
+#include "../../../include/topic/study/studyquestions.h"
+#include "../../../forms/ui_StudyQuestions.h"
+#include "../../../include/topic/study/topicstudy.h"
 
 std::map<QString, QString> StudyQuestions::taskMap;
 
@@ -27,7 +26,7 @@ void StudyQuestions::setTaskMap(std::map<QString, QString> questionMap) {
 
 void StudyQuestions::pickRandomTask() {
     if (taskMap.empty()) {
-        auto* window = new TopicStudy;
+        auto *window = new TopicStudy;
         window->show();
         close();
         return;
@@ -51,10 +50,10 @@ void StudyQuestions::checkAnswer() {
 
 void StudyQuestions::showNextTask() {
     if (taskMap.empty()) {
-        auto* window = new TopicStudy;
+        auto *window = new TopicStudy;
         window->show();
     } else {
-        auto* window = new StudyQuestions;
+        auto *window = new StudyQuestions;
         window->show();
     }
     close();

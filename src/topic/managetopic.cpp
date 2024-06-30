@@ -1,10 +1,10 @@
-#include "../include/managetopic.h"
-#include "../forms/ui_ManageTopic.h"
-#include "../include/mainmenu.h"
-#include "../include/adddefinition.h"
-#include "../include/topiccontent.h"
-#include "../include/addquestion.h"
-#include "../include/topicstudy.h"
+#include "../../include/topic/managetopic.h"
+#include "../../forms/ui_ManageTopic.h"
+#include "../../include/mainmenu/mainmenu.h"
+#include "../../include/topic/creation/adddefinition.h"
+#include "../../include/topic/content/topiccontent.h"
+#include "../../include/topic/creation/addquestion.h"
+#include "../../include/topic/study/topicstudy.h"
 #include <iostream>
 
 
@@ -23,36 +23,36 @@ ManageTopic::~ManageTopic() {
     delete ui;
 }
 
-void ManageTopic::setTopicName(const QString& topicName) {
+void ManageTopic::setTopicName(const QString &topicName) {
     ui->label->setText(topicName);
 }
 
 void ManageTopic::startStudy() {
-    auto* window = new TopicStudy;
+    auto *window = new TopicStudy;
     window->show();
     close();
 }
 
 void ManageTopic::addDefinition() {
-    auto* window = new AddDefinition;
+    auto *window = new AddDefinition;
     window->show();
     close();
 }
 
 void ManageTopic::addQuestion() {
-    auto* window = new AddQuestion;
+    auto *window = new AddQuestion;
     window->show();
     close();
 }
 
 void ManageTopic::showTopicContent() {
-    auto* window = new TopicContent;
+    auto *window = new TopicContent;
     window->show();
     close();
 }
 
 void ManageTopic::goBack() {
-    auto* window = new MainMenu;
+    auto *window = new MainMenu;
     window->show();
     close();
 }

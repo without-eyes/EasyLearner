@@ -13,36 +13,36 @@ find_package(Qt5 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(EasyLearner src/main.cpp
-        src/mainmenu.cpp
-        include/mainmenu.h
+add_executable(EasyLearner src/mainmenu/main.cpp
+        src/mainmenu/mainmenu.cpp
+        include/mainmenu/mainmenu.h
         forms/MainMenu.ui
-        src/createtopic.cpp
-        include/createtopic.h
+        src/mainmenu/createtopic.cpp
+        include/mainmenu/createtopic.h
         forms/CreateTopic.ui
-        src/managetopic.cpp
-        include/managetopic.h
+        src/topic/managetopic.cpp
+        include/topic/managetopic.h
         forms/ManageTopic.ui
-        src/adddefinition.cpp
-        include/adddefinition.h
+        src/topic/creation/adddefinition.cpp
+        include/topic/creation/adddefinition.h
         forms/AddDefinition.ui
-        src/topiccontent.cpp
-        include/topiccontent.h
+        src/topic/content/topiccontent.cpp
+        include/topic/content/topiccontent.h
         forms/TopicContent.ui
-        src/topicdefinitions.cpp
-        include/topicdefinitions.h
+        src/topic/content/topicdefinitions.cpp
+        include/topic/content/topicdefinitions.h
         forms/TopicDefinitions.ui
-        src/addquestion.cpp
-        include/addquestion.h
+        src/topic/creation/addquestion.cpp
+        include/topic/creation/addquestion.h
         forms/AddQuestion.ui
-        src/topicquestions.cpp
-        include/topicquestions.h
+        src/topic/content/topicquestions.cpp
+        include/topic/content/topicquestions.h
         forms/TopicQuestions.ui
-        src/topicstudy.cpp
-        include/topicstudy.h
+        src/topic/study/topicstudy.cpp
+        include/topic/study/topicstudy.h
         forms/TopicStudy.ui
-        src/studyquestions.cpp
-        include/studyquestions.h
+        src/topic/study/studyquestions.cpp
+        include/topic/study/studyquestions.h
         forms/StudyQuestions.ui)
 target_link_libraries(EasyLearner
         Qt5::Core

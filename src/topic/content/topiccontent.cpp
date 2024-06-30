@@ -1,8 +1,8 @@
-#include "../include/topiccontent.h"
-#include "../forms/ui_TopicContent.h"
-#include "../include/managetopic.h"
-#include "../include/topicdefinitions.h"
-#include "../include/topicquestions.h"
+#include "../../../include/topic/content/topiccontent.h"
+#include "../../../forms/ui_TopicContent.h"
+#include "../../../include/topic/managetopic.h"
+#include "../../../include/topic/content/topicdefinitions.h"
+#include "../../../include/topic/content/topicquestions.h"
 
 std::map<QString, QString> TopicContent::definitionMap;
 std::map<QString, QString> TopicContent::questionMap;
@@ -25,7 +25,7 @@ TopicContent::~TopicContent() {
     delete ui;
 }
 
-void TopicContent::addIntoDefinitionMap(const QString& term, const QString& definition) {
+void TopicContent::addIntoDefinitionMap(const QString &term, const QString &definition) {
     definitionMap[term] = definition;
 }
 
@@ -33,7 +33,7 @@ std::map<QString, QString> TopicContent::getDefinitionMap() {
     return definitionMap;
 }
 
-void TopicContent::addIntoQuestionMap(const QString& question, const QString& answer) {
+void TopicContent::addIntoQuestionMap(const QString &question, const QString &answer) {
     questionMap[question] = answer;
 }
 
@@ -42,19 +42,19 @@ std::map<QString, QString> TopicContent::getQuestionMap() {
 }
 
 void TopicContent::showDefinition() {
-    auto* window = new TopicDefinitions;
+    auto *window = new TopicDefinitions;
     window->show();
     close();
 }
 
 void TopicContent::showQuestionsAnswers() {
-    auto* window = new TopicQuestions;
+    auto *window = new TopicQuestions;
     window->show();
     close();
 }
 
 void TopicContent::goBack() {
-    auto* window = new ManageTopic;
+    auto *window = new ManageTopic;
     window->show();
     close();
 }

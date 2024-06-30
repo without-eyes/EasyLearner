@@ -19,6 +19,7 @@ public:
     static void setTaskMap(std::map<QString, QString> taskMap);
 
 public slots:
+
     void checkAnswer();
 
     void showNextTask();

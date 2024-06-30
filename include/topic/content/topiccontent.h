@@ -16,15 +16,16 @@ public:
 
     ~TopicContent() override;
 
-    static void addIntoDefinitionMap(const QString& term, const QString& definition);
+    static void addIntoDefinitionMap(const QString &term, const QString &definition);
 
     static std::map<QString, QString> getDefinitionMap();
 
-    static void addIntoQuestionMap(const QString& question, const QString& answer);
+    static void addIntoQuestionMap(const QString &question, const QString &answer);
 
     static std::map<QString, QString> getQuestionMap();
 
 public slots:
+
     void showDefinition();
 
     void showQuestionsAnswers();
