@@ -1,8 +1,9 @@
 #include <QAbstractButton>
 #include "../../../include/topic/creation/addquestion.h"
 #include "../../../forms/ui_AddQuestion.h"
-#include "../../../include/topic/managetopic.h"
+#include "../../../include/topic/base/managetopic.h"
 #include "../../../include/topic/content/topiccontent.h"
+#include "../../../include/topic/base/content.h"
 
 
 AddQuestion::AddQuestion(QWidget *parent) :
@@ -18,7 +19,7 @@ AddQuestion::~AddQuestion() {
 
 void AddQuestion::addQuestion() {
     auto *window = new ManageTopic;
-    TopicContent::addIntoQuestionMap(ui->questionLineEdit->text(), ui->answerLineEdit->text());
+    Content::addIntoQuestionMap(ui->questionLineEdit->text(), ui->answerLineEdit->text());
     window->show();
     close();
 }

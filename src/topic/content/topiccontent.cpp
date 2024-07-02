@@ -1,20 +1,13 @@
 #include "../../../include/topic/content/topiccontent.h"
 #include "../../../forms/ui_TopicContent.h"
-#include "../../../include/topic/managetopic.h"
+#include "../../../include/topic/base/managetopic.h"
 #include "../../../include/topic/content/topicdefinitions.h"
 #include "../../../include/topic/content/topicquestions.h"
-
-std::map<QString, QString> TopicContent::definitionMap;
-std::map<QString, QString> TopicContent::questionMap;
 
 TopicContent::TopicContent(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicContent) {
     ui->setupUi(this);
 
-    // DELETE THIS
-    definitionMap["Term"] = "definition";
-    questionMap["Question"] = "answer";
-    // THIS IS FOR TESTING
 
     QObject::connect(ui->definitionButton, &QPushButton::clicked, this, &TopicContent::showDefinition);
     QObject::connect(ui->qaButton, &QPushButton::clicked, this, &TopicContent::showQuestionsAnswers);
@@ -23,22 +16,6 @@ TopicContent::TopicContent(QWidget *parent) :
 
 TopicContent::~TopicContent() {
     delete ui;
-}
-
-void TopicContent::addIntoDefinitionMap(const QString &term, const QString &definition) {
-    definitionMap[term] = definition;
-}
-
-std::map<QString, QString> TopicContent::getDefinitionMap() {
-    return definitionMap;
-}
-
-void TopicContent::addIntoQuestionMap(const QString &question, const QString &answer) {
-    questionMap[question] = answer;
-}
-
-std::map<QString, QString> TopicContent::getQuestionMap() {
-    return questionMap;
 }
 
 void TopicContent::showDefinition() {

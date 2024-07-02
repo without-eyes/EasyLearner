@@ -2,7 +2,7 @@
 #include "../../include/mainmenu/mainmenu.h"
 #include "../../forms/ui_MainMenu.h"
 #include "../../include/mainmenu/createtopic.h"
-#include "../../include/topic/managetopic.h"
+#include "../../include/topic/base/managetopic.h"
 
 QList<QString> MainMenu::topicList;
 
@@ -32,7 +32,7 @@ void MainMenu::showTableContent() {
 }
 
 void MainMenu::pickTopic() {
-    if (ui->listWidget->selectedItems().size() != 0) {
+    if (!ui->listWidget->selectedItems().empty()) {
         auto *window = new ManageTopic;
         window->setTopicName(ui->listWidget->currentItem()->text());
         window->show();

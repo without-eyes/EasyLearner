@@ -1,7 +1,8 @@
 #include "../../../include/topic/content/topicdefinitions.h"
 #include "../../../forms/ui_TopicDefinitions.h"
-#include "../../../include/topic/managetopic.h"
+#include "../../../include/topic/base/managetopic.h"
 #include "../../../include/topic/content/topiccontent.h"
+#include "../../../include/topic/base/content.h"
 
 
 TopicDefinitions::TopicDefinitions(QWidget *parent) :
@@ -18,7 +19,7 @@ TopicDefinitions::~TopicDefinitions() {
 }
 
 void TopicDefinitions::showDefinitionList() {
-    std::map<QString, QString> definitionMap = TopicContent::getDefinitionMap();
+    std::map<QString, QString> definitionMap = Content::getDefinitionMap();
     for (const auto &pair: definitionMap) {
         ui->listWidget->addItem(pair.first + " - " + pair.second);
     }

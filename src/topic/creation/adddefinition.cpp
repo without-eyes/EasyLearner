@@ -1,7 +1,8 @@
 #include "../../../include/topic/creation/adddefinition.h"
 #include "../../../forms/ui_AddDefinition.h"
 #include "../../../include/topic/content/topiccontent.h"
-#include "../../../include/topic/managetopic.h"
+#include "../../../include/topic/base/managetopic.h"
+#include "../../../include/topic/base/content.h"
 
 
 AddDefinition::AddDefinition(QWidget *parent) :
@@ -17,7 +18,7 @@ AddDefinition::~AddDefinition() {
 
 void AddDefinition::addDefinition() {
     auto *window = new ManageTopic;
-    TopicContent::addIntoDefinitionMap(ui->termLineEdit->text(), ui->definitionLineEdit->text());
+    Content::addIntoDefinitionMap(ui->termLineEdit->text(), ui->definitionLineEdit->text());
     window->show();
     close();
 }

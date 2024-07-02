@@ -1,10 +1,11 @@
-#include "../../include/topic/managetopic.h"
-#include "../../forms/ui_ManageTopic.h"
-#include "../../include/mainmenu/mainmenu.h"
-#include "../../include/topic/creation/adddefinition.h"
-#include "../../include/topic/content/topiccontent.h"
-#include "../../include/topic/creation/addquestion.h"
-#include "../../include/topic/study/topicstudy.h"
+#include "../../../include/topic/base/managetopic.h"
+#include "../../../forms/ui_ManageTopic.h"
+#include "../../../include/mainmenu/mainmenu.h"
+#include "../../../include/topic/creation/adddefinition.h"
+#include "../../../include/topic/content/topiccontent.h"
+#include "../../../include/topic/creation/addquestion.h"
+#include "../../../include/topic/study/topicstudy.h"
+#include "../../../include/topic/base/content.h"
 #include <iostream>
 
 
@@ -25,6 +26,7 @@ ManageTopic::~ManageTopic() {
 
 void ManageTopic::setTopicName(const QString &topicName) {
     ui->label->setText(topicName);
+    auto* content = new Content(topicName);
 }
 
 void ManageTopic::startStudy() {

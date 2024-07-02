@@ -20,8 +20,8 @@ add_executable(EasyLearner src/mainmenu/main.cpp
         src/mainmenu/createtopic.cpp
         include/mainmenu/createtopic.h
         forms/CreateTopic.ui
-        src/topic/managetopic.cpp
-        include/topic/managetopic.h
+        src/topic/base/managetopic.cpp
+        include/topic/base/managetopic.h
         forms/ManageTopic.ui
         src/topic/creation/adddefinition.cpp
         include/topic/creation/adddefinition.h
@@ -43,7 +43,9 @@ add_executable(EasyLearner src/mainmenu/main.cpp
         forms/TopicStudy.ui
         src/topic/study/studyquestions.cpp
         include/topic/study/studyquestions.h
-        forms/StudyQuestions.ui)
+        forms/StudyQuestions.ui
+        src/topic/base/content.cpp
+        include/topic/base/content.h)
 target_link_libraries(EasyLearner
         Qt5::Core
         Qt5::Gui

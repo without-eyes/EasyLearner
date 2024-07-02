@@ -3,6 +3,7 @@
 #include "../../../forms/ui_TopicStudy.h"
 #include "../../../include/topic/study/studyquestions.h"
 #include "../../../include/topic/content/topiccontent.h"
+#include "../../../include/topic/base/content.h"
 
 
 TopicStudy::TopicStudy(QWidget *parent) :
@@ -23,7 +24,7 @@ void TopicStudy::studyQuestionsAndDefinitions() {
 }
 
 void TopicStudy::studyQuestions() {
-    StudyQuestions::setTaskMap(TopicContent::getQuestionMap());
+    StudyQuestions::setTaskMap(Content::getQuestionMap());
     auto *window = new StudyQuestions;
     window->show();
     close();
