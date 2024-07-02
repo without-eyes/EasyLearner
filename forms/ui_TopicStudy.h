@@ -17,14 +17,17 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_TopicStudy {
+class Ui_TopicStudy
+{
 public:
     QLabel *label;
     QPushButton *qndButton;
     QPushButton *questionsButton;
     QPushButton *definitionsButton;
+    QPushButton *goBackButton;
 
-    void setupUi(QWidget *TopicStudy) {
+    void setupUi(QWidget *TopicStudy)
+    {
         if (TopicStudy->objectName().isEmpty())
             TopicStudy->setObjectName(QString::fromUtf8("TopicStudy"));
         TopicStudy->resize(400, 300);
@@ -37,32 +40,36 @@ public:
         label->setAlignment(Qt::AlignCenter);
         qndButton = new QPushButton(TopicStudy);
         qndButton->setObjectName(QString::fromUtf8("qndButton"));
-        qndButton->setGeometry(QRect(100, 100, 191, 41));
+        qndButton->setGeometry(QRect(100, 90, 191, 41));
         questionsButton = new QPushButton(TopicStudy);
         questionsButton->setObjectName(QString::fromUtf8("questionsButton"));
-        questionsButton->setGeometry(QRect(100, 150, 191, 41));
+        questionsButton->setGeometry(QRect(100, 140, 191, 41));
         definitionsButton = new QPushButton(TopicStudy);
         definitionsButton->setObjectName(QString::fromUtf8("definitionsButton"));
-        definitionsButton->setGeometry(QRect(100, 200, 191, 41));
+        definitionsButton->setGeometry(QRect(100, 190, 191, 41));
+        goBackButton = new QPushButton(TopicStudy);
+        goBackButton->setObjectName(QString::fromUtf8("goBackButton"));
+        goBackButton->setGeometry(QRect(100, 240, 191, 41));
 
         retranslateUi(TopicStudy);
 
         QMetaObject::connectSlotsByName(TopicStudy);
     } // setupUi
 
-    void retranslateUi(QWidget *TopicStudy) {
+    void retranslateUi(QWidget *TopicStudy)
+    {
         TopicStudy->setWindowTitle(QCoreApplication::translate("TopicStudy", "TopicStudy", nullptr));
         label->setText(QCoreApplication::translate("TopicStudy", "Study", nullptr));
         qndButton->setText(QCoreApplication::translate("TopicStudy", "Questions and definitions", nullptr));
         questionsButton->setText(QCoreApplication::translate("TopicStudy", "Questions only", nullptr));
         definitionsButton->setText(QCoreApplication::translate("TopicStudy", "Definitions only", nullptr));
+        goBackButton->setText(QCoreApplication::translate("TopicStudy", "Go back", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class TopicStudy : public Ui_TopicStudy {
-    };
+    class TopicStudy: public Ui_TopicStudy {};
 } // namespace Ui
 
 QT_END_NAMESPACE

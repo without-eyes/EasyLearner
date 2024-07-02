@@ -4,6 +4,7 @@
 #include "../../../include/topic/study/studyquestions.h"
 #include "../../../include/topic/content/topiccontent.h"
 #include "../../../include/topic/base/content.h"
+#include "../../../include/topic/base/managetopic.h"
 
 
 TopicStudy::TopicStudy(QWidget *parent) :
@@ -13,6 +14,7 @@ TopicStudy::TopicStudy(QWidget *parent) :
     QObject::connect(ui->qndButton, &QPushButton::clicked, this, &TopicStudy::studyQuestionsAndDefinitions);
     QObject::connect(ui->questionsButton, &QPushButton::clicked, this, &TopicStudy::studyQuestions);
     QObject::connect(ui->definitionsButton, &QPushButton::clicked, this, &TopicStudy::studyDefinitions);
+    QObject::connect(ui->goBackButton, &QPushButton::clicked, this, &TopicStudy::goBack);
 }
 
 TopicStudy::~TopicStudy() {
@@ -32,4 +34,10 @@ void TopicStudy::studyQuestions() {
 
 void TopicStudy::studyDefinitions() {
 
+}
+
+void TopicStudy::goBack() {
+    auto* window = new ManageTopic();
+    window->show();
+    close();
 }

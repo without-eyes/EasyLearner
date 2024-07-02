@@ -24,7 +24,7 @@ public slots:
 
     void studyDefinitions();
 
-    \
+    void goBack();
 
 private:
     Ui::TopicStudy *ui;
