@@ -24,6 +24,8 @@ public slots:
 
     void showNextTask();
 
+    void enableButton();
+
 private:
     void pickRandomTask();
 

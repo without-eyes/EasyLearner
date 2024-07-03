@@ -18,14 +18,16 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_StudyQuestions {
+class Ui_StudyQuestions
+{
 public:
     QLabel *questionLabel;
     QLineEdit *answerLineEdit;
-    QPushButton *checkButton;
+    QPushButton *continueButton;
     QLabel *correctnessLabel;
 
-    void setupUi(QWidget *StudyQuestions) {
+    void setupUi(QWidget *StudyQuestions)
+    {
         if (StudyQuestions->objectName().isEmpty())
             StudyQuestions->setObjectName(QString::fromUtf8("StudyQuestions"));
         StudyQuestions->resize(400, 300);
@@ -35,9 +37,9 @@ public:
         answerLineEdit = new QLineEdit(StudyQuestions);
         answerLineEdit->setObjectName(QString::fromUtf8("answerLineEdit"));
         answerLineEdit->setGeometry(QRect(40, 140, 321, 25));
-        checkButton = new QPushButton(StudyQuestions);
-        checkButton->setObjectName(QString::fromUtf8("checkButton"));
-        checkButton->setGeometry(QRect(120, 210, 161, 51));
+        continueButton = new QPushButton(StudyQuestions);
+        continueButton->setObjectName(QString::fromUtf8("continueButton"));
+        continueButton->setGeometry(QRect(120, 210, 161, 51));
         correctnessLabel = new QLabel(StudyQuestions);
         correctnessLabel->setObjectName(QString::fromUtf8("correctnessLabel"));
         correctnessLabel->setGeometry(QRect(40, 170, 321, 31));
@@ -47,21 +49,21 @@ public:
         QMetaObject::connectSlotsByName(StudyQuestions);
     } // setupUi
 
-    void retranslateUi(QWidget *StudyQuestions) {
+    void retranslateUi(QWidget *StudyQuestions)
+    {
         StudyQuestions->setWindowTitle(QCoreApplication::translate("StudyQuestions", "StudyQuestions", nullptr));
         questionLabel->setText(QString());
         answerLineEdit->setInputMask(QString());
         answerLineEdit->setText(QString());
         answerLineEdit->setPlaceholderText(QCoreApplication::translate("StudyQuestions", "Answer...", nullptr));
-        checkButton->setText(QCoreApplication::translate("StudyQuestions", "Check", nullptr));
+        continueButton->setText(QCoreApplication::translate("StudyQuestions", "Check", nullptr));
         correctnessLabel->setText(QString());
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class StudyQuestions : public Ui_StudyQuestions {
-    };
+    class StudyQuestions: public Ui_StudyQuestions {};
 } // namespace Ui
 
 QT_END_NAMESPACE

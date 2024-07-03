@@ -26,7 +26,7 @@ ManageTopic::~ManageTopic() {
 
 void ManageTopic::setTopicName(const QString &topicName) {
     ui->label->setText(topicName);
-    auto* content = new Content(topicName);
+    auto *content = new Content(topicName);
 }
 
 void ManageTopic::startStudy() {

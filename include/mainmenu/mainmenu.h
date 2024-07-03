@@ -25,6 +25,8 @@ private slots:
 
     void createTopic();
 
+    void enableButton();
+
 private:
     Ui::MainMenu *ui;
     static QList<QString> topicList;

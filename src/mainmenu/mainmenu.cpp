@@ -15,9 +15,11 @@ MainMenu::MainMenu(QWidget *parent) :
     // THIS IS FOR TESTING
 
     showTableContent();
+    ui->pickButton->setEnabled(false);
 
     QObject::connect(ui->pickButton, &QPushButton::clicked, this, &MainMenu::pickTopic);
     QObject::connect(ui->createButton, &QPushButton::clicked, this, &MainMenu::createTopic);
+    QObject::connect(ui->listWidget, &QListWidget::itemClicked, this, &MainMenu::enableButton);
 }
 
 MainMenu::~MainMenu() {
@@ -32,13 +34,16 @@ void MainMenu::showTableContent() {
 }
 
 void MainMenu::pickTopic() {
-    if (!ui->listWidget->selectedItems().empty()) {
-        auto *window = new ManageTopic;
-        window->setTopicName(ui->listWidget->currentItem()->text());
-        window->show();
-        close();
-    }
+    auto *window = new ManageTopic;
+    window->setTopicName(ui->listWidget->currentItem()->text());
+    window->show();
+    close();
 }
+
+void MainMenu::enableButton() {
+    ui->pickButton->setEnabled(!ui->pickButton->isEnabled());
+}
+
 
 void MainMenu::createTopic() {
     auto *window = new CreateTopic;
@@ -49,7 +54,6 @@ void MainMenu::createTopic() {
 void MainMenu::addTopicIntoList(const QString &topic) {
     topicList.push_back(topic);
 }
-
 
 
 

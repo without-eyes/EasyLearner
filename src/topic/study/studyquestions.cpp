@@ -12,8 +12,10 @@ StudyQuestions::StudyQuestions(QWidget *parent) :
 
     pickRandomTask();
     ui->questionLabel->setText(question);
+    ui->continueButton->setEnabled(false);
 
-    QObject::connect(ui->checkButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
+    QObject::connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
+    QObject::connect(ui->answerLineEdit, &QLineEdit::textChanged, this, &StudyQuestions::enableButton);
 }
 
 StudyQuestions::~StudyQuestions() {
@@ -44,8 +46,9 @@ void StudyQuestions::checkAnswer() {
     } else {
         ui->correctnessLabel->setText("Wrong! Correct answer: " + answer);
     }
-    ui->checkButton->setText("Continue");
-    QObject::connect(ui->checkButton, &QPushButton::clicked, this, &StudyQuestions::showNextTask);
+    ui->answerLineEdit->setEnabled(false);
+    ui->continueButton->setText("Continue");
+    QObject::connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::showNextTask);
 }
 
 void StudyQuestions::showNextTask() {
@@ -57,6 +60,14 @@ void StudyQuestions::showNextTask() {
         window->show();
     }
     close();
+}
+
+void StudyQuestions::enableButton() {
+    if (!ui->answerLineEdit->text().isEmpty()) {
+        ui->continueButton->setEnabled(true);
+    } else {
+        ui->continueButton->setEnabled(false);
+    }
 }
 
 

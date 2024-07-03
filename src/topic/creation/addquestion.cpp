@@ -10,7 +10,11 @@ AddQuestion::AddQuestion(QWidget *parent) :
         QWidget(parent), ui(new Ui::AddQuestion) {
     ui->setupUi(this);
 
+    ui->createButton->setEnabled(false);
+
     QObject::connect(ui->createButton, &QPushButton::clicked, this, &AddQuestion::addQuestion);
+    QObject::connect(ui->questionLineEdit, &QLineEdit::textChanged, this, &AddQuestion::enableButton);
+    QObject::connect(ui->answerLineEdit, &QLineEdit::textChanged, this, &AddQuestion::enableButton);
 }
 
 AddQuestion::~AddQuestion() {
@@ -22,4 +26,12 @@ void AddQuestion::addQuestion() {
     Content::addIntoQuestionMap(ui->questionLineEdit->text(), ui->answerLineEdit->text());
     window->show();
     close();
+}
+
+void AddQuestion::enableButton() {
+    if (!ui->questionLineEdit->text().isEmpty() && !ui->answerLineEdit->text().isEmpty()) {
+        ui->createButton->setEnabled(true);
+    } else {
+        ui->createButton->setEnabled(false);
+    }
 }

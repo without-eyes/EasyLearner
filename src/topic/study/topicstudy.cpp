@@ -37,7 +37,7 @@ void TopicStudy::studyDefinitions() {
 }
 
 void TopicStudy::goBack() {
-    auto* window = new ManageTopic();
+    auto *window = new ManageTopic();
     window->show();
     close();
 }

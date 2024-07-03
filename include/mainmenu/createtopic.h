@@ -20,6 +20,8 @@ private slots:
 
     void createNewTopic();
 
+    void enableButton();
+
 private:
     Ui::CreateTopic *ui;
 
