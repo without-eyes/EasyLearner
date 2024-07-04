@@ -24,7 +24,7 @@ public slots:
 
     void addDefinition();
 
-    void enableButton();
+    void changeButtonState();
 
 private:
     Ui::AddDefinition *ui;

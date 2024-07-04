@@ -10,7 +10,10 @@ TopicQuestions::TopicQuestions(QWidget *parent) :
     ui->setupUi(this);
 
     showQuestionList();
+    changeButtonState();
 
+    QObject::connect(ui->listWidget, &QListWidget::itemClicked, this, &TopicQuestions::changeButtonState);
+    QObject::connect(ui->deleteButton, &QPushButton::clicked, this, &TopicQuestions::deleteQuestion);
     QObject::connect(ui->goBackButton, &QPushButton::clicked, this, &TopicQuestions::goBack);
 }
 
@@ -26,8 +29,18 @@ void TopicQuestions::showQuestionList() {
     ui->listWidget->show();
 }
 
+void TopicQuestions::deleteQuestion() {
+    std::string text = ui->listWidget->takeItem(ui->listWidget->currentRow())->text().toStdString();
+    std::string question = text.substr(0, text.find(" -"));
+    Content::deleteFromQuestionMap(QString::fromStdString(question));
+}
+
 void TopicQuestions::goBack() {
     auto *window = new TopicContent;
     window->show();
     close();
+}
+
+void TopicQuestions::changeButtonState() {
+    ui->deleteButton->setEnabled(!ui->deleteButton->isEnabled());
 }

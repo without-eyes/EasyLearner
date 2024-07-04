@@ -12,10 +12,10 @@ StudyQuestions::StudyQuestions(QWidget *parent) :
 
     pickRandomTask();
     ui->questionLabel->setText(question);
-    ui->continueButton->setEnabled(false);
+    changeButtonState();
 
     QObject::connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
-    QObject::connect(ui->answerLineEdit, &QLineEdit::textChanged, this, &StudyQuestions::enableButton);
+    QObject::connect(ui->answerLineEdit, &QLineEdit::textChanged, this, &StudyQuestions::changeButtonState);
 }
 
 StudyQuestions::~StudyQuestions() {
@@ -62,7 +62,7 @@ void StudyQuestions::showNextTask() {
     close();
 }
 
-void StudyQuestions::enableButton() {
+void StudyQuestions::changeButtonState() {
     if (!ui->answerLineEdit->text().isEmpty()) {
         ui->continueButton->setEnabled(true);
     } else {

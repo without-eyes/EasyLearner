@@ -7,10 +7,10 @@ CreateTopic::CreateTopic(QWidget *parent) :
         QWidget(parent), ui(new Ui::CreateTopic) {
     ui->setupUi(this);
 
-    ui->createButton->setEnabled(false);
+    changeButtonState();
 
     QObject::connect(ui->createButton, &QPushButton::clicked, this, &CreateTopic::createNewTopic);
-    QObject::connect(ui->nameLineEdit, &QLineEdit::textChanged, this, &CreateTopic::enableButton);
+    QObject::connect(ui->nameLineEdit, &QLineEdit::textChanged, this, &CreateTopic::changeButtonState);
 }
 
 CreateTopic::~CreateTopic() {
@@ -30,7 +30,7 @@ void CreateTopic::goToMainMenu() {
     close();
 }
 
-void CreateTopic::enableButton() {
+void CreateTopic::changeButtonState() {
     if (!ui->nameLineEdit->text().isEmpty()) {
         ui->createButton->setEnabled(true);
     } else {

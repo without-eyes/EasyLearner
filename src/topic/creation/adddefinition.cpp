@@ -9,11 +9,11 @@ AddDefinition::AddDefinition(QWidget *parent) :
         QWidget(parent), ui(new Ui::AddDefinition) {
     ui->setupUi(this);
 
-    ui->createButton->setEnabled(false);
+    changeButtonState();
 
     QObject::connect(ui->createButton, &QPushButton::clicked, this, &AddDefinition::addDefinition);
-    QObject::connect(ui->termLineEdit, &QLineEdit::textChanged, this, &AddDefinition::enableButton);
-    QObject::connect(ui->definitionLineEdit, &QLineEdit::textChanged, this, &AddDefinition::enableButton);
+    QObject::connect(ui->termLineEdit, &QLineEdit::textChanged, this, &AddDefinition::changeButtonState);
+    QObject::connect(ui->definitionLineEdit, &QLineEdit::textChanged, this, &AddDefinition::changeButtonState);
 }
 
 AddDefinition::~AddDefinition() {
@@ -27,7 +27,7 @@ void AddDefinition::addDefinition() {
     close();
 }
 
-void AddDefinition::enableButton() {
+void AddDefinition::changeButtonState() {
     if (!ui->termLineEdit->text().isEmpty() && !ui->definitionLineEdit->text().isEmpty()) {
         ui->createButton->setEnabled(true);
     } else {

@@ -25,7 +25,7 @@ private slots:
 
     void createTopic();
 
-    void enableButton();
+    void changeButtonState();
 
 private:
     Ui::MainMenu *ui;

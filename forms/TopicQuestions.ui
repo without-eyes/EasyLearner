@@ -23,12 +23,25 @@
                 </rect>
             </property>
         </widget>
+        <widget class="QPushButton" name="deleteButton">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>260</y>
+                    <width>171</width>
+                    <height>25</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>Delete</string>
+            </property>
+        </widget>
         <widget class="QPushButton" name="goBackButton">
             <property name="geometry">
                 <rect>
-                    <x>100</x>
+                    <x>200</x>
                     <y>260</y>
-                    <width>191</width>
+                    <width>181</width>
                     <height>25</height>
                 </rect>
             </property>

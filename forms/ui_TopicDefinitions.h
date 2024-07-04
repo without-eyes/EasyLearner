@@ -21,6 +21,7 @@ class Ui_TopicDefinitions {
 public:
     QListWidget *listWidget;
     QPushButton *goBackButton;
+    QPushButton *deleteButton;
 
     void setupUi(QWidget *TopicDefinitions) {
         if (TopicDefinitions->objectName().isEmpty())
@@ -31,7 +32,10 @@ public:
         listWidget->setGeometry(QRect(20, 20, 361, 231));
         goBackButton = new QPushButton(TopicDefinitions);
         goBackButton->setObjectName(QString::fromUtf8("goBackButton"));
-        goBackButton->setGeometry(QRect(100, 260, 191, 25));
+        goBackButton->setGeometry(QRect(200, 260, 181, 25));
+        deleteButton = new QPushButton(TopicDefinitions);
+        deleteButton->setObjectName(QString::fromUtf8("deleteButton"));
+        deleteButton->setGeometry(QRect(20, 260, 171, 25));
 
         retranslateUi(TopicDefinitions);
 
@@ -41,6 +45,7 @@ public:
     void retranslateUi(QWidget *TopicDefinitions) {
         TopicDefinitions->setWindowTitle(QCoreApplication::translate("TopicDefinitions", "TopicDefinitions", nullptr));
         goBackButton->setText(QCoreApplication::translate("TopicDefinitions", "Go back", nullptr));
+        deleteButton->setText(QCoreApplication::translate("TopicDefinitions", "Delete", nullptr));
     } // retranslateUi
 
 };

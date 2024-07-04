@@ -20,6 +20,7 @@ QT_BEGIN_NAMESPACE
 class Ui_TopicQuestions {
 public:
     QListWidget *listWidget;
+    QPushButton *deleteButton;
     QPushButton *goBackButton;
 
     void setupUi(QWidget *TopicQuestions) {
@@ -29,9 +30,12 @@ public:
         listWidget = new QListWidget(TopicQuestions);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
         listWidget->setGeometry(QRect(20, 20, 361, 231));
+        deleteButton = new QPushButton(TopicQuestions);
+        deleteButton->setObjectName(QString::fromUtf8("deleteButton"));
+        deleteButton->setGeometry(QRect(20, 260, 171, 25));
         goBackButton = new QPushButton(TopicQuestions);
         goBackButton->setObjectName(QString::fromUtf8("goBackButton"));
-        goBackButton->setGeometry(QRect(100, 260, 191, 25));
+        goBackButton->setGeometry(QRect(200, 260, 181, 25));
 
         retranslateUi(TopicQuestions);
 
@@ -40,6 +44,7 @@ public:
 
     void retranslateUi(QWidget *TopicQuestions) {
         TopicQuestions->setWindowTitle(QCoreApplication::translate("TopicQuestions", "TopicQuestions", nullptr));
+        deleteButton->setText(QCoreApplication::translate("TopicQuestions", "Delete", nullptr));
         goBackButton->setText(QCoreApplication::translate("TopicQuestions", "Go back", nullptr));
     } // retranslateUi
 

@@ -14,6 +14,10 @@ void Content::addIntoDefinitionMap(const QString &term, const QString &definitio
     definitionMap[term] = definition;
 }
 
+void Content::deleteFromDefinitionMap(const QString &term) {
+    definitionMap.erase(term);
+}
+
 std::map<QString, QString> Content::getDefinitionMap() {
     return definitionMap;
 }
@@ -22,7 +26,15 @@ void Content::addIntoQuestionMap(const QString &question, const QString &answer)
     questionMap[question] = answer;
 }
 
+void Content::deleteFromQuestionMap(const QString &question) {
+    questionMap.erase(question);
+}
+
+
 std::map<QString, QString> Content::getQuestionMap() {
     return questionMap;
 }
+
+
+
 

@@ -15,11 +15,11 @@ MainMenu::MainMenu(QWidget *parent) :
     // THIS IS FOR TESTING
 
     showTableContent();
-    ui->pickButton->setEnabled(false);
+    changeButtonState();
 
     QObject::connect(ui->pickButton, &QPushButton::clicked, this, &MainMenu::pickTopic);
     QObject::connect(ui->createButton, &QPushButton::clicked, this, &MainMenu::createTopic);
-    QObject::connect(ui->listWidget, &QListWidget::itemClicked, this, &MainMenu::enableButton);
+    QObject::connect(ui->listWidget, &QListWidget::itemClicked, this, &MainMenu::changeButtonState);
 }
 
 MainMenu::~MainMenu() {
@@ -40,7 +40,7 @@ void MainMenu::pickTopic() {
     close();
 }
 
-void MainMenu::enableButton() {
+void MainMenu::changeButtonState() {
     ui->pickButton->setEnabled(!ui->pickButton->isEnabled());
 }
 

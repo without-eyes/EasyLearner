@@ -24,7 +24,7 @@ public slots:
 
     void addQuestion();
 
-    void enableButton();
+    void changeButtonState();
 
 private:
     Ui::AddQuestion *ui;

@@ -13,7 +13,11 @@ Q_OBJECT
 
 public slots:
 
+    void deleteQuestion();
+
     void goBack();
+
+    void changeButtonState();
 
 public:
     explicit TopicQuestions(QWidget *parent = nullptr);

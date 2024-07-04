@@ -12,9 +12,13 @@ public:
 
     static void addIntoDefinitionMap(const QString &term, const QString &definition);
 
+    static void deleteFromDefinitionMap(const QString &term);
+
     static std::map<QString, QString> getDefinitionMap();
 
     static void addIntoQuestionMap(const QString &question, const QString &answer);
+
+    static void deleteFromQuestionMap(const QString &question);
 
     static std::map<QString, QString> getQuestionMap();
 
