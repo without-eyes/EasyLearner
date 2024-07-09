@@ -13,6 +13,7 @@ AddQuestion::AddQuestion(QWidget *parent) :
     changeButtonState();
 
     QObject::connect(ui->createButton, &QPushButton::clicked, this, &AddQuestion::addQuestion);
+    QObject::connect(ui->goBackButton, &QPushButton::clicked, this, &AddQuestion::goBack);
     QObject::connect(ui->questionLineEdit, &QLineEdit::textChanged, this, &AddQuestion::changeButtonState);
     QObject::connect(ui->answerLineEdit, &QLineEdit::textChanged, this, &AddQuestion::changeButtonState);
 }
@@ -22,10 +23,8 @@ AddQuestion::~AddQuestion() {
 }
 
 void AddQuestion::addQuestion() {
-    auto *window = new ManageTopic;
     Content::addIntoQuestionMap(ui->questionLineEdit->text(), ui->answerLineEdit->text());
-    window->show();
-    close();
+    goBack();
 }
 
 void AddQuestion::changeButtonState() {
@@ -34,4 +33,10 @@ void AddQuestion::changeButtonState() {
     } else {
         ui->createButton->setEnabled(false);
     }
+}
+
+void AddQuestion::goBack() {
+    auto *window = new ManageTopic;
+    window->show();
+    close();
 }

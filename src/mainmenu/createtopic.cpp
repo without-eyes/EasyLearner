@@ -10,6 +10,7 @@ CreateTopic::CreateTopic(QWidget *parent) :
     changeButtonState();
 
     QObject::connect(ui->createButton, &QPushButton::clicked, this, &CreateTopic::createNewTopic);
+    QObject::connect(ui->goBackButton, &QPushButton::clicked, this, &CreateTopic::goBack);
     QObject::connect(ui->nameLineEdit, &QLineEdit::textChanged, this, &CreateTopic::changeButtonState);
 }
 
@@ -20,14 +21,8 @@ CreateTopic::~CreateTopic() {
 void CreateTopic::createNewTopic() {
     if (!ui->nameLineEdit->text().isEmpty()) {
         MainMenu::addTopicIntoList(ui->nameLineEdit->text());
-        goToMainMenu();
+        goBack();
     }
-}
-
-void CreateTopic::goToMainMenu() {
-    auto *window = new MainMenu;
-    window->show();
-    close();
 }
 
 void CreateTopic::changeButtonState() {
@@ -36,6 +31,12 @@ void CreateTopic::changeButtonState() {
     } else {
         ui->createButton->setEnabled(false);
     }
+}
+
+void CreateTopic::goBack() {
+    auto *window = new MainMenu;
+    window->show();
+    close();
 }
 
 

@@ -18,22 +18,22 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_AddDefinition {
+class Ui_AddDefinition
+{
 public:
-    QPushButton *createButton;
     QLineEdit *termLineEdit;
     QLineEdit *definitionLineEdit;
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
+    QPushButton *goBackButton;
+    QPushButton *createButton;
 
-    void setupUi(QWidget *AddDefinition) {
+    void setupUi(QWidget *AddDefinition)
+    {
         if (AddDefinition->objectName().isEmpty())
             AddDefinition->setObjectName(QString::fromUtf8("AddDefinition"));
         AddDefinition->resize(400, 300);
-        createButton = new QPushButton(AddDefinition);
-        createButton->setObjectName(QString::fromUtf8("createButton"));
-        createButton->setGeometry(QRect(140, 210, 121, 41));
         termLineEdit = new QLineEdit(AddDefinition);
         termLineEdit->setObjectName(QString::fromUtf8("termLineEdit"));
         termLineEdit->setGeometry(QRect(110, 110, 201, 21));
@@ -54,25 +54,32 @@ public:
         label_3 = new QLabel(AddDefinition);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(40, 150, 61, 17));
+        goBackButton = new QPushButton(AddDefinition);
+        goBackButton->setObjectName(QString::fromUtf8("goBackButton"));
+        goBackButton->setGeometry(QRect(100, 240, 211, 31));
+        createButton = new QPushButton(AddDefinition);
+        createButton->setObjectName(QString::fromUtf8("createButton"));
+        createButton->setGeometry(QRect(100, 200, 211, 31));
 
         retranslateUi(AddDefinition);
 
         QMetaObject::connectSlotsByName(AddDefinition);
     } // setupUi
 
-    void retranslateUi(QWidget *AddDefinition) {
+    void retranslateUi(QWidget *AddDefinition)
+    {
         AddDefinition->setWindowTitle(QCoreApplication::translate("AddDefinition", "AddDefinition", nullptr));
-        createButton->setText(QCoreApplication::translate("AddDefinition", "Create", nullptr));
         label->setText(QCoreApplication::translate("AddDefinition", "Add new definition", nullptr));
         label_2->setText(QCoreApplication::translate("AddDefinition", "Term:", nullptr));
         label_3->setText(QCoreApplication::translate("AddDefinition", "Defition:", nullptr));
+        goBackButton->setText(QCoreApplication::translate("AddDefinition", "Go back", nullptr));
+        createButton->setText(QCoreApplication::translate("AddDefinition", "Create", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class AddDefinition : public Ui_AddDefinition {
-    };
+    class AddDefinition: public Ui_AddDefinition {};
 } // namespace Ui
 
 QT_END_NAMESPACE

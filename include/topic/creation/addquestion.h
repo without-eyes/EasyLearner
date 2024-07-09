@@ -1,7 +1,3 @@
-//
-// Created by without-eyes on 23.06.24.
-//
-
 #ifndef EASYLEARNER_ADDQUESTION_H
 #define EASYLEARNER_ADDQUESTION_H
 
@@ -25,6 +21,8 @@ public slots:
     void addQuestion();
 
     void changeButtonState();
+
+    void goBack();
 
 private:
     Ui::AddQuestion *ui;

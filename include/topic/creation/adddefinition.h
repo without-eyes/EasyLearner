@@ -26,6 +26,8 @@ public slots:
 
     void changeButtonState();
 
+    void goBack();
+
 private:
     Ui::AddDefinition *ui;
 };

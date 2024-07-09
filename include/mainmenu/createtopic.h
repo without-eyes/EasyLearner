@@ -22,10 +22,10 @@ private slots:
 
     void changeButtonState();
 
+    void goBack();
+
 private:
     Ui::CreateTopic *ui;
-
-    void goToMainMenu();
 };
 
 

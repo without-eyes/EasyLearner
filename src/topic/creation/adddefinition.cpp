@@ -12,6 +12,7 @@ AddDefinition::AddDefinition(QWidget *parent) :
     changeButtonState();
 
     QObject::connect(ui->createButton, &QPushButton::clicked, this, &AddDefinition::addDefinition);
+    QObject::connect(ui->goBackButton, &QPushButton::clicked, this, &AddDefinition::goBack);
     QObject::connect(ui->termLineEdit, &QLineEdit::textChanged, this, &AddDefinition::changeButtonState);
     QObject::connect(ui->definitionLineEdit, &QLineEdit::textChanged, this, &AddDefinition::changeButtonState);
 }
@@ -21,10 +22,8 @@ AddDefinition::~AddDefinition() {
 }
 
 void AddDefinition::addDefinition() {
-    auto *window = new ManageTopic;
     Content::addIntoDefinitionMap(ui->termLineEdit->text(), ui->definitionLineEdit->text());
-    window->show();
-    close();
+    goBack();
 }
 
 void AddDefinition::changeButtonState() {
@@ -33,4 +32,10 @@ void AddDefinition::changeButtonState() {
     } else {
         ui->createButton->setEnabled(false);
     }
+}
+
+void AddDefinition::goBack() {
+    auto *window = new ManageTopic;
+    window->show();
+    close();
 }

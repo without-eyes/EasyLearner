@@ -17,13 +17,15 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_TopicDefinitions {
+class Ui_TopicDefinitions
+{
 public:
     QListWidget *listWidget;
     QPushButton *goBackButton;
     QPushButton *deleteButton;
 
-    void setupUi(QWidget *TopicDefinitions) {
+    void setupUi(QWidget *TopicDefinitions)
+    {
         if (TopicDefinitions->objectName().isEmpty())
             TopicDefinitions->setObjectName(QString::fromUtf8("TopicDefinitions"));
         TopicDefinitions->resize(400, 300);
@@ -42,7 +44,8 @@ public:
         QMetaObject::connectSlotsByName(TopicDefinitions);
     } // setupUi
 
-    void retranslateUi(QWidget *TopicDefinitions) {
+    void retranslateUi(QWidget *TopicDefinitions)
+    {
         TopicDefinitions->setWindowTitle(QCoreApplication::translate("TopicDefinitions", "TopicDefinitions", nullptr));
         goBackButton->setText(QCoreApplication::translate("TopicDefinitions", "Go back", nullptr));
         deleteButton->setText(QCoreApplication::translate("TopicDefinitions", "Delete", nullptr));
@@ -51,8 +54,7 @@ public:
 };
 
 namespace Ui {
-    class TopicDefinitions : public Ui_TopicDefinitions {
-    };
+    class TopicDefinitions: public Ui_TopicDefinitions {};
 } // namespace Ui
 
 QT_END_NAMESPACE

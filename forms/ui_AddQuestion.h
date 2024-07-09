@@ -18,7 +18,8 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_AddQuestion {
+class Ui_AddQuestion
+{
 public:
     QLabel *label;
     QLineEdit *questionLineEdit;
@@ -26,8 +27,10 @@ public:
     QPushButton *createButton;
     QLineEdit *answerLineEdit;
     QLabel *label_2;
+    QPushButton *goBackButton;
 
-    void setupUi(QWidget *AddQuestion) {
+    void setupUi(QWidget *AddQuestion)
+    {
         if (AddQuestion->objectName().isEmpty())
             AddQuestion->setObjectName(QString::fromUtf8("AddQuestion"));
         AddQuestion->resize(400, 300);
@@ -47,32 +50,36 @@ public:
         label_3->setGeometry(QRect(40, 160, 61, 17));
         createButton = new QPushButton(AddQuestion);
         createButton->setObjectName(QString::fromUtf8("createButton"));
-        createButton->setGeometry(QRect(140, 220, 121, 41));
+        createButton->setGeometry(QRect(100, 200, 211, 31));
         answerLineEdit = new QLineEdit(AddQuestion);
         answerLineEdit->setObjectName(QString::fromUtf8("answerLineEdit"));
         answerLineEdit->setGeometry(QRect(110, 160, 201, 21));
         label_2 = new QLabel(AddQuestion);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(30, 120, 71, 20));
+        goBackButton = new QPushButton(AddQuestion);
+        goBackButton->setObjectName(QString::fromUtf8("goBackButton"));
+        goBackButton->setGeometry(QRect(100, 240, 211, 31));
 
         retranslateUi(AddQuestion);
 
         QMetaObject::connectSlotsByName(AddQuestion);
     } // setupUi
 
-    void retranslateUi(QWidget *AddQuestion) {
+    void retranslateUi(QWidget *AddQuestion)
+    {
         AddQuestion->setWindowTitle(QCoreApplication::translate("AddQuestion", "AddQuestion", nullptr));
         label->setText(QCoreApplication::translate("AddQuestion", "Add new Question", nullptr));
         label_3->setText(QCoreApplication::translate("AddQuestion", "Answer:", nullptr));
         createButton->setText(QCoreApplication::translate("AddQuestion", "Create", nullptr));
         label_2->setText(QCoreApplication::translate("AddQuestion", "Question:", nullptr));
+        goBackButton->setText(QCoreApplication::translate("AddQuestion", "Go back", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class AddQuestion : public Ui_AddQuestion {
-    };
+    class AddQuestion: public Ui_AddQuestion {};
 } // namespace Ui
 
 QT_END_NAMESPACE
