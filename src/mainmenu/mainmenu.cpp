@@ -3,12 +3,16 @@
 #include "../../forms/ui_MainMenu.h"
 #include "../../include/mainmenu/createtopic.h"
 #include "../../include/topic/base/managetopic.h"
+#include "../../include/utils/database.h"
 
 QList<QString> MainMenu::topicList;
 
 MainMenu::MainMenu(QWidget *parent) :
         QWidget(parent), ui(new Ui::MainMenu) {
     ui->setupUi(this);
+
+    Database();
+
 
     // DELETE THIS
     topicList.push_back("Test topic");

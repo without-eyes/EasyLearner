@@ -11,6 +11,7 @@ find_package(Qt5 COMPONENTS
         Core
         Gui
         Widgets
+        Sql
         REQUIRED)
 
 add_executable(EasyLearner src/mainmenu/main.cpp
@@ -45,10 +46,14 @@ add_executable(EasyLearner src/mainmenu/main.cpp
         include/topic/study/studyquestions.h
         forms/StudyQuestions.ui
         src/topic/base/content.cpp
-        include/topic/base/content.h)
+        include/topic/base/content.h
+        src/utils/database.cpp
+        include/utils/database.h)
+
 target_link_libraries(EasyLearner
         Qt5::Core
         Qt5::Gui
         Qt5::Widgets
+        Qt5::Sql
 )
 
