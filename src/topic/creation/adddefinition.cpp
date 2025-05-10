@@ -6,6 +6,7 @@
 */
 
 #include "../../../include/topic/creation/adddefinition.h"
+
 #include "../../../forms/ui_AddDefinition.h"
 #include "../../../include/topic/base/managetopic.h"
 #include "../../../include/topic/base/content.h"

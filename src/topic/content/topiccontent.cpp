@@ -6,6 +6,7 @@
 */
 
 #include "../../../include/topic/content/topiccontent.h"
+
 #include "../../../forms/ui_TopicContent.h"
 #include "../../../include/topic/base/managetopic.h"
 #include "../../../include/topic/content/topicdefinitions.h"

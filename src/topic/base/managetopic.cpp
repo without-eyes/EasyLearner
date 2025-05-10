@@ -6,6 +6,7 @@
 */
 
 #include "../../../include/topic/base/managetopic.h"
+
 #include "../../../forms/ui_ManageTopic.h"
 #include "../../../include/mainmenu/mainmenu.h"
 #include "../../../include/topic/creation/adddefinition.h"

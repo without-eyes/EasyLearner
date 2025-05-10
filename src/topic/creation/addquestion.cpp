@@ -6,6 +6,7 @@
 */
 
 #include "../../../include/topic/creation/addquestion.h"
+
 #include "../../../forms/ui_AddQuestion.h"
 #include "../../../include/topic/base/managetopic.h"
 #include "../../../include/topic/base/content.h"

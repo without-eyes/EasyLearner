@@ -6,6 +6,7 @@
 */
 
 #include "../../../include/topic/study/studyquestions.h"
+
 #include "../../../forms/ui_StudyQuestions.h"
 #include "../../../include/topic/study/topicstudy.h"
 #include "../../../include/utils/randomizer.h"

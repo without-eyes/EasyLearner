@@ -5,8 +5,9 @@
     * This file contains methods' implementation of MainMenu class.
 */
 
-#include <QStringListModel>
 #include "../../include/mainmenu/mainmenu.h"
+
+#include <QStringListModel>
 #include "../../forms/ui_MainMenu.h"
 #include "../../include/mainmenu/createtopic.h"
 #include "../../include/topic/base/managetopic.h"
