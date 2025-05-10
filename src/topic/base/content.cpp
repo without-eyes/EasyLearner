@@ -1,3 +1,10 @@
+/**
+    * @file: content.cpp
+    * @author: without eyes
+    *
+    * This file contains methods' implementation of Content class.
+*/
+
 #include "../../../include/topic/base/content.h"
 
 std::map<QString, QString> Content::definitionMap;

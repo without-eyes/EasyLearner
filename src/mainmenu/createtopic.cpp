@@ -1,7 +1,13 @@
+/**
+    * @file: createtopic.cpp
+    * @author: without eyes
+    *
+    * This file contains methods' implementation of CreateTopic class.
+*/
+
 #include "../../include/mainmenu/createtopic.h"
 #include "../../forms/ui_CreateTopic.h"
 #include "../../include/mainmenu/mainmenu.h"
-
 
 CreateTopic::CreateTopic(QWidget *parent) :
         QWidget(parent), ui(new Ui::CreateTopic) {
@@ -25,7 +31,7 @@ void CreateTopic::createNewTopic() {
     }
 }
 
-void CreateTopic::changeButtonState() {
+void CreateTopic::changeButtonState() const {
     if (!ui->nameLineEdit->text().isEmpty()) {
         ui->createButton->setEnabled(true);
     } else {

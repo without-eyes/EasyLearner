@@ -1,3 +1,10 @@
+/**
+    * @file: topiccontent.cpp
+    * @author: without eyes
+    *
+    * This file contains methods' implementation of TopicContent class.
+*/
+
 #include "../../../include/topic/content/topiccontent.h"
 #include "../../../forms/ui_TopicContent.h"
 #include "../../../include/topic/base/managetopic.h"

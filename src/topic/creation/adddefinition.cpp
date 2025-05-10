@@ -1,8 +1,14 @@
+/**
+    * @file: adddefinitions.cpp
+    * @author: without eyes
+    *
+    * This file contains methods' implementation of AddDefinitions class.
+*/
+
 #include "../../../include/topic/creation/adddefinition.h"
 #include "../../../forms/ui_AddDefinition.h"
 #include "../../../include/topic/base/managetopic.h"
 #include "../../../include/topic/base/content.h"
-
 
 AddDefinition::AddDefinition(QWidget *parent) :
         QWidget(parent), ui(new Ui::AddDefinition) {

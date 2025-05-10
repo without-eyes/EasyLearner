@@ -1,8 +1,14 @@
+/**
+    * @file: addquestions.h
+    * @author: without eyes
+    *
+    * This file contains AddQuestions class for "Add Questions" window.
+*/
+
 #ifndef EASYLEARNER_ADDQUESTION_H
 #define EASYLEARNER_ADDQUESTION_H
 
 #include <QWidget>
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class AddQuestion; }

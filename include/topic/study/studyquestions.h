@@ -1,8 +1,14 @@
+/**
+    * @file: studyquestions.h
+    * @author: without eyes
+    *
+    * This file contains StudyQuestions class for "Study Questions" window.
+*/
+
 #ifndef EASYLEARNER_STUDYQUESTIONS_H
 #define EASYLEARNER_STUDYQUESTIONS_H
 
 #include <QWidget>
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class StudyQuestions; }

@@ -1,9 +1,15 @@
+/**
+    * @file: topicstudy.cpp
+    * @author: without eyes
+    *
+    * This file contains methods' implementation of TopicStudy class.
+*/
+
 #include "../../../include/topic/study/topicstudy.h"
 #include "../../../forms/ui_TopicStudy.h"
 #include "../../../include/topic/study/studyquestions.h"
 #include "../../../include/topic/base/content.h"
 #include "../../../include/topic/base/managetopic.h"
-
 
 TopicStudy::TopicStudy(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicStudy) {

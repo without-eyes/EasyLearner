@@ -1,8 +1,14 @@
+/**
+    * @file: topicquestions.h
+    * @author: without eyes
+    *
+    * This file contains TopicQuestions class for "Topic Questions" window.
+*/
+
 #ifndef EASYLEARNER_TOPICQUESTIONS_H
 #define EASYLEARNER_TOPICQUESTIONS_H
 
 #include <QWidget>
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TopicQuestions; }

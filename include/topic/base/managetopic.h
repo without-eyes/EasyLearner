@@ -1,9 +1,15 @@
+/**
+    * @file: managetopic.h
+    * @author: without eyes
+    *
+    * This file contains ManageTopic class for "Manage Topic" window.
+*/
+
 #ifndef EASYLEARNER_MANAGETOPIC_H
 #define EASYLEARNER_MANAGETOPIC_H
 
 #include <QLabel>
 #include <set>
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class ManageTopic; }

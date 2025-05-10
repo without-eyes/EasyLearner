@@ -1,8 +1,14 @@
+/**
+    * @file: createtopic.h
+    * @author: without eyes
+    *
+    * This file contains CreateTopic class for "Create Topic" window.
+*/
+
 #ifndef EASYLEARNER_CREATETOPIC_H
 #define EASYLEARNER_CREATETOPIC_H
 
 #include <QWidget>
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class CreateTopic; }
@@ -20,7 +26,7 @@ private slots:
 
     void createNewTopic();
 
-    void changeButtonState();
+    void changeButtonState() const;
 
     void goBack();
 

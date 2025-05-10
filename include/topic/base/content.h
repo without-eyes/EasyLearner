@@ -1,3 +1,11 @@
+/**
+    * @file: content.h
+    * @author: without eyes
+    *
+    * This file contains Content class that manipulates with
+    * questions-answers and terms-definitions.
+*/
+
 #ifndef EASYLEARNER_CONTENT_H
 #define EASYLEARNER_CONTENT_H
 

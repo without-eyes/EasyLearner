@@ -1,3 +1,10 @@
+/**
+    * @file: managetopic.cpp
+    * @author: without eyes
+    *
+    * This file contains methods' implementation of ManageTopic class.
+*/
+
 #include "../../../include/topic/base/managetopic.h"
 #include "../../../forms/ui_ManageTopic.h"
 #include "../../../include/mainmenu/mainmenu.h"
@@ -5,7 +12,6 @@
 #include "../../../include/topic/content/topiccontent.h"
 #include "../../../include/topic/creation/addquestion.h"
 #include "../../../include/topic/study/topicstudy.h"
-
 
 ManageTopic::ManageTopic(QWidget *parent) :
         QWidget(parent), ui(new Ui::ManageTopic) {

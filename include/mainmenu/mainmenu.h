@@ -1,8 +1,14 @@
+/**
+    * @file: mainmenu.h
+    * @author: without eyes
+    *
+    * This file contains MainMenu class for "Main Menu" window.
+*/
+
 #ifndef EASYLEARNER_MAINMENU_H
 #define EASYLEARNER_MAINMENU_H
 
 #include <QWidget>
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainMenu; }

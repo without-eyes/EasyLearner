@@ -1,4 +1,9 @@
-#include <iostream>
+/**
+    * @file: studyquestions.cpp
+    * @author: without eyes
+    *
+    * This file contains methods' implementation of StudyQuestions class.
+*/
 
 #include "../../../include/topic/study/studyquestions.h"
 #include "../../../forms/ui_StudyQuestions.h"

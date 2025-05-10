@@ -1,8 +1,14 @@
+/**
+    * @file: topicquestions.cpp
+    * @author: without eyes
+    *
+    * This file contains methods' implementation of TopicQuestions class.
+*/
+
 #include "../../../include/topic/content/topicquestions.h"
 #include "../../../forms/ui_TopicQuestions.h"
 #include "../../../include/topic/content/topiccontent.h"
 #include "../../../include/topic/base/content.h"
-
 
 TopicQuestions::TopicQuestions(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicQuestions) {

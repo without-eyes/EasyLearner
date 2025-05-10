@@ -1,8 +1,14 @@
+/**
+    * @file: topicstudy.h
+    * @author: without eyes
+    *
+    * This file contains StudyTopic class for "Study Topic" window.
+*/
+
 #ifndef EASYLEARNER_TOPICSTUDY_H
 #define EASYLEARNER_TOPICSTUDY_H
 
 #include <QWidget>
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TopicStudy; }

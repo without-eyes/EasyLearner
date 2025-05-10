@@ -1,3 +1,10 @@
+/**
+    * @file: database.h
+    * @author: without eyes
+    *
+    * This file contains Database class that works with MySQL database.
+*/
+
 #ifndef EASYLEARNER_DATABASE_H
 #define EASYLEARNER_DATABASE_H
 

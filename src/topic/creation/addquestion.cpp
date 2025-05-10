@@ -1,10 +1,14 @@
-#include <QAbstractButton>
+/**
+    * @file: addquestions.cpp
+    * @author: without eyes
+    *
+    * This file contains methods' implementation of AddQuestions class.
+*/
+
 #include "../../../include/topic/creation/addquestion.h"
 #include "../../../forms/ui_AddQuestion.h"
 #include "../../../include/topic/base/managetopic.h"
-#include "../../../include/topic/content/topiccontent.h"
 #include "../../../include/topic/base/content.h"
-
 
 AddQuestion::AddQuestion(QWidget *parent) :
         QWidget(parent), ui(new Ui::AddQuestion) {

@@ -1,7 +1,14 @@
+/**
+    * @file: randomizer.h
+    * @author: without eyes
+    *
+    * This file contains Randomizer singleton class that returns
+    * random number from 0 to given max number.
+*/
+
 #ifndef RANDOMIZER_H
 #define RANDOMIZER_H
 #include <random>
-
 
 class Randomizer {
 public:

@@ -1,3 +1,10 @@
+/**
+    * @file: mainmenu.cpp
+    * @author: without eyes
+    *
+    * This file contains methods' implementation of MainMenu class.
+*/
+
 #include <QStringListModel>
 #include "../../include/mainmenu/mainmenu.h"
 #include "../../forms/ui_MainMenu.h"
@@ -12,7 +19,6 @@ MainMenu::MainMenu(QWidget *parent) :
     ui->setupUi(this);
 
     Database();
-
 
     // DELETE THIS
     topicList.push_back("Test topic");

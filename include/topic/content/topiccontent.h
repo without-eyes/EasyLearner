@@ -1,8 +1,14 @@
+/**
+    * @file: topiccontent.h
+    * @author: without eyes
+    *
+    * This file contains TopicContent class for "Topic Content" window.
+*/
+
 #ifndef EASYLEARNER_TOPICCONTENT_H
 #define EASYLEARNER_TOPICCONTENT_H
 
 #include <QWidget>
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TopicContent; }

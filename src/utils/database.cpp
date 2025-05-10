@@ -1,3 +1,10 @@
+/**
+    * @file: database.cpp
+    * @author: without eyes
+    *
+    * This file contains methods' implementation of Database class.
+*/
+
 #include "../../include/utils/database.h"
 
 #include <QDebug>
