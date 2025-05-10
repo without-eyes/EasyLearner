@@ -8,7 +8,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class TopicDefinitions; }
 QT_END_NAMESPACE
 
-class TopicDefinitions : public QWidget {
+class TopicDefinitions final : public QWidget {
 Q_OBJECT
 
 public slots:

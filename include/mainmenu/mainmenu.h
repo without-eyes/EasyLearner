@@ -8,7 +8,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainMenu; }
 QT_END_NAMESPACE
 
-class MainMenu : public QWidget {
+class MainMenu final : public QWidget {
 Q_OBJECT
 
 

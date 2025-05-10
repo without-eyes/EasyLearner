@@ -8,7 +8,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class CreateTopic; }
 QT_END_NAMESPACE
 
-class CreateTopic : public QWidget {
+class CreateTopic final : public QWidget {
 Q_OBJECT
 
 public:

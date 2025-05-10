@@ -3,7 +3,8 @@
 #include <QDebug>
 #include <QSqlQuery>
 #include <QSqlError>
-#include <QSqlRecord>
+
+QSqlDatabase Database::database;
 
 Database::Database() {
     database = QSqlDatabase::addDatabase("QMYSQL");
@@ -50,15 +51,16 @@ void Database::deleteQuestion(QString question, QString answer) {
 
 }
 
-void Database::getAllTopics() {
+QSqlTableModel Database::getAllTopics() {
 
 }
 
-void Database::getAllTerms() {
+QSqlTableModel Database::getAllTerms() {
 
 }
 
-void Database::getAllQuestions() {
+QSqlTableModel Database::getAllQuestions() {
 
 }
+
 

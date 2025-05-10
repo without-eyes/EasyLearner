@@ -5,8 +5,6 @@
 #include "../../../include/topic/content/topiccontent.h"
 #include "../../../include/topic/creation/addquestion.h"
 #include "../../../include/topic/study/topicstudy.h"
-#include "../../../include/topic/base/content.h"
-#include <iostream>
 
 
 ManageTopic::ManageTopic(QWidget *parent) :

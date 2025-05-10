@@ -1,14 +1,12 @@
 #ifndef EASYLEARNER_CONTENT_H
 #define EASYLEARNER_CONTENT_H
 
-
-#include <string>
 #include <QString>
 #include <map>
 
 class Content {
 public:
-    Content(const QString &topicName);
+    explicit Content(const QString &topicName);
 
     static void addIntoDefinitionMap(const QString &term, const QString &definition);
 

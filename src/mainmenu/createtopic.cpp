@@ -9,9 +9,9 @@ CreateTopic::CreateTopic(QWidget *parent) :
 
     changeButtonState();
 
-    QObject::connect(ui->createButton, &QPushButton::clicked, this, &CreateTopic::createNewTopic);
-    QObject::connect(ui->goBackButton, &QPushButton::clicked, this, &CreateTopic::goBack);
-    QObject::connect(ui->nameLineEdit, &QLineEdit::textChanged, this, &CreateTopic::changeButtonState);
+    connect(ui->createButton, &QPushButton::clicked, this, &CreateTopic::createNewTopic);
+    connect(ui->goBackButton, &QPushButton::clicked, this, &CreateTopic::goBack);
+    connect(ui->nameLineEdit, &QLineEdit::textChanged, this, &CreateTopic::changeButtonState);
 }
 
 CreateTopic::~CreateTopic() {

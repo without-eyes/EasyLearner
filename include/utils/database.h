@@ -1,7 +1,6 @@
 #ifndef EASYLEARNER_DATABASE_H
 #define EASYLEARNER_DATABASE_H
 
-#include <QSqlDatabase>
 #include <QSqlTableModel>
 
 class Database {

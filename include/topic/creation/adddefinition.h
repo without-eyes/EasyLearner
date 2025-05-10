@@ -1,7 +1,3 @@
-//
-// Created by without-eyes on 13.06.24.
-//
-
 #ifndef EASYLEARNER_ADDDEFINITION_H
 #define EASYLEARNER_ADDDEFINITION_H
 
@@ -12,7 +8,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class AddDefinition; }
 QT_END_NAMESPACE
 
-class AddDefinition : public QWidget {
+class AddDefinition final : public QWidget {
 Q_OBJECT
 
 public:

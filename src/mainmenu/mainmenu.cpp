@@ -21,9 +21,9 @@ MainMenu::MainMenu(QWidget *parent) :
     showTableContent();
     changeButtonState();
 
-    QObject::connect(ui->pickButton, &QPushButton::clicked, this, &MainMenu::pickTopic);
-    QObject::connect(ui->createButton, &QPushButton::clicked, this, &MainMenu::createTopic);
-    QObject::connect(ui->listWidget, &QListWidget::itemClicked, this, &MainMenu::changeButtonState);
+    connect(ui->pickButton, &QPushButton::clicked, this, &MainMenu::pickTopic);
+    connect(ui->createButton, &QPushButton::clicked, this, &MainMenu::createTopic);
+    connect(ui->listWidget, &QListWidget::itemClicked, this, &MainMenu::changeButtonState);
 }
 
 MainMenu::~MainMenu() {

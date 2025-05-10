@@ -1,7 +1,6 @@
 #ifndef EASYLEARNER_MANAGETOPIC_H
 #define EASYLEARNER_MANAGETOPIC_H
 
-#include <QWidget>
 #include <QLabel>
 #include <set>
 
@@ -10,7 +9,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class ManageTopic; }
 QT_END_NAMESPACE
 
-class ManageTopic : public QWidget {
+class ManageTopic final : public QWidget {
 Q_OBJECT
 
 public:
