@@ -48,7 +48,9 @@ add_executable(EasyLearner src/mainmenu/main.cpp
         src/topic/base/content.cpp
         include/topic/base/content.h
         src/utils/database.cpp
-        include/utils/database.h)
+        include/utils/database.h
+        src/utils/randomizer.cpp
+        include/utils/randomizer.h)
 
 target_link_libraries(EasyLearner
         Qt5::Core

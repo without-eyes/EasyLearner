@@ -3,6 +3,7 @@
 #include "../../../include/topic/study/studyquestions.h"
 #include "../../../forms/ui_StudyQuestions.h"
 #include "../../../include/topic/study/topicstudy.h"
+#include "../../../include/utils/randomizer.h"
 
 std::map<QString, QString> StudyQuestions::taskMap;
 
@@ -34,7 +35,7 @@ void StudyQuestions::pickRandomTask() {
         return;
     }
     auto task = taskMap.begin();
-    std::advance(task, rand() % taskMap.size());
+    std::advance(task, Randomizer::getInstance()->getInt(taskMap.size() - 1));
     question = task->first;
     answer = task->second;
     taskMap.erase(task);
