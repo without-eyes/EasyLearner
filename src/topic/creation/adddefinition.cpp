@@ -8,7 +8,7 @@
 #include "../../../include/topic/creation/adddefinition.h"
 
 #include "../../../forms/ui_AddDefinition.h"
-#include "../../../include/topic/base/managetopic.h"
+#include "../../../include/topic/base/topicmanagement.h"
 #include "../../../include/topic/base/content.h"
 
 AddDefinition::AddDefinition(QWidget *parent) :
@@ -41,7 +41,7 @@ void AddDefinition::changeButtonState() const {
 }
 
 void AddDefinition::goBack() {
-    auto *window = new ManageTopic;
+    auto *window = new TopicManagement;
     window->show();
     close();
 }

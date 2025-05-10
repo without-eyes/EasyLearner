@@ -10,7 +10,7 @@
 #include "../../../forms/ui_TopicStudy.h"
 #include "../../../include/topic/study/studyquestions.h"
 #include "../../../include/topic/base/content.h"
-#include "../../../include/topic/base/managetopic.h"
+#include "../../../include/topic/base/topicmanagement.h"
 
 TopicStudy::TopicStudy(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicStudy) {
@@ -42,7 +42,7 @@ void TopicStudy::studyDefinitions() {
 }
 
 void TopicStudy::goBack() {
-    auto *window = new ManageTopic();
+    auto *window = new TopicManagement();
     window->show();
     close();
 }

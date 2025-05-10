@@ -1,5 +1,5 @@
 /********************************************************************************
-** Form generated from reading UI file 'ManageTopic.ui'
+** Form generated from reading UI file 'TopicManagement.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.15.13
 **
@@ -30,7 +30,7 @@ public:
     void setupUi(QWidget *ManageTopic)
     {
         if (ManageTopic->objectName().isEmpty())
-            ManageTopic->setObjectName(QString::fromUtf8("ManageTopic"));
+            ManageTopic->setObjectName(QString::fromUtf8("TopicManagement"));
         ManageTopic->resize(400, 300);
         studyButton = new QPushButton(ManageTopic);
         studyButton->setObjectName(QString::fromUtf8("studyButton"));
@@ -59,13 +59,13 @@ public:
 
     void retranslateUi(QWidget *ManageTopic)
     {
-        ManageTopic->setWindowTitle(QCoreApplication::translate("ManageTopic", "ManageTopic", nullptr));
-        studyButton->setText(QCoreApplication::translate("ManageTopic", "Study", nullptr));
-        addDefinitionButton->setText(QCoreApplication::translate("ManageTopic", "Add new defenition", nullptr));
-        addQuestionButton->setText(QCoreApplication::translate("ManageTopic", "Add new question", nullptr));
-        showContentButton->setText(QCoreApplication::translate("ManageTopic", "Show topic content", nullptr));
-        label->setText(QCoreApplication::translate("ManageTopic", "Topic name", nullptr));
-        goBackButton->setText(QCoreApplication::translate("ManageTopic", "Go back", nullptr));
+        ManageTopic->setWindowTitle(QCoreApplication::translate("TopicManagement", "TopicManagement", nullptr));
+        studyButton->setText(QCoreApplication::translate("TopicManagement", "Study", nullptr));
+        addDefinitionButton->setText(QCoreApplication::translate("TopicManagement", "Add new defenition", nullptr));
+        addQuestionButton->setText(QCoreApplication::translate("TopicManagement", "Add new question", nullptr));
+        showContentButton->setText(QCoreApplication::translate("TopicManagement", "Show topic content", nullptr));
+        label->setText(QCoreApplication::translate("TopicManagement", "Topic name", nullptr));
+        goBackButton->setText(QCoreApplication::translate("TopicManagement", "Go back", nullptr));
     } // retranslateUi
 
 };

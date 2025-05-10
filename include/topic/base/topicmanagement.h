@@ -1,8 +1,8 @@
 /**
-    * @file: managetopic.h
+    * @file: topicmanagement.h
     * @author: without eyes
     *
-    * This file contains ManageTopic class for "Manage Topic" window.
+    * This file contains TopicManagement class for "Topic Management" window.
 */
 
 #ifndef EASYLEARNER_MANAGETOPIC_H
@@ -15,13 +15,13 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class ManageTopic; }
 QT_END_NAMESPACE
 
-class ManageTopic final : public QWidget {
+class TopicManagement final : public QWidget {
 Q_OBJECT
 
 public:
-    explicit ManageTopic(QWidget *parent = nullptr);
+    explicit TopicManagement(QWidget *parent = nullptr);
 
-    ~ManageTopic() override;
+    ~TopicManagement() override;
 
     void setTopicName(const QString &topicName) const;
 

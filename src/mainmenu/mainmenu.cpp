@@ -10,7 +10,7 @@
 #include <QStringListModel>
 #include "../../forms/ui_MainMenu.h"
 #include "../../include/mainmenu/createtopic.h"
-#include "../../include/topic/base/managetopic.h"
+#include "../../include/topic/base/topicmanagement.h"
 #include "../../include/utils/database.h"
 
 QList<QString> MainMenu::topicList;
@@ -45,7 +45,7 @@ void MainMenu::showTableContent() {
 }
 
 void MainMenu::pickTopic() {
-    auto *window = new ManageTopic;
+    auto *window = new TopicManagement;
     window->setTopicName(ui->listWidget->currentItem()->text());
     window->show();
     close();

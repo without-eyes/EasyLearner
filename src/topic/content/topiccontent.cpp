@@ -8,7 +8,7 @@
 #include "../../../include/topic/content/topiccontent.h"
 
 #include "../../../forms/ui_TopicContent.h"
-#include "../../../include/topic/base/managetopic.h"
+#include "../../../include/topic/base/topicmanagement.h"
 #include "../../../include/topic/content/topicdefinitions.h"
 #include "../../../include/topic/content/topicquestions.h"
 
@@ -38,7 +38,7 @@ void TopicContent::showQuestionsAnswers() {
 }
 
 void TopicContent::goBack() {
-    auto *window = new ManageTopic;
+    auto *window = new TopicManagement;
     window->show();
     close();
 }

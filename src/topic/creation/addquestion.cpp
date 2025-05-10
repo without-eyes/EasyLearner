@@ -8,7 +8,7 @@
 #include "../../../include/topic/creation/addquestion.h"
 
 #include "../../../forms/ui_AddQuestion.h"
-#include "../../../include/topic/base/managetopic.h"
+#include "../../../include/topic/base/topicmanagement.h"
 #include "../../../include/topic/base/content.h"
 
 AddQuestion::AddQuestion(QWidget *parent) :
@@ -41,7 +41,7 @@ void AddQuestion::changeButtonState() const {
 }
 
 void AddQuestion::goBack() {
-    auto *window = new ManageTopic;
+    auto *window = new TopicManagement;
     window->show();
     close();
 }
