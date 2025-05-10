@@ -14,15 +14,15 @@ StudyQuestions::StudyQuestions(QWidget *parent) :
     ui->questionLabel->setText(question);
     changeButtonState();
 
-    QObject::connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
-    QObject::connect(ui->answerLineEdit, &QLineEdit::textChanged, this, &StudyQuestions::changeButtonState);
+    connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
+    connect(ui->answerLineEdit, &QLineEdit::textChanged, this, &StudyQuestions::changeButtonState);
 }
 
 StudyQuestions::~StudyQuestions() {
     delete ui;
 }
 
-void StudyQuestions::setTaskMap(std::map<QString, QString> questionMap) {
+void StudyQuestions::setTaskMap(const std::map<QString, QString> &questionMap) {
     taskMap = questionMap;
 }
 
@@ -48,7 +48,7 @@ void StudyQuestions::checkAnswer() {
     }
     ui->answerLineEdit->setEnabled(false);
     ui->continueButton->setText("Continue");
-    QObject::connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::showNextTask);
+    connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::showNextTask);
 }
 
 void StudyQuestions::showNextTask() {
@@ -62,7 +62,7 @@ void StudyQuestions::showNextTask() {
     close();
 }
 
-void StudyQuestions::changeButtonState() {
+void StudyQuestions::changeButtonState() const {
     if (!ui->answerLineEdit->text().isEmpty()) {
         ui->continueButton->setEnabled(true);
     } else {

@@ -8,10 +8,9 @@ TopicContent::TopicContent(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicContent) {
     ui->setupUi(this);
 
-
-    QObject::connect(ui->definitionButton, &QPushButton::clicked, this, &TopicContent::showDefinition);
-    QObject::connect(ui->qaButton, &QPushButton::clicked, this, &TopicContent::showQuestionsAnswers);
-    QObject::connect(ui->goBackButton, &QPushButton::clicked, this, &TopicContent::goBack);
+    connect(ui->definitionButton, &QPushButton::clicked, this, &TopicContent::showDefinition);
+    connect(ui->qaButton, &QPushButton::clicked, this, &TopicContent::showQuestionsAnswers);
+    connect(ui->goBackButton, &QPushButton::clicked, this, &TopicContent::goBack);
 }
 
 TopicContent::~TopicContent() {

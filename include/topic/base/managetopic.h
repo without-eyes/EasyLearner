@@ -18,7 +18,7 @@ public:
 
     ~ManageTopic() override;
 
-    void setTopicName(const QString &topicName);
+    void setTopicName(const QString &topicName) const;
 
 public slots:
 

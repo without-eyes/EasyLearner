@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ManageTopic.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.3
+** Created by: Qt User Interface Compiler version 5.15.13
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -17,7 +17,8 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_ManageTopic {
+class Ui_ManageTopic
+{
 public:
     QPushButton *studyButton;
     QPushButton *addDefinitionButton;
@@ -26,7 +27,8 @@ public:
     QLabel *label;
     QPushButton *goBackButton;
 
-    void setupUi(QWidget *ManageTopic) {
+    void setupUi(QWidget *ManageTopic)
+    {
         if (ManageTopic->objectName().isEmpty())
             ManageTopic->setObjectName(QString::fromUtf8("ManageTopic"));
         ManageTopic->resize(400, 300);
@@ -55,7 +57,8 @@ public:
         QMetaObject::connectSlotsByName(ManageTopic);
     } // setupUi
 
-    void retranslateUi(QWidget *ManageTopic) {
+    void retranslateUi(QWidget *ManageTopic)
+    {
         ManageTopic->setWindowTitle(QCoreApplication::translate("ManageTopic", "ManageTopic", nullptr));
         studyButton->setText(QCoreApplication::translate("ManageTopic", "Study", nullptr));
         addDefinitionButton->setText(QCoreApplication::translate("ManageTopic", "Add new defenition", nullptr));
@@ -68,8 +71,7 @@ public:
 };
 
 namespace Ui {
-    class ManageTopic : public Ui_ManageTopic {
-    };
+    class ManageTopic: public Ui_ManageTopic {};
 } // namespace Ui
 
 QT_END_NAMESPACE

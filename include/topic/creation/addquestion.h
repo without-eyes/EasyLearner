@@ -20,7 +20,7 @@ public slots:
 
     void addQuestion();
 
-    void changeButtonState();
+    void changeButtonState() const;
 
     void goBack();
 

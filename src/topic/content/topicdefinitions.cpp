@@ -1,6 +1,5 @@
 #include "../../../include/topic/content/topicdefinitions.h"
 #include "../../../forms/ui_TopicDefinitions.h"
-#include "../../../include/topic/base/managetopic.h"
 #include "../../../include/topic/content/topiccontent.h"
 #include "../../../include/topic/base/content.h"
 
@@ -12,9 +11,9 @@ TopicDefinitions::TopicDefinitions(QWidget *parent) :
     showDefinitionList();
     changeButtonState();
 
-    QObject::connect(ui->listWidget, &QListWidget::itemClicked, this, &TopicDefinitions::changeButtonState);
-    QObject::connect(ui->deleteButton, &QPushButton::clicked, this, &TopicDefinitions::deleteDefinition);
-    QObject::connect(ui->goBackButton, &QPushButton::clicked, this, &TopicDefinitions::goBack);
+    connect(ui->listWidget, &QListWidget::itemClicked, this, &TopicDefinitions::changeButtonState);
+    connect(ui->deleteButton, &QPushButton::clicked, this, &TopicDefinitions::deleteDefinition);
+    connect(ui->goBackButton, &QPushButton::clicked, this, &TopicDefinitions::goBack);
 }
 
 TopicDefinitions::~TopicDefinitions() {
@@ -22,16 +21,16 @@ TopicDefinitions::~TopicDefinitions() {
 }
 
 void TopicDefinitions::showDefinitionList() {
-    std::map<QString, QString> definitionMap = Content::getDefinitionMap();
-    for (const auto &pair: definitionMap) {
-        ui->listWidget->addItem(pair.first + " - " + pair.second);
+    const std::map<QString, QString> definitionMap = Content::getDefinitionMap();
+    for (const auto &[term, definition]: definitionMap) {
+        ui->listWidget->addItem(term + " - " + definition);
     }
     ui->listWidget->show();
 }
 
-void TopicDefinitions::deleteDefinition() {
+void TopicDefinitions::deleteDefinition() const {
     std::string text = ui->listWidget->takeItem(ui->listWidget->currentRow())->text().toStdString();
-    std::string definition = text.substr(0, text.find(" -"));
+    const std::string definition = text.substr(0, text.find(" -"));
     Content::deleteFromDefinitionMap(QString::fromStdString(definition));
 }
 
@@ -41,6 +40,6 @@ void TopicDefinitions::goBack() {
     close();
 }
 
-void TopicDefinitions::changeButtonState() {
+void TopicDefinitions::changeButtonState() const {
     ui->deleteButton->setEnabled(!ui->deleteButton->isEnabled());
 }

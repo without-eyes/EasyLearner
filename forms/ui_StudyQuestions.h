@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'StudyQuestions.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.3
+** Created by: Qt User Interface Compiler version 5.15.13
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -18,14 +18,16 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_StudyQuestions {
+class Ui_StudyQuestions
+{
 public:
     QLabel *questionLabel;
     QLineEdit *answerLineEdit;
     QPushButton *continueButton;
     QLabel *correctnessLabel;
 
-    void setupUi(QWidget *StudyQuestions) {
+    void setupUi(QWidget *StudyQuestions)
+    {
         if (StudyQuestions->objectName().isEmpty())
             StudyQuestions->setObjectName(QString::fromUtf8("StudyQuestions"));
         StudyQuestions->resize(400, 300);
@@ -47,7 +49,8 @@ public:
         QMetaObject::connectSlotsByName(StudyQuestions);
     } // setupUi
 
-    void retranslateUi(QWidget *StudyQuestions) {
+    void retranslateUi(QWidget *StudyQuestions)
+    {
         StudyQuestions->setWindowTitle(QCoreApplication::translate("StudyQuestions", "StudyQuestions", nullptr));
         questionLabel->setText(QString());
         answerLineEdit->setInputMask(QString());
@@ -60,8 +63,7 @@ public:
 };
 
 namespace Ui {
-    class StudyQuestions : public Ui_StudyQuestions {
-    };
+    class StudyQuestions: public Ui_StudyQuestions {};
 } // namespace Ui
 
 QT_END_NAMESPACE

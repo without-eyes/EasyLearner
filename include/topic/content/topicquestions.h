@@ -13,11 +13,11 @@ Q_OBJECT
 
 public slots:
 
-    void deleteQuestion();
+    void deleteQuestion() const;
 
     void goBack();
 
-    void changeButtonState();
+    void changeButtonState() const;
 
 public:
     explicit TopicQuestions(QWidget *parent = nullptr);
@@ -27,7 +27,7 @@ public:
 private:
     Ui::TopicQuestions *ui;
 
-    void showQuestionList();
+    void showQuestionList() const;
 };
 
 

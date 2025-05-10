@@ -1,6 +1,5 @@
 #include "../../../include/topic/creation/adddefinition.h"
 #include "../../../forms/ui_AddDefinition.h"
-#include "../../../include/topic/content/topiccontent.h"
 #include "../../../include/topic/base/managetopic.h"
 #include "../../../include/topic/base/content.h"
 
@@ -11,10 +10,10 @@ AddDefinition::AddDefinition(QWidget *parent) :
 
     changeButtonState();
 
-    QObject::connect(ui->createButton, &QPushButton::clicked, this, &AddDefinition::addDefinition);
-    QObject::connect(ui->goBackButton, &QPushButton::clicked, this, &AddDefinition::goBack);
-    QObject::connect(ui->termLineEdit, &QLineEdit::textChanged, this, &AddDefinition::changeButtonState);
-    QObject::connect(ui->definitionLineEdit, &QLineEdit::textChanged, this, &AddDefinition::changeButtonState);
+    connect(ui->createButton, &QPushButton::clicked, this, &AddDefinition::addDefinition);
+    connect(ui->goBackButton, &QPushButton::clicked, this, &AddDefinition::goBack);
+    connect(ui->termLineEdit, &QLineEdit::textChanged, this, &AddDefinition::changeButtonState);
+    connect(ui->definitionLineEdit, &QLineEdit::textChanged, this, &AddDefinition::changeButtonState);
 }
 
 AddDefinition::~AddDefinition() {
@@ -26,7 +25,7 @@ void AddDefinition::addDefinition() {
     goBack();
 }
 
-void AddDefinition::changeButtonState() {
+void AddDefinition::changeButtonState() const {
     if (!ui->termLineEdit->text().isEmpty() && !ui->definitionLineEdit->text().isEmpty()) {
         ui->createButton->setEnabled(true);
     } else {

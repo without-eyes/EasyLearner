@@ -1,6 +1,4 @@
 #include <QApplication>
-#include <QPushButton>
-
 
 #include "../../include/mainmenu/mainmenu.h"
 

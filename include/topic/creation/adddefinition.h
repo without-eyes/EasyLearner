@@ -24,7 +24,7 @@ public slots:
 
     void addDefinition();
 
-    void changeButtonState();
+    void changeButtonState() const;
 
     void goBack();
 

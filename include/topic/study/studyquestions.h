@@ -16,7 +16,7 @@ public:
 
     ~StudyQuestions() override;
 
-    static void setTaskMap(std::map<QString, QString> taskMap);
+    static void setTaskMap(const std::map<QString, QString> &taskMap);
 
 public slots:
 
@@ -24,7 +24,7 @@ public slots:
 
     void showNextTask();
 
-    void changeButtonState();
+    void changeButtonState() const;
 
 private:
     void pickRandomTask();

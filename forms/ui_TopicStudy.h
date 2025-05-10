@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'TopicStudy.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.3
+** Created by: Qt User Interface Compiler version 5.15.13
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -17,7 +17,8 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_TopicStudy {
+class Ui_TopicStudy
+{
 public:
     QLabel *label;
     QPushButton *qndButton;
@@ -25,7 +26,8 @@ public:
     QPushButton *definitionsButton;
     QPushButton *goBackButton;
 
-    void setupUi(QWidget *TopicStudy) {
+    void setupUi(QWidget *TopicStudy)
+    {
         if (TopicStudy->objectName().isEmpty())
             TopicStudy->setObjectName(QString::fromUtf8("TopicStudy"));
         TopicStudy->resize(400, 300);
@@ -54,7 +56,8 @@ public:
         QMetaObject::connectSlotsByName(TopicStudy);
     } // setupUi
 
-    void retranslateUi(QWidget *TopicStudy) {
+    void retranslateUi(QWidget *TopicStudy)
+    {
         TopicStudy->setWindowTitle(QCoreApplication::translate("TopicStudy", "TopicStudy", nullptr));
         label->setText(QCoreApplication::translate("TopicStudy", "Study", nullptr));
         qndButton->setText(QCoreApplication::translate("TopicStudy", "Questions and definitions", nullptr));
@@ -66,8 +69,7 @@ public:
 };
 
 namespace Ui {
-    class TopicStudy : public Ui_TopicStudy {
-    };
+    class TopicStudy: public Ui_TopicStudy {};
 } // namespace Ui
 
 QT_END_NAMESPACE

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'TopicContent.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.3
+** Created by: Qt User Interface Compiler version 5.15.13
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -17,14 +17,16 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_TopicContent {
+class Ui_TopicContent
+{
 public:
     QLabel *label;
     QPushButton *definitionButton;
     QPushButton *qaButton;
     QPushButton *goBackButton;
 
-    void setupUi(QWidget *TopicContent) {
+    void setupUi(QWidget *TopicContent)
+    {
         if (TopicContent->objectName().isEmpty())
             TopicContent->setObjectName(QString::fromUtf8("TopicContent"));
         TopicContent->resize(400, 300);
@@ -50,7 +52,8 @@ public:
         QMetaObject::connectSlotsByName(TopicContent);
     } // setupUi
 
-    void retranslateUi(QWidget *TopicContent) {
+    void retranslateUi(QWidget *TopicContent)
+    {
         TopicContent->setWindowTitle(QCoreApplication::translate("TopicContent", "TopicContent", nullptr));
         label->setText(QCoreApplication::translate("TopicContent", "Topic content", nullptr));
         definitionButton->setText(QCoreApplication::translate("TopicContent", "Definition", nullptr));
@@ -61,8 +64,7 @@ public:
 };
 
 namespace Ui {
-    class TopicContent : public Ui_TopicContent {
-    };
+    class TopicContent: public Ui_TopicContent {};
 } // namespace Ui
 
 QT_END_NAMESPACE

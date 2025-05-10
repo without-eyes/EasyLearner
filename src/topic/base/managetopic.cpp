@@ -13,20 +13,19 @@ ManageTopic::ManageTopic(QWidget *parent) :
         QWidget(parent), ui(new Ui::ManageTopic) {
     ui->setupUi(this);
 
-    QObject::connect(ui->studyButton, &QPushButton::clicked, this, &ManageTopic::startStudy);
-    QObject::connect(ui->addDefinitionButton, &QPushButton::clicked, this, &ManageTopic::addDefinition);
-    QObject::connect(ui->addQuestionButton, &QPushButton::clicked, this, &ManageTopic::addQuestion);
-    QObject::connect(ui->showContentButton, &QPushButton::clicked, this, &ManageTopic::showTopicContent);
-    QObject::connect(ui->goBackButton, &QPushButton::clicked, this, &ManageTopic::goBack);
+    connect(ui->studyButton, &QPushButton::clicked, this, &ManageTopic::startStudy);
+    connect(ui->addDefinitionButton, &QPushButton::clicked, this, &ManageTopic::addDefinition);
+    connect(ui->addQuestionButton, &QPushButton::clicked, this, &ManageTopic::addQuestion);
+    connect(ui->showContentButton, &QPushButton::clicked, this, &ManageTopic::showTopicContent);
+    connect(ui->goBackButton, &QPushButton::clicked, this, &ManageTopic::goBack);
 }
 
 ManageTopic::~ManageTopic() {
     delete ui;
 }
 
-void ManageTopic::setTopicName(const QString &topicName) {
+void ManageTopic::setTopicName(const QString &topicName) const {
     ui->label->setText(topicName);
-    auto *content = new Content(topicName);
 }
 
 void ManageTopic::startStudy() {

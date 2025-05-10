@@ -13,11 +13,11 @@ Q_OBJECT
 
 public slots:
 
-    void deleteDefinition();
+    void deleteDefinition() const;
 
     void goBack();
 
-    void changeButtonState();
+    void changeButtonState() const;
 
 public:
     explicit TopicDefinitions(QWidget *parent = nullptr);
