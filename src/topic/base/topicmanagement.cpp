@@ -9,7 +9,7 @@
 
 #include "../../../forms/ui_ManageTopic.h"
 #include "../../../include/mainmenu/mainmenu.h"
-#include "../../../include/topic/creation/adddefinition.h"
+#include "../../../include/topic/creation/definitionaddition.h"
 #include "../../../include/topic/content/topiccontent.h"
 #include "../../../include/topic/creation/addquestion.h"
 #include "../../../include/topic/study/topicstudy.h"
@@ -40,7 +40,7 @@ void TopicManagement::startStudy() {
 }
 
 void TopicManagement::addDefinition() {
-    auto *window = new AddDefinition;
+    auto *window = new DefinitionAddition;
     window->show();
     close();
 }

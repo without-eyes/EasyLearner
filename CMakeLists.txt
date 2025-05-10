@@ -24,9 +24,9 @@ add_executable(EasyLearner src/mainmenu/main.cpp
         src/topic/base/topicmanagement.cpp
         include/topic/base/topicmanagement.h
         forms/ManageTopic.ui
-        src/topic/creation/adddefinition.cpp
-        include/topic/creation/adddefinition.h
-        forms/AddDefinition.ui
+        src/topic/creation/definitionaddition.cpp
+        include/topic/creation/definitionaddition.h
+        forms/DefinitionAddition.ui
         src/topic/content/topiccontent.cpp
         include/topic/content/topiccontent.h
         forms/TopicContent.ui

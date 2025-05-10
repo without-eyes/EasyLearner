@@ -1,8 +1,8 @@
 /**
-    * @file: adddefinition.h
+    * @file: definitionaddition.h
     * @author: without eyes
     *
-    * This file contains AddDefinition class for "Add Definition" window.
+    * This file contains DefinitionAddition class for "Definition Addition" window.
 */
 
 #ifndef EASYLEARNER_ADDDEFINITION_H
@@ -14,13 +14,13 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class AddDefinition; }
 QT_END_NAMESPACE
 
-class AddDefinition final : public QWidget {
+class DefinitionAddition final : public QWidget {
 Q_OBJECT
 
 public:
-    explicit AddDefinition(QWidget *parent = nullptr);
+    explicit DefinitionAddition(QWidget *parent = nullptr);
 
-    ~AddDefinition() override;
+    ~DefinitionAddition() override;
 
 public slots:
 
