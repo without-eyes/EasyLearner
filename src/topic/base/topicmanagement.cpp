@@ -11,7 +11,7 @@
 #include "../../../include/mainmenu/mainmenu.h"
 #include "../../../include/topic/creation/definitionaddition.h"
 #include "../../../include/topic/content/topiccontent.h"
-#include "../../../include/topic/creation/addquestion.h"
+#include "../../../include/topic/creation/questionaddition.h"
 #include "../../../include/topic/study/topicstudy.h"
 
 TopicManagement::TopicManagement(QWidget *parent) :
@@ -46,7 +46,7 @@ void TopicManagement::addDefinition() {
 }
 
 void TopicManagement::addQuestion() {
-    auto *window = new AddQuestion;
+    auto *window = new QuestionAddition;
     window->show();
     close();
 }

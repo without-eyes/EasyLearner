@@ -33,9 +33,9 @@ add_executable(EasyLearner src/mainmenu/main.cpp
         src/topic/content/topicdefinitions.cpp
         include/topic/content/topicdefinitions.h
         forms/TopicDefinitions.ui
-        src/topic/creation/addquestion.cpp
-        include/topic/creation/addquestion.h
-        forms/AddQuestion.ui
+        src/topic/creation/questionaddition.cpp
+        include/topic/creation/questionaddition.h
+        forms/QuestionAddition.ui
         src/topic/content/topicquestions.cpp
         include/topic/content/topicquestions.h
         forms/TopicQuestions.ui
