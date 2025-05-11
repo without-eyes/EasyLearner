@@ -5,11 +5,11 @@
     * This file contains methods' implementation of QuestionAddition class.
 */
 
-#include "../../../include/topic/creation/questionaddition.h"
+#include "topic/creation/questionaddition.h"
 
+#include "topic/base/topicmanagement.h"
+#include "topic/base/content.h"
 #include "../../../forms/ui_QuestionAddition.h"
-#include "../../../include/topic/base/topicmanagement.h"
-#include "../../../include/topic/base/content.h"
 
 QuestionAddition::QuestionAddition(QWidget *parent) :
         QWidget(parent), ui(new Ui::QuestionAddition) {

@@ -5,11 +5,11 @@
     * This file contains methods' implementation of TopicQuestions class.
 */
 
-#include "../../../include/topic/content/topicquestions.h"
+#include "topic/content/topicquestions.h"
 
+#include "topic/content/topiccontent.h"
+#include "topic/base/content.h"
 #include "../../../forms/ui_TopicQuestions.h"
-#include "../../../include/topic/content/topiccontent.h"
-#include "../../../include/topic/base/content.h"
 
 TopicQuestions::TopicQuestions(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicQuestions) {

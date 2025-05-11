@@ -5,7 +5,7 @@
     * This file contains methods' implementation of Database class.
 */
 
-#include "../../include/utils/database.h"
+#include "utils/database.h"
 
 #include <QDebug>
 #include <QSqlQuery>

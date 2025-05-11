@@ -5,11 +5,11 @@
     * This file contains methods' implementation of StudyQuestions class.
 */
 
-#include "../../../include/topic/study/studyquestions.h"
+#include "topic/study/studyquestions.h"
 
+#include "topic/study/topicstudy.h"
+#include "utils/randomizer.h"
 #include "../../../forms/ui_StudyQuestions.h"
-#include "../../../include/topic/study/topicstudy.h"
-#include "../../../include/utils/randomizer.h"
 
 std::map<QString, QString> StudyQuestions::taskMap;
 

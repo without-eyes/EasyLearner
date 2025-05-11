@@ -52,6 +52,9 @@ add_executable(EasyLearner src/mainmenu/main.cpp
         src/utils/randomizer.cpp
         include/utils/randomizer.h)
 
+target_include_directories(EasyLearner PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
 target_link_libraries(EasyLearner
         Qt5::Core
         Qt5::Gui

@@ -5,7 +5,7 @@
     * This file contains methods' implementation of Randomizer class.
 */
 
-#include "../../include/utils/randomizer.h"
+#include "utils/randomizer.h"
 
 Randomizer* Randomizer::instance;
 

@@ -5,11 +5,11 @@
     * This file contains methods' implementation of TopicDefinitions class.
 */
 
-#include "../../../include/topic/content/topicdefinitions.h"
+#include "topic/content/topicdefinitions.h"
 
+#include "topic/content/topiccontent.h"
+#include "topic/base/content.h"
 #include "../../../forms/ui_TopicDefinitions.h"
-#include "../../../include/topic/content/topiccontent.h"
-#include "../../../include/topic/base/content.h"
 
 TopicDefinitions::TopicDefinitions(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicDefinitions) {

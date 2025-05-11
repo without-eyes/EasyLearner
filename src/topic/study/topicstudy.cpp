@@ -5,12 +5,12 @@
     * This file contains methods' implementation of TopicStudy class.
 */
 
-#include "../../../include/topic/study/topicstudy.h"
+#include "topic/study/topicstudy.h"
 
+#include "topic/study/studyquestions.h"
+#include "topic/base/content.h"
+#include "topic/base/topicmanagement.h"
 #include "../../../forms/ui_TopicStudy.h"
-#include "../../../include/topic/study/studyquestions.h"
-#include "../../../include/topic/base/content.h"
-#include "../../../include/topic/base/topicmanagement.h"
 
 TopicStudy::TopicStudy(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicStudy) {

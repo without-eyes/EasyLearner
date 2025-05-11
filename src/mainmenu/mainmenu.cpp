@@ -5,13 +5,13 @@
     * This file contains methods' implementation of MainMenu class.
 */
 
-#include "../../include/mainmenu/mainmenu.h"
+#include "mainmenu/mainmenu.h"
 
 #include <QStringListModel>
+#include "mainmenu/topiccreation.h"
+#include "topic/base/topicmanagement.h"
+#include "utils/database.h"
 #include "../../forms/ui_MainMenu.h"
-#include "../../include/mainmenu/topiccreation.h"
-#include "../../include/topic/base/topicmanagement.h"
-#include "../../include/utils/database.h"
 
 QList<QString> MainMenu::topicList;
 

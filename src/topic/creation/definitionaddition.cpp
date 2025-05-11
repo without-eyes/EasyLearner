@@ -5,11 +5,12 @@
     * This file contains methods' implementation of DefinitionAddition class.
 */
 
-#include "../../../include/topic/creation/definitionaddition.h"
+#include "topic/creation/definitionaddition.h"
 
+
+#include "topic/base/topicmanagement.h"
+#include "topic/base/content.h"
 #include "../../../forms/ui_DefinitionAddition.h"
-#include "../../../include/topic/base/topicmanagement.h"
-#include "../../../include/topic/base/content.h"
 
 DefinitionAddition::DefinitionAddition(QWidget *parent) :
         QWidget(parent), ui(new Ui::DefinitionAddition) {

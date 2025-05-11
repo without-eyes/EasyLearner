@@ -5,14 +5,14 @@
     * This file contains methods' implementation of TopicManagement class.
 */
 
-#include "../../../include/topic/base/topicmanagement.h"
+#include "topic/base/topicmanagement.h"
 
+#include "mainmenu/mainmenu.h"
+#include "topic/creation/definitionaddition.h"
+#include "topic/content/topiccontent.h"
+#include "topic/creation/questionaddition.h"
+#include "topic/study/topicstudy.h"
 #include "../../../forms/ui_TopicManagement.h"
-#include "../../../include/mainmenu/mainmenu.h"
-#include "../../../include/topic/creation/definitionaddition.h"
-#include "../../../include/topic/content/topiccontent.h"
-#include "../../../include/topic/creation/questionaddition.h"
-#include "../../../include/topic/study/topicstudy.h"
 
 TopicManagement::TopicManagement(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicManagement) {

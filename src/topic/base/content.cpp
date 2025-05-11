@@ -5,7 +5,7 @@
     * This file contains methods' implementation of Content class.
 */
 
-#include "../../../include/topic/base/content.h"
+#include "topic/base/content.h"
 
 std::map<QString, QString> Content::definitionMap;
 std::map<QString, QString> Content::questionMap;

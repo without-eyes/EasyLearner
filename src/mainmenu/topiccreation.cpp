@@ -5,10 +5,10 @@
     * This file contains methods' implementation of TopicCreation class.
 */
 
-#include "../../include/mainmenu/topiccreation.h"
+#include "mainmenu/topiccreation.h"
 
+#include "mainmenu/mainmenu.h"
 #include "../../forms/ui_TopicCreation.h"
-#include "../../include/mainmenu/mainmenu.h"
 
 TopicCreation::TopicCreation(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicCreation) {
