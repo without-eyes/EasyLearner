@@ -7,7 +7,7 @@
 
 #include "../../../include/topic/creation/questionaddition.h"
 
-#include "../../../cmake-build-debug/forms/ui_QuestionAddition.h"
+#include "../../../forms/ui_QuestionAddition.h"
 #include "../../../include/topic/base/topicmanagement.h"
 #include "../../../include/topic/base/content.h"
 
