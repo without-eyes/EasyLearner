@@ -6,8 +6,8 @@
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_MANAGETOPIC_H
-#define UI_MANAGETOPIC_H
+#ifndef UI_TOPICMANAGEMENT_H
+#define UI_TOPICMANAGEMENT_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -17,7 +17,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_ManageTopic
+class Ui_TopicManagement
 {
 public:
     QPushButton *studyButton;
@@ -27,34 +27,34 @@ public:
     QLabel *label;
     QPushButton *goBackButton;
 
-    void setupUi(QWidget *ManageTopic)
+    void setupUi(QWidget *TopicManagement)
     {
-        if (ManageTopic->objectName().isEmpty())
-            ManageTopic->setObjectName(QString::fromUtf8("TopicManagement"));
-        ManageTopic->resize(400, 300);
-        studyButton = new QPushButton(ManageTopic);
+        if (TopicManagement->objectName().isEmpty())
+            TopicManagement->setObjectName(QString::fromUtf8("TopicManagement"));
+        TopicManagement->resize(400, 300);
+        studyButton = new QPushButton(TopicManagement);
         studyButton->setObjectName(QString::fromUtf8("studyButton"));
         studyButton->setGeometry(QRect(100, 70, 211, 31));
-        addDefinitionButton = new QPushButton(ManageTopic);
+        addDefinitionButton = new QPushButton(TopicManagement);
         addDefinitionButton->setObjectName(QString::fromUtf8("addDefinitionButton"));
         addDefinitionButton->setGeometry(QRect(100, 110, 211, 31));
-        addQuestionButton = new QPushButton(ManageTopic);
+        addQuestionButton = new QPushButton(TopicManagement);
         addQuestionButton->setObjectName(QString::fromUtf8("addQuestionButton"));
         addQuestionButton->setGeometry(QRect(100, 150, 211, 31));
-        showContentButton = new QPushButton(ManageTopic);
+        showContentButton = new QPushButton(TopicManagement);
         showContentButton->setObjectName(QString::fromUtf8("showContentButton"));
         showContentButton->setGeometry(QRect(100, 190, 211, 31));
-        label = new QLabel(ManageTopic);
+        label = new QLabel(TopicManagement);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(100, 20, 211, 41));
         label->setAlignment(Qt::AlignCenter);
-        goBackButton = new QPushButton(ManageTopic);
+        goBackButton = new QPushButton(TopicManagement);
         goBackButton->setObjectName(QString::fromUtf8("goBackButton"));
         goBackButton->setGeometry(QRect(100, 230, 211, 31));
 
-        retranslateUi(ManageTopic);
+        retranslateUi(TopicManagement);
 
-        QMetaObject::connectSlotsByName(ManageTopic);
+        QMetaObject::connectSlotsByName(TopicManagement);
     } // setupUi
 
     void retranslateUi(QWidget *ManageTopic)
@@ -71,9 +71,9 @@ public:
 };
 
 namespace Ui {
-    class ManageTopic: public Ui_ManageTopic {};
+    class TopicManagement: public Ui_TopicManagement {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_MANAGETOPIC_H
+#endif // UI_TOPICMANAGEMENT_H

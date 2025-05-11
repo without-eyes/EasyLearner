@@ -5,14 +5,14 @@
     * This file contains TopicManagement class for "Topic Management" window.
 */
 
-#ifndef EASYLEARNER_MANAGETOPIC_H
-#define EASYLEARNER_MANAGETOPIC_H
+#ifndef EASYLEARNER_TOPICMANAGEMENT_H
+#define EASYLEARNER_TOPICMANAGEMENT_H
 
 #include <QLabel>
 #include <set>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class ManageTopic; }
+namespace Ui { class TopicManagement; }
 QT_END_NAMESPACE
 
 class TopicManagement final : public QWidget {
@@ -38,8 +38,8 @@ public slots:
     void goBack();
 
 private:
-    Ui::ManageTopic *ui;
+    Ui::TopicManagement *ui;
 };
 
 
-#endif //EASYLEARNER_MANAGETOPIC_H
+#endif //EASYLEARNER_TOPICMANAGEMENT_H

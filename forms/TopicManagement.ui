@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <class>ManageTopic</class>
-    <widget class="QWidget" name="ManageTopic">
+    <class>TopicManagement</class>
+    <widget class="QWidget" name="Topic Management">
         <property name="geometry">
             <rect>
                 <x>0</x>
@@ -11,7 +11,7 @@
             </rect>
         </property>
         <property name="windowTitle">
-            <string>ManageTopic</string>
+            <string>TopicManagement</string>
         </property>
         <widget class="QPushButton" name="studyButton">
             <property name="geometry">
@@ -36,7 +36,7 @@
                 </rect>
             </property>
             <property name="text">
-                <string>Add new defenition</string>
+                <string>Add new definition</string>
             </property>
         </widget>
         <widget class="QPushButton" name="addQuestionButton">

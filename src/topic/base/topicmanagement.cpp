@@ -7,7 +7,7 @@
 
 #include "../../../include/topic/base/topicmanagement.h"
 
-#include "../../../forms/ui_ManageTopic.h"
+#include "../../../forms/ui_TopicManagement.h"
 #include "../../../include/mainmenu/mainmenu.h"
 #include "../../../include/topic/creation/definitionaddition.h"
 #include "../../../include/topic/content/topiccontent.h"
@@ -15,7 +15,7 @@
 #include "../../../include/topic/study/topicstudy.h"
 
 TopicManagement::TopicManagement(QWidget *parent) :
-        QWidget(parent), ui(new Ui::ManageTopic) {
+        QWidget(parent), ui(new Ui::TopicManagement) {
     ui->setupUi(this);
 
     connect(ui->studyButton, &QPushButton::clicked, this, &TopicManagement::startStudy);
