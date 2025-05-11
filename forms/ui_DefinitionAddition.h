@@ -6,8 +6,8 @@
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_ADDDEFINITION_H
-#define UI_ADDDEFINITION_H
+#ifndef UI_DEFINITIONADDITION_H
+#define UI_DEFINITIONADDITION_H
 
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
@@ -70,7 +70,7 @@ public:
         AddDefinition->setWindowTitle(QCoreApplication::translate("DefinitionAddition", "DefinitionAddition", nullptr));
         label->setText(QCoreApplication::translate("DefinitionAddition", "Add new definition", nullptr));
         label_2->setText(QCoreApplication::translate("DefinitionAddition", "Term:", nullptr));
-        label_3->setText(QCoreApplication::translate("DefinitionAddition", "Defition:", nullptr));
+        label_3->setText(QCoreApplication::translate("DefinitionAddition", "Definition:", nullptr));
         goBackButton->setText(QCoreApplication::translate("DefinitionAddition", "Go back", nullptr));
         createButton->setText(QCoreApplication::translate("DefinitionAddition", "Create", nullptr));
     } // retranslateUi
@@ -78,9 +78,9 @@ public:
 };
 
 namespace Ui {
-    class AddDefinition: public Ui_DefinitionAddition {};
+    class DefinitionAddition: public Ui_DefinitionAddition {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_ADDDEFINITION_H
+#endif // UI_DEFINITIONADDITION_H

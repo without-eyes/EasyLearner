@@ -12,7 +12,7 @@
 #include "../../../include/topic/base/content.h"
 
 DefinitionAddition::DefinitionAddition(QWidget *parent) :
-        QWidget(parent), ui(new Ui::AddDefinition) {
+        QWidget(parent), ui(new Ui::DefinitionAddition) {
     ui->setupUi(this);
 
     changeButtonState();
