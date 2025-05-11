@@ -7,7 +7,7 @@
 
 #include "../../../include/topic/creation/definitionaddition.h"
 
-#include "../../../forms/ui_DefinitionAddition.h"
+#include "../../../cmake-build-debug/forms/ui_DefinitionAddition.h"
 #include "../../../include/topic/base/topicmanagement.h"
 #include "../../../include/topic/base/content.h"
 

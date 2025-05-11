@@ -7,7 +7,7 @@
 
 #include "../../../include/topic/base/topicmanagement.h"
 
-#include "../../../forms/ui_TopicManagement.h"
+#include "../../../cmake-build-debug/forms/ui_TopicManagement.h"
 #include "../../../include/mainmenu/mainmenu.h"
 #include "../../../include/topic/creation/definitionaddition.h"
 #include "../../../include/topic/content/topiccontent.h"

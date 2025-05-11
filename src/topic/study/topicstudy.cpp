@@ -7,7 +7,7 @@
 
 #include "../../../include/topic/study/topicstudy.h"
 
-#include "../../../forms/ui_TopicStudy.h"
+#include "../../../cmake-build-debug/forms/ui_TopicStudy.h"
 #include "../../../include/topic/study/studyquestions.h"
 #include "../../../include/topic/base/content.h"
 #include "../../../include/topic/base/topicmanagement.h"
