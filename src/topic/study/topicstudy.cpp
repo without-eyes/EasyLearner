@@ -8,6 +8,7 @@
 #include "topic/study/topicstudy.h"
 
 #include "topic/study/studyquestions.h"
+#include "topic/study/studydefinitions.h"
 #include "topic/base/content.h"
 #include "topic/base/topicmanagement.h"
 #include "../../../forms/ui_TopicStudy.h"
@@ -38,7 +39,10 @@ void TopicStudy::studyQuestions() {
 }
 
 void TopicStudy::studyDefinitions() {
-
+    StudyDefinitions::setDefinitionsMap(Content::getDefinitionMap());
+    auto *window = new StudyDefinitions;
+    window->show();
+    close();
 }
 
 void TopicStudy::goBack() {
