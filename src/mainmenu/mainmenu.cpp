@@ -9,7 +9,7 @@
 
 #include <QStringListModel>
 #include "../../forms/ui_MainMenu.h"
-#include "../../include/mainmenu/createtopic.h"
+#include "../../include/mainmenu/topiccreation.h"
 #include "../../include/topic/base/topicmanagement.h"
 #include "../../include/utils/database.h"
 
@@ -57,7 +57,7 @@ void MainMenu::changeButtonState() {
 
 
 void MainMenu::createTopic() {
-    auto *window = new CreateTopic;
+    auto *window = new TopicCreation;
     window->show();
     close();
 }

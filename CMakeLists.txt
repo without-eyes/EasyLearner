@@ -18,9 +18,9 @@ add_executable(EasyLearner src/mainmenu/main.cpp
         src/mainmenu/mainmenu.cpp
         include/mainmenu/mainmenu.h
         forms/MainMenu.ui
-        src/mainmenu/createtopic.cpp
-        include/mainmenu/createtopic.h
-        forms/CreateTopic.ui
+        src/mainmenu/topiccreation.cpp
+        include/mainmenu/topiccreation.h
+        forms/TopicCreation.ui
         src/topic/base/topicmanagement.cpp
         include/topic/base/topicmanagement.h
         forms/TopicManagement.ui
