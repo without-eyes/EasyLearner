@@ -35,30 +35,35 @@ void TopicManagement::setTopicName(const QString &topicName) const {
 
 void TopicManagement::startStudy() {
     auto *window = new TopicStudy;
+    window->move(this->pos());
     window->show();
     close();
 }
 
 void TopicManagement::addDefinition() {
     auto *window = new DefinitionAddition;
+    window->move(this->pos());
     window->show();
     close();
 }
 
 void TopicManagement::addQuestion() {
     auto *window = new QuestionAddition;
+    window->move(this->pos());
     window->show();
     close();
 }
 
 void TopicManagement::showTopicContent() {
     auto *window = new TopicContent;
+    window->move(this->pos());
     window->show();
     close();
 }
 
 void TopicManagement::goBack() {
     auto *window = new MainMenu;
+    window->move(this->pos());
     window->show();
     close();
 }

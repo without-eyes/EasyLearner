@@ -50,9 +50,11 @@ void StudyDefinitions::checkAnswer() {
 void StudyDefinitions::showNextDefinition() {
     if (definitionsMap.empty()) {
         auto* window = new TopicStudy;
+        window->move(this->pos());
         window->show();
     } else {
         auto* window = new StudyDefinitions;
+        window->move(this->pos());
         window->show();
     }
     close();
@@ -69,6 +71,7 @@ void StudyDefinitions::changeButtonState() const {
 void StudyDefinitions::pickRandomDefinition() {
     if (definitionsMap.empty()) {
         auto* window = new TopicStudy;
+        window->move(this->pos());
         window->show();
         close();
         return;

@@ -42,6 +42,7 @@ void QuestionAddition::changeButtonState() const {
 
 void QuestionAddition::goBack() {
     auto *window = new TopicManagement;
+    window->move(this->pos());
     window->show();
     close();
 }

@@ -42,6 +42,7 @@ void TopicCreation::changeButtonState() const {
 
 void TopicCreation::goBack() {
     auto *window = new MainMenu;
+    window->move(this->pos());
     window->show();
     close();
 }

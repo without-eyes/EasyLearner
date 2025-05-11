@@ -43,6 +43,7 @@ void TopicQuestions::deleteQuestion() const {
 
 void TopicQuestions::goBack() {
     auto *window = new TopicContent;
+    window->move(this->pos());
     window->show();
     close();
 }

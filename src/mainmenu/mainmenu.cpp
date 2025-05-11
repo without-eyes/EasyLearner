@@ -47,6 +47,7 @@ void MainMenu::showTableContent() {
 void MainMenu::pickTopic() {
     auto *window = new TopicManagement;
     window->setTopicName(ui->listWidget->currentItem()->text());
+    window->move(this->pos());
     window->show();
     close();
 }
@@ -58,6 +59,7 @@ void MainMenu::changeButtonState() {
 
 void MainMenu::createTopic() {
     auto *window = new TopicCreation;
+    window->move(this->pos());
     window->show();
     close();
 }

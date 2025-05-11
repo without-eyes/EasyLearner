@@ -36,6 +36,7 @@ void StudyQuestions::setTaskMap(const std::map<QString, QString> &questionMap) {
 void StudyQuestions::pickRandomTask() {
     if (taskMap.empty()) {
         auto *window = new TopicStudy;
+        window->move(this->pos());
         window->show();
         close();
         return;
@@ -61,9 +62,11 @@ void StudyQuestions::checkAnswer() {
 void StudyQuestions::showNextTask() {
     if (taskMap.empty()) {
         auto *window = new TopicStudy;
+        window->move(this->pos());
         window->show();
     } else {
         auto *window = new StudyQuestions;
+        window->move(this->pos());
         window->show();
     }
     close();

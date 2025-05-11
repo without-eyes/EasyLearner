@@ -43,6 +43,7 @@ void TopicDefinitions::deleteDefinition() const {
 
 void TopicDefinitions::goBack() {
     auto *window = new TopicContent;
+    window->move(this->pos());
     window->show();
     close();
 }
