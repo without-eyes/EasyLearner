@@ -18,7 +18,7 @@ DefinitionAddition::DefinitionAddition(QWidget *parent) :
 
     changeButtonState();
 
-    connect(ui->createButton, &QPushButton::clicked, this, &DefinitionAddition::addDefinition);
+    connect(ui->createButton, &QPushButton::clicked, this, &DefinitionAddition::addNewContent);
     connect(ui->goBackButton, &QPushButton::clicked, this, &DefinitionAddition::goBack);
     connect(ui->termLineEdit, &QLineEdit::textChanged, this, &DefinitionAddition::changeButtonState);
     connect(ui->definitionLineEdit, &QLineEdit::textChanged, this, &DefinitionAddition::changeButtonState);
@@ -28,7 +28,7 @@ DefinitionAddition::~DefinitionAddition() {
     delete ui;
 }
 
-void DefinitionAddition::addDefinition() {
+void DefinitionAddition::addNewContent() {
     Content::addIntoDefinitionMap(ui->termLineEdit->text(), ui->definitionLineEdit->text());
     goBack();
 }

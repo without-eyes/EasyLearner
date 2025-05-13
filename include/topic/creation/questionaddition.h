@@ -8,13 +8,13 @@
 #ifndef EASYLEARNER_QUESTIONADDITION_H
 #define EASYLEARNER_QUESTIONADDITION_H
 
-#include <QWidget>
+#include "contentaddition.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class QuestionAddition; }
 QT_END_NAMESPACE
 
-class QuestionAddition final : public QWidget {
+class QuestionAddition final : public QWidget, public ContentAddition {
 Q_OBJECT
 
 public:
@@ -24,11 +24,11 @@ public:
 
 public slots:
 
-    void addQuestion();
+    void addNewContent() override;
 
-    void changeButtonState() const;
+    void changeButtonState() const override;
 
-    void goBack();
+    void goBack() override;
 
 private:
     Ui::QuestionAddition *ui;

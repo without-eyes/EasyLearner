@@ -8,13 +8,13 @@
 #ifndef EASYLEARNER_DEFINITIONADDITION_H
 #define EASYLEARNER_DEFINITIONADDITION_H
 
-#include <QWidget>
+#include "contentaddition.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class DefinitionAddition; }
 QT_END_NAMESPACE
 
-class DefinitionAddition final : public QWidget {
+class DefinitionAddition final : public QWidget, public ContentAddition {
 Q_OBJECT
 
 public:
@@ -24,11 +24,11 @@ public:
 
 public slots:
 
-    void addDefinition();
+    void addNewContent() override;
 
-    void changeButtonState() const;
+    void changeButtonState() const override;
 
-    void goBack();
+    void goBack() override;
 
 private:
     Ui::DefinitionAddition *ui;

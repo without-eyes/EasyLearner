@@ -1,5 +1,5 @@
 /**
-    * @file: addquestions.cpp
+    * @file: questionaddition.cpp
     * @author: without eyes
     *
     * This file contains methods' implementation of QuestionAddition class.
@@ -17,7 +17,7 @@ QuestionAddition::QuestionAddition(QWidget *parent) :
 
     changeButtonState();
 
-    connect(ui->createButton, &QPushButton::clicked, this, &QuestionAddition::addQuestion);
+    connect(ui->createButton, &QPushButton::clicked, this, &QuestionAddition::addNewContent);
     connect(ui->goBackButton, &QPushButton::clicked, this, &QuestionAddition::goBack);
     connect(ui->questionLineEdit, &QLineEdit::textChanged, this, &QuestionAddition::changeButtonState);
     connect(ui->answerLineEdit, &QLineEdit::textChanged, this, &QuestionAddition::changeButtonState);
@@ -27,7 +27,7 @@ QuestionAddition::~QuestionAddition() {
     delete ui;
 }
 
-void QuestionAddition::addQuestion() {
+void QuestionAddition::addNewContent() {
     Content::addIntoQuestionMap(ui->questionLineEdit->text(), ui->answerLineEdit->text());
     goBack();
 }

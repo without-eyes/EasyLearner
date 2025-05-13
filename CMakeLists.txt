@@ -53,7 +53,10 @@ add_executable(EasyLearner src/mainmenu/main.cpp
         include/utils/randomizer.h
         src/topic/study/studydefinitions.cpp
         include/topic/study/studydefinitions.h
-        forms/StudyDefinitions.ui)
+        forms/StudyDefinitions.ui
+        include/topic/creation/contentaddition.h
+        src/topic/creation/contentaddition.cpp
+)
 
 target_include_directories(EasyLearner PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include)
