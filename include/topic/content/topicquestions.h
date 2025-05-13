@@ -9,21 +9,22 @@
 #define EASYLEARNER_TOPICQUESTIONS_H
 
 #include <QWidget>
+#include "topiccontentmanagment.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TopicQuestions; }
 QT_END_NAMESPACE
 
-class TopicQuestions final : public QWidget {
+class TopicQuestions final : public QWidget, public TopicContentManagement {
 Q_OBJECT
 
 public slots:
 
-    void deleteQuestion() const;
+    void deleteContent() const override;
 
-    void goBack();
+    void goBack() override;
 
-    void changeButtonState() const;
+    void changeButtonState() const override;
 
 public:
     explicit TopicQuestions(QWidget *parent = nullptr);
@@ -33,7 +34,7 @@ public:
 private:
     Ui::TopicQuestions *ui;
 
-    void showQuestionList() const;
+    void showContentList() override;
 };
 
 

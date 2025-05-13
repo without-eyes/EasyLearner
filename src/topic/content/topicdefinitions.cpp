@@ -15,11 +15,11 @@ TopicDefinitions::TopicDefinitions(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicDefinitions) {
     ui->setupUi(this);
 
-    showDefinitionList();
+    showContentList();
     changeButtonState();
 
     connect(ui->listWidget, &QListWidget::itemClicked, this, &TopicDefinitions::changeButtonState);
-    connect(ui->deleteButton, &QPushButton::clicked, this, &TopicDefinitions::deleteDefinition);
+    connect(ui->deleteButton, &QPushButton::clicked, this, &TopicDefinitions::deleteContent);
     connect(ui->goBackButton, &QPushButton::clicked, this, &TopicDefinitions::goBack);
 }
 
@@ -27,7 +27,7 @@ TopicDefinitions::~TopicDefinitions() {
     delete ui;
 }
 
-void TopicDefinitions::showDefinitionList() {
+void TopicDefinitions::showContentList() {
     const std::map<QString, QString> definitionMap = Content::getDefinitionMap();
     for (const auto &[term, definition]: definitionMap) {
         ui->listWidget->addItem(term + " - " + definition);
@@ -35,7 +35,7 @@ void TopicDefinitions::showDefinitionList() {
     ui->listWidget->show();
 }
 
-void TopicDefinitions::deleteDefinition() const {
+void TopicDefinitions::deleteContent() const {
     std::string text = ui->listWidget->takeItem(ui->listWidget->currentRow())->text().toStdString();
     const std::string definition = text.substr(0, text.find(" -"));
     Content::deleteFromDefinitionMap(QString::fromStdString(definition));

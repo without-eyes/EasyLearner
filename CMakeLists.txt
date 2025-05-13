@@ -56,6 +56,8 @@ add_executable(EasyLearner src/mainmenu/main.cpp
         forms/StudyDefinitions.ui
         include/topic/creation/contentaddition.h
         src/topic/creation/contentaddition.cpp
+        src/topic/content/topiccontentmanagement.cpp
+        include/topic/content/topiccontentmanagement.h
 )
 
 target_include_directories(EasyLearner PRIVATE

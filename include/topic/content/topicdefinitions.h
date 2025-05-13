@@ -9,21 +9,22 @@
 #define EASYLEARNER_TOPICDEFINITIONS_H
 
 #include <QWidget>
+#include "topiccontentmanagement.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TopicDefinitions; }
 QT_END_NAMESPACE
 
-class TopicDefinitions final : public QWidget {
+class TopicDefinitions final : public QWidget, public TopicContentManagement {
 Q_OBJECT
 
 public slots:
 
-    void deleteDefinition() const;
+    void deleteContent() const override;
 
-    void goBack();
+    void goBack() override;
 
-    void changeButtonState() const;
+    void changeButtonState() const override;
 
 public:
     explicit TopicDefinitions(QWidget *parent = nullptr);
@@ -33,7 +34,7 @@ public:
 private:
     Ui::TopicDefinitions *ui;
 
-    void showDefinitionList();
+    void showContentList() override;
 };
 
 
