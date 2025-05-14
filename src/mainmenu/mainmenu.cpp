@@ -30,6 +30,7 @@ MainMenu::MainMenu(QWidget *parent) :
 
     connect(ui->pickButton, &QPushButton::clicked, this, &MainMenu::pickTopic);
     connect(ui->createButton, &QPushButton::clicked, this, &MainMenu::createTopic);
+    connect(ui->deleteButton, &QPushButton::clicked, this, &MainMenu::deleteTopic);
     connect(ui->listWidget, &QListWidget::itemClicked, this, &MainMenu::changeButtonState);
 }
 
@@ -37,7 +38,7 @@ MainMenu::~MainMenu() {
     delete ui;
 }
 
-void MainMenu::showTableContent() {
+void MainMenu::showTableContent() const {
     for (const auto &row: topicList) {
         ui->listWidget->addItem(row);
     }
@@ -52,7 +53,7 @@ void MainMenu::pickTopic() {
     close();
 }
 
-void MainMenu::changeButtonState() {
+void MainMenu::changeButtonState() const {
     ui->pickButton->setEnabled(!ui->pickButton->isEnabled());
 }
 
@@ -62,6 +63,12 @@ void MainMenu::createTopic() {
     window->move(this->pos());
     window->show();
     close();
+}
+
+void MainMenu::deleteTopic() const {
+    const auto *item = ui->listWidget->currentItem();
+    topicList.removeOne(item->text());
+    delete ui->listWidget->takeItem(ui->listWidget->row(item));
 }
 
 void MainMenu::addTopicIntoList(const QString &topic) {

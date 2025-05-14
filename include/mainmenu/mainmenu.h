@@ -31,13 +31,15 @@ private slots:
 
     void createTopic();
 
-    void changeButtonState();
+    void deleteTopic() const;
+
+    void changeButtonState() const;
 
 private:
     Ui::MainMenu *ui;
     static QList<QString> topicList;
 
-    void showTableContent();
+    void showTableContent() const;
 };
 
 
