@@ -9,7 +9,8 @@
 #define EASYLEARNER_TOPICQUESTIONS_H
 
 #include <QWidget>
-#include "topiccontentmanagment.h"
+
+#include "topiccontentmanagement.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TopicQuestions; }
