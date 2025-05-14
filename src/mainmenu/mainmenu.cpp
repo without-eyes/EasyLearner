@@ -18,6 +18,7 @@ QList<QString> MainMenu::topicList;
 MainMenu::MainMenu(QWidget *parent) :
         QWidget(parent), ui(new Ui::MainMenu) {
     ui->setupUi(this);
+    this->setWindowTitle("EasyLearner - Main Menu");
 
     Database();
 

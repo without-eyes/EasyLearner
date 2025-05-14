@@ -18,6 +18,7 @@ StudyDefinitions::StudyDefinitions(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::StudyDefinitions) {
     ui->setupUi(this);
+    this->setWindowTitle("EasyLearner - Definition Studying");
 
     taskMap = Content::getDefinitionMap();
 

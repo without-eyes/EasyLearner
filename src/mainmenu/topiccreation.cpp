@@ -13,6 +13,7 @@
 TopicCreation::TopicCreation(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicCreation) {
     ui->setupUi(this);
+    this->setWindowTitle("EasyLearner - Topic Creation");
 
     changeButtonState();
 

@@ -17,6 +17,7 @@ std::map<QString, QString> StudyQuestions::taskMap;
 StudyQuestions::StudyQuestions(QWidget *parent) :
         QWidget(parent), ui(new Ui::StudyQuestions) {
     ui->setupUi(this);
+    this->setWindowTitle("EasyLearner - Question Studying");
 
     taskMap = Content::getQuestionMap();
 

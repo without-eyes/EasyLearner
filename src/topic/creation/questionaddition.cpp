@@ -14,6 +14,7 @@
 QuestionAddition::QuestionAddition(QWidget *parent) :
         QWidget(parent), ui(new Ui::QuestionAddition) {
     ui->setupUi(this);
+    this->setWindowTitle("EasyLearner - Question Addition");
 
     changeButtonState();
 

@@ -15,6 +15,7 @@
 DefinitionAddition::DefinitionAddition(QWidget *parent) :
         QWidget(parent), ui(new Ui::DefinitionAddition) {
     ui->setupUi(this);
+    this->setWindowTitle("EasyLearner - Definition Addition");
 
     changeButtonState();
 

@@ -17,6 +17,7 @@
 TopicManagement::TopicManagement(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicManagement) {
     ui->setupUi(this);
+    this->setWindowTitle("EasyLearner - Topic Management");
 
     connect(ui->studyButton, &QPushButton::clicked, this, &TopicManagement::startStudy);
     connect(ui->addDefinitionButton, &QPushButton::clicked, this, &TopicManagement::addDefinition);

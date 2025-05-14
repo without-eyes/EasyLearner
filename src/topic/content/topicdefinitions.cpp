@@ -14,6 +14,7 @@
 TopicDefinitions::TopicDefinitions(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicDefinitions) {
     ui->setupUi(this);
+    this->setWindowTitle("EasyLearner - Definitions");
 
     showContentList();
     changeButtonState();
