@@ -27,7 +27,6 @@ TopicStudy::~TopicStudy() {
 }
 
 void TopicStudy::studyQuestions() {
-    StudyQuestions::setTaskMap(Content::getQuestionMap());
     auto *window = new StudyQuestions;
     window->move(this->pos());
     window->show();
@@ -35,7 +34,6 @@ void TopicStudy::studyQuestions() {
 }
 
 void TopicStudy::studyDefinitions() {
-    StudyDefinitions::setDefinitionsMap(Content::getDefinitionMap());
     auto *window = new StudyDefinitions;
     window->move(this->pos());
     window->show();

@@ -58,6 +58,8 @@ add_executable(EasyLearner src/mainmenu/main.cpp
         src/topic/creation/contentaddition.cpp
         src/topic/content/topiccontentmanagement.cpp
         include/topic/content/topiccontentmanagement.h
+        src/topic/study/studycontent.cpp
+        include/topic/study/studycontent.h
 )
 
 target_include_directories(EasyLearner PRIVATE

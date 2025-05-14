@@ -9,12 +9,13 @@
 #define EASYLEARNER_STUDYQUESTIONS_H
 
 #include <QWidget>
+#include "studycontent.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class StudyQuestions; }
 QT_END_NAMESPACE
 
-class StudyQuestions final : public QWidget {
+class StudyQuestions final : public QWidget, public StudyContent {
 Q_OBJECT
 
 public:
@@ -22,18 +23,15 @@ public:
 
     ~StudyQuestions() override;
 
-    static void setTaskMap(const std::map<QString, QString> &taskMap);
-
 public slots:
+    void checkAnswer() override;
 
-    void checkAnswer();
+    void showNextTask() override;
 
-    void showNextTask();
-
-    void changeButtonState() const;
+    void changeButtonState() const override;
 
 private:
-    void pickRandomTask();
+    void pickRandomTask() override;
 
     Ui::StudyQuestions *ui;
     static std::map<QString, QString> taskMap;

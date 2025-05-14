@@ -7,20 +7,21 @@
 
 #include "topic/study/studydefinitions.h"
 
-#include <QLineEdit>
-#include <QPushButton>
 #include "topic/study/topicstudy.h"
+#include "topic/base/content.h"
 #include "utils/randomizer.h"
 #include "../../../forms/ui_StudyDefinitions.h"
 
-std::map<QString, QString> StudyDefinitions::definitionsMap;
+std::map<QString, QString> StudyDefinitions::taskMap;
 
 StudyDefinitions::StudyDefinitions(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::StudyDefinitions) {
     ui->setupUi(this);
 
-    pickRandomDefinition();
+    taskMap = Content::getDefinitionMap();
+
+    pickRandomTask();
     ui->termLabel->setText(term);
     changeButtonState();
 
@@ -32,10 +33,6 @@ StudyDefinitions::~StudyDefinitions() {
     delete ui;
 }
 
-void StudyDefinitions::setDefinitionsMap(const std::map<QString, QString> &map) {
-    definitionsMap = map;
-}
-
 void StudyDefinitions::checkAnswer() {
     if (ui->definitionLineEdit->text() == definition) {
         ui->correctnessLabel->setText("Correct!");
@@ -44,11 +41,11 @@ void StudyDefinitions::checkAnswer() {
     }
     ui->definitionLineEdit->setEnabled(false);
     ui->continueButton->setText("Continue");
-    connect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::showNextDefinition);
+    connect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::showNextTask);
 }
 
-void StudyDefinitions::showNextDefinition() {
-    if (definitionsMap.empty()) {
+void StudyDefinitions::showNextTask() {
+    if (taskMap.empty()) {
         auto* window = new TopicStudy;
         window->move(this->pos());
         window->show();
@@ -68,17 +65,17 @@ void StudyDefinitions::changeButtonState() const {
     }
 }
 
-void StudyDefinitions::pickRandomDefinition() {
-    if (definitionsMap.empty()) {
+void StudyDefinitions::pickRandomTask() {
+    if (taskMap.empty()) {
         auto* window = new TopicStudy;
         window->move(this->pos());
         window->show();
         close();
         return;
     }
-    auto termAndDefinition = definitionsMap.begin();
-    std::advance(termAndDefinition, Randomizer::getInstance()->getInt(definitionsMap.size() - 1));
+    auto termAndDefinition = taskMap.begin();
+    std::advance(termAndDefinition, Randomizer::getInstance()->getInt(taskMap.size() - 1));
     term = termAndDefinition->first;
     definition = termAndDefinition->second;
-    definitionsMap.erase(termAndDefinition);
+    taskMap.erase(termAndDefinition);
 }

@@ -10,11 +10,13 @@
 
 #include <QWidget>
 
+#include "studycontent.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class StudyDefinitions; }
 QT_END_NAMESPACE
 
-class StudyDefinitions final : public QWidget {
+class StudyDefinitions final : public QWidget, public StudyContent {
     Q_OBJECT
 
 public:
@@ -22,20 +24,18 @@ public:
 
     ~StudyDefinitions() override;
 
-    static void setDefinitionsMap(const std::map<QString, QString> &map);
-
 public slots:
-    void checkAnswer();
+    void checkAnswer() override;
 
-    void showNextDefinition();
+    void showNextTask() override;
 
-    void changeButtonState() const;
+    void changeButtonState() const override;
 
 private:
-    void pickRandomDefinition();
+    void pickRandomTask() override;
 
     Ui::StudyDefinitions *ui;
-    static std::map<QString, QString> definitionsMap;
+    static std::map<QString, QString> taskMap;
     QString term;
     QString definition;
 };

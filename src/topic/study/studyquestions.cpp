@@ -8,6 +8,7 @@
 #include "topic/study/studyquestions.h"
 
 #include "topic/study/topicstudy.h"
+#include "topic/base/content.h"
 #include "utils/randomizer.h"
 #include "../../../forms/ui_StudyQuestions.h"
 
@@ -16,6 +17,8 @@ std::map<QString, QString> StudyQuestions::taskMap;
 StudyQuestions::StudyQuestions(QWidget *parent) :
         QWidget(parent), ui(new Ui::StudyQuestions) {
     ui->setupUi(this);
+
+    taskMap = Content::getQuestionMap();
 
     pickRandomTask();
     ui->questionLabel->setText(question);
@@ -27,10 +30,6 @@ StudyQuestions::StudyQuestions(QWidget *parent) :
 
 StudyQuestions::~StudyQuestions() {
     delete ui;
-}
-
-void StudyQuestions::setTaskMap(const std::map<QString, QString> &questionMap) {
-    taskMap = questionMap;
 }
 
 void StudyQuestions::pickRandomTask() {
