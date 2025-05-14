@@ -24,8 +24,6 @@ public:
 
 public slots:
 
-    void studyQuestionsAndDefinitions();
-
     void studyQuestions();
 
     void studyDefinitions();

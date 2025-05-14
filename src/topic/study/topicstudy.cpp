@@ -17,7 +17,6 @@ TopicStudy::TopicStudy(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicStudy) {
     ui->setupUi(this);
 
-    connect(ui->qndButton, &QPushButton::clicked, this, &TopicStudy::studyQuestionsAndDefinitions);
     connect(ui->questionsButton, &QPushButton::clicked, this, &TopicStudy::studyQuestions);
     connect(ui->definitionsButton, &QPushButton::clicked, this, &TopicStudy::studyDefinitions);
     connect(ui->goBackButton, &QPushButton::clicked, this, &TopicStudy::goBack);
@@ -25,10 +24,6 @@ TopicStudy::TopicStudy(QWidget *parent) :
 
 TopicStudy::~TopicStudy() {
     delete ui;
-}
-
-void TopicStudy::studyQuestionsAndDefinitions() {
-
 }
 
 void TopicStudy::studyQuestions() {
