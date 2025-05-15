@@ -27,6 +27,7 @@ public slots:
 protected:
     virtual void pickRandomTask();
 
+    virtual bool compareAnswers(QString correctAnswer, QString& userAnswer);
 };
 
 

@@ -49,7 +49,7 @@ void StudyQuestions::pickRandomTask() {
 }
 
 void StudyQuestions::checkAnswer() {
-    if (ui->answerLineEdit->text() == answer) {
+    if (compareAnswers(ui->answerLineEdit->text(), answer)) {
         ui->correctnessLabel->setText("Correct!");
     } else {
         ui->correctnessLabel->setText("Wrong! Correct answer: " + answer);

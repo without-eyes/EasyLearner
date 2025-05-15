@@ -35,7 +35,7 @@ StudyDefinitions::~StudyDefinitions() {
 }
 
 void StudyDefinitions::checkAnswer() {
-    if (ui->definitionLineEdit->text() == definition) {
+    if (compareAnswers(ui->definitionLineEdit->text(), definition)) {
         ui->correctnessLabel->setText("Correct!");
     } else {
         ui->correctnessLabel->setText("Wrong! Correct answer: " + definition);
