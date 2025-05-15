@@ -40,6 +40,10 @@ void TopicQuestions::deleteContent() const {
     std::string text = ui->listWidget->takeItem(ui->listWidget->currentRow())->text().toStdString();
     const std::string question = text.substr(0, text.find(" -"));
     Content::deleteFromQuestionMap(QString::fromStdString(question));
+
+    if (ui->listWidget->count() == 0) {
+        changeButtonState();
+    }
 }
 
 void TopicQuestions::goBack() {
@@ -50,5 +54,9 @@ void TopicQuestions::goBack() {
 }
 
 void TopicQuestions::changeButtonState() const {
-    ui->deleteButton->setEnabled(!ui->deleteButton->isEnabled());
+    if (const auto *item = ui->listWidget->currentItem(); item && !item->text().isEmpty()) {
+        ui->deleteButton->setEnabled(true);
+    } else {
+        ui->deleteButton->setEnabled(false);
+    }
 }

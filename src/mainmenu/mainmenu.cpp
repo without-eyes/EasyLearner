@@ -55,7 +55,11 @@ void MainMenu::pickTopic() {
 }
 
 void MainMenu::changeButtonState() const {
-    ui->pickButton->setEnabled(!ui->pickButton->isEnabled());
+    if (const auto *item = ui->listWidget->currentItem(); item && !item->text().isEmpty()) {
+        ui->pickButton->setEnabled(true);
+    } else {
+        ui->pickButton->setEnabled(false);
+    }
 }
 
 
