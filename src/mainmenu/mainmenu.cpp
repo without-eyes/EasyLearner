@@ -54,8 +54,10 @@ void MainMenu::pickTopic() {
 void MainMenu::changeButtonState() const {
     if (const auto *item = ui->listWidget->currentItem(); item && !item->text().isEmpty()) {
         ui->pickButton->setEnabled(true);
+        ui->deleteButton->setEnabled(true);
     } else {
         ui->pickButton->setEnabled(false);
+        ui->deleteButton->setEnabled(false);
     }
 }
 
@@ -71,6 +73,10 @@ void MainMenu::deleteTopic() const {
     const auto *item = ui->listWidget->currentItem();
     topicList.removeOne(item->text());
     delete ui->listWidget->takeItem(ui->listWidget->row(item));
+
+    if (ui->listWidget->count() == 0) {
+        changeButtonState();
+    }
 }
 
 void MainMenu::addTopicIntoList(const QString &topic) {
