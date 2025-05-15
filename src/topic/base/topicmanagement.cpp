@@ -12,12 +12,15 @@
 #include "topic/content/topiccontent.h"
 #include "topic/creation/questionaddition.h"
 #include "topic/study/topicstudy.h"
+#include "topic/base/content.h"
 #include "../../../forms/ui_TopicManagement.h"
 
 TopicManagement::TopicManagement(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicManagement) {
     ui->setupUi(this);
     this->setWindowTitle("EasyLearner - Topic Management");
+
+    ui->label->setText(Content::getCurrentTopic());
 
     connect(ui->studyButton, &QPushButton::clicked, this, &TopicManagement::startStudy);
     connect(ui->addDefinitionButton, &QPushButton::clicked, this, &TopicManagement::addDefinition);
@@ -28,10 +31,6 @@ TopicManagement::TopicManagement(QWidget *parent) :
 
 TopicManagement::~TopicManagement() {
     delete ui;
-}
-
-void TopicManagement::setTopicName(const QString &topicName) const {
-    ui->label->setText(topicName);
 }
 
 void TopicManagement::startStudy() {

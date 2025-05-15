@@ -7,39 +7,45 @@
 
 #include "topic/base/content.h"
 
-std::map<QString, QString> Content::definitionMap;
-std::map<QString, QString> Content::questionMap;
+QString Content::currentTopic;
+std::map<QString, std::map<QString, QString>> Content::topicDefinitionMap;
+std::map<QString, std::map<QString, QString>> Content::topicQuestionMap;
 
 Content::Content(const QString &topicName) {
-    // DELETE THIS
-    definitionMap["Term"] = "definition";
-    questionMap["Question"] = "answer";
-    // THIS IS FOR TESTING
+
 }
 
 void Content::addIntoDefinitionMap(const QString &term, const QString &definition) {
-    definitionMap[term] = definition;
+    topicDefinitionMap[currentTopic][term] = definition;
 }
 
 void Content::deleteFromDefinitionMap(const QString &term) {
-    definitionMap.erase(term);
+    topicDefinitionMap[currentTopic].erase(term);
 }
 
 std::map<QString, QString> Content::getDefinitionMap() {
-    return definitionMap;
+    return topicDefinitionMap[currentTopic];
 }
 
 void Content::addIntoQuestionMap(const QString &question, const QString &answer) {
-    questionMap[question] = answer;
+    topicQuestionMap[currentTopic][question] = answer;
 }
 
 void Content::deleteFromQuestionMap(const QString &question) {
-    questionMap.erase(question);
+    topicQuestionMap[currentTopic].erase(question);
 }
 
 
 std::map<QString, QString> Content::getQuestionMap() {
-    return questionMap;
+    return topicQuestionMap[currentTopic];
+}
+
+void Content::setCurrentTopic(const QString &topic) {
+    currentTopic = topic;
+}
+
+QString Content::getCurrentTopic() {
+    return currentTopic;
 }
 
 

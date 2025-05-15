@@ -23,8 +23,6 @@ public:
 
     ~TopicManagement() override;
 
-    void setTopicName(const QString &topicName) const;
-
 public slots:
 
     void startStudy();

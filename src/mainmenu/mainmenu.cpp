@@ -11,6 +11,7 @@
 #include "mainmenu/topiccreation.h"
 #include "topic/base/topicmanagement.h"
 #include "utils/database.h"
+#include "topic/base/content.h"
 #include "../../forms/ui_MainMenu.h"
 
 QList<QString> MainMenu::topicList;
@@ -21,10 +22,6 @@ MainMenu::MainMenu(QWidget *parent) :
     this->setWindowTitle("EasyLearner - Main Menu");
 
     Database();
-
-    // DELETE THIS
-    topicList.push_back("Test topic");
-    // THIS IS FOR TESTING
 
     showTableContent();
     changeButtonState();
@@ -47,8 +44,8 @@ void MainMenu::showTableContent() const {
 }
 
 void MainMenu::pickTopic() {
+    Content::setCurrentTopic(ui->listWidget->currentItem()->text());
     auto *window = new TopicManagement;
-    window->setTopicName(ui->listWidget->currentItem()->text());
     window->move(this->pos());
     window->show();
     close();

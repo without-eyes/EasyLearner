@@ -28,9 +28,14 @@ public:
 
     static std::map<QString, QString> getQuestionMap();
 
+    static void setCurrentTopic(const QString &topic);
+
+    static QString getCurrentTopic();
+
 private:
-    static std::map<QString, QString> definitionMap;
-    static std::map<QString, QString> questionMap;
+    static QString currentTopic;
+    static std::map<QString, std::map<QString, QString>> topicDefinitionMap;
+    static std::map<QString, std::map<QString, QString>> topicQuestionMap;
 };
 
 
