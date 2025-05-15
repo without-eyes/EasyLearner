@@ -18,6 +18,14 @@ TopicStudy::TopicStudy(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("EasyLearner - Studying");
 
+    if (Content::getDefinitionMap().empty()) {
+        ui->definitionsButton->setEnabled(false);
+    }
+
+    if (Content::getQuestionMap().empty()) {
+        ui->questionsButton->setEnabled(false);
+    }
+
     connect(ui->questionsButton, &QPushButton::clicked, this, &TopicStudy::studyQuestions);
     connect(ui->definitionsButton, &QPushButton::clicked, this, &TopicStudy::studyDefinitions);
     connect(ui->goBackButton, &QPushButton::clicked, this, &TopicStudy::goBack);
