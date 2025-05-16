@@ -7,17 +7,13 @@
 
 #include "utils/randomizer.h"
 
-Randomizer* Randomizer::instance;
-
 Randomizer::Randomizer() : generator(std::random_device{}()) {
 
 }
 
-Randomizer * Randomizer::getInstance() {
-    if (instance == nullptr) {
-        instance = new Randomizer();
-    }
-    return instance;
+Randomizer* Randomizer::getInstance() {
+    static Randomizer randomizer;
+    return &randomizer;
 }
 
 unsigned int Randomizer::getInt(const int max) {
