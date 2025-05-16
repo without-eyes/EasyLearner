@@ -20,7 +20,9 @@ StudyDefinitions::StudyDefinitions(QWidget *parent)
     ui->setupUi(this);
     this->setWindowTitle("EasyLearner - Definition Studying");
 
-    taskMap = Content::getDefinitionMap();
+    if (taskMap.empty()) {
+        taskMap = Content::getDefinitionMap();
+    }
 
     pickRandomTask();
     ui->termLabel->setText(term);
