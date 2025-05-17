@@ -31,18 +31,18 @@ TopicStudy::~TopicStudy() {
 }
 
 void TopicStudy::updateStudyQuestionsButton() {
-    if (Content::getDefinitionMap().empty()) {
-        ui->definitionsButton->setEnabled(false);
-    } else {
-        ui->definitionsButton->setEnabled(true);
-    }
-}
-
-void TopicStudy::updateStudyDefinitionsButton() {
     if (Content::getQuestionMap().empty()) {
         ui->questionsButton->setEnabled(false);
     } else {
         ui->questionsButton->setEnabled(true);
+    }
+}
+
+void TopicStudy::updateStudyDefinitionsButton() {
+    if (Content::getDefinitionMap().empty()) {
+        ui->definitionsButton->setEnabled(false);
+    } else {
+        ui->definitionsButton->setEnabled(true);
     }
 }
 

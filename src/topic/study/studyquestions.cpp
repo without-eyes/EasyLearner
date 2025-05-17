@@ -19,8 +19,6 @@ StudyQuestions::StudyQuestions(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("EasyLearner - Question Studying");
 
-    taskMap = Content::getQuestionMap();
-
     connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
     connect(ui->answerLineEdit, &QLineEdit::textChanged, this, &StudyQuestions::changeButtonState);
 }
@@ -35,10 +33,11 @@ void StudyQuestions::pickRandomTask() {
         return;
     }
     auto task = taskMap.begin();
-    std::advance(task, Randomizer::getInstance()->getInt(taskMap.size() - 1));
+    std::advance(task, Randomizer::getInstance()->getInt(static_cast<int>(taskMap.size()) - 1));
     question = task->first;
     answer = task->second;
     taskMap.erase(task);
+    ui->questionLabel->setText(question);
 }
 
 void StudyQuestions::checkAnswer() {
@@ -49,6 +48,7 @@ void StudyQuestions::checkAnswer() {
     }
     ui->answerLineEdit->setEnabled(false);
     ui->continueButton->setText("Continue");
+    disconnect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
     connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::showNextTask);
 }
 
@@ -56,9 +56,10 @@ void StudyQuestions::showNextTask() {
     if (taskMap.empty()) {
         emit requestPageChange(8);
     } else {
-        emit requestPageChange(10);
+        studyQuestion();
+        disconnect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::showNextTask);
+        connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
     }
-    close();
 }
 
 void StudyQuestions::changeButtonState() const {
@@ -70,8 +71,18 @@ void StudyQuestions::changeButtonState() const {
 }
 
 void StudyQuestions::studyQuestion() {
+    if (taskMap.empty()) {
+        taskMap = Content::getQuestionMap();
+        if (taskMap.empty()) {
+            emit requestPageChange(8);
+            return;
+        }
+    }
     pickRandomTask();
     ui->questionLabel->setText(question);
+    ui->correctnessLabel->clear();
+    ui->answerLineEdit->setEnabled(true);
+    ui->answerLineEdit->clear();
     changeButtonState();
 }
 
