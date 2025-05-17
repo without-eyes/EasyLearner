@@ -23,10 +23,14 @@ public:
 
     ~MainMenu() override;
 
-    static void addTopicIntoList(const QString &topic);
+    void addTopicIntoList(const QString &topic);
+
+signals:
+    void requestPageChange(int index);
+
+    void setTopic(const QString &topic);
 
 private slots:
-
     void pickTopic();
 
     void createTopic();

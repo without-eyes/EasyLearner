@@ -24,10 +24,6 @@ StudyDefinitions::StudyDefinitions(QWidget *parent)
         taskMap = Content::getDefinitionMap();
     }
 
-    pickRandomTask();
-    ui->termLabel->setText(term);
-    changeButtonState();
-
     connect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::checkAnswer);
     connect(ui->definitionLineEdit, &QLineEdit::textChanged, this, &StudyDefinitions::changeButtonState);
 }
@@ -49,13 +45,9 @@ void StudyDefinitions::checkAnswer() {
 
 void StudyDefinitions::showNextTask() {
     if (taskMap.empty()) {
-        auto* window = new TopicStudy;
-        window->move(this->pos());
-        window->show();
+        emit requestPageChange(8);
     } else {
-        auto* window = new StudyDefinitions;
-        window->move(this->pos());
-        window->show();
+        emit requestPageChange(9);
     }
     close();
 }
@@ -68,12 +60,15 @@ void StudyDefinitions::changeButtonState() const {
     }
 }
 
+void StudyDefinitions::studyDefinition() {
+    pickRandomTask();
+    ui->termLabel->setText(term);
+    changeButtonState();
+}
+
 void StudyDefinitions::pickRandomTask() {
     if (taskMap.empty()) {
-        auto* window = new TopicStudy;
-        window->move(this->pos());
-        window->show();
-        close();
+        emit requestPageChange(8);
         return;
     }
     auto termAndDefinition = taskMap.begin();

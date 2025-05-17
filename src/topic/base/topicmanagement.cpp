@@ -33,39 +33,29 @@ TopicManagement::~TopicManagement() {
     delete ui;
 }
 
+void TopicManagement::setTopic(const QString &topic) {
+    Content::setCurrentTopic(topic);
+    ui->label->setText(topic);
+}
+
 void TopicManagement::startStudy() {
-    auto *window = new TopicStudy;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit requestPageChange(8);
 }
 
 void TopicManagement::addDefinition() {
-    auto *window = new DefinitionAddition;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit requestPageChange(6);
 }
 
 void TopicManagement::addQuestion() {
-    auto *window = new QuestionAddition;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit requestPageChange(7);
 }
 
 void TopicManagement::showTopicContent() {
-    auto *window = new TopicContent;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit requestPageChange(3);
 }
 
 void TopicManagement::goBack() {
-    auto *window = new MainMenu;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit requestPageChange(0);
 }
 
 

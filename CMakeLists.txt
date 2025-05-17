@@ -14,7 +14,7 @@ find_package(Qt5 COMPONENTS
         Sql
         REQUIRED)
 
-add_executable(EasyLearner src/mainmenu/main.cpp
+add_executable(EasyLearner src/core/main.cpp
         src/mainmenu/mainmenu.cpp
         include/mainmenu/mainmenu.h
         forms/MainMenu.ui
@@ -60,6 +60,8 @@ add_executable(EasyLearner src/mainmenu/main.cpp
         include/topic/content/topiccontentmanagement.h
         src/topic/study/studycontent.cpp
         include/topic/study/studycontent.h
+        src/core/mainwindow.cpp
+        include/core/mainwindow.h
 )
 
 target_include_directories(EasyLearner PRIVATE

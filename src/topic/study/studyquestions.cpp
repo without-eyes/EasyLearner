@@ -21,10 +21,6 @@ StudyQuestions::StudyQuestions(QWidget *parent) :
 
     taskMap = Content::getQuestionMap();
 
-    pickRandomTask();
-    ui->questionLabel->setText(question);
-    changeButtonState();
-
     connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
     connect(ui->answerLineEdit, &QLineEdit::textChanged, this, &StudyQuestions::changeButtonState);
 }
@@ -35,10 +31,7 @@ StudyQuestions::~StudyQuestions() {
 
 void StudyQuestions::pickRandomTask() {
     if (taskMap.empty()) {
-        auto *window = new TopicStudy;
-        window->move(this->pos());
-        window->show();
-        close();
+        emit requestPageChange(8);
         return;
     }
     auto task = taskMap.begin();
@@ -61,13 +54,9 @@ void StudyQuestions::checkAnswer() {
 
 void StudyQuestions::showNextTask() {
     if (taskMap.empty()) {
-        auto *window = new TopicStudy;
-        window->move(this->pos());
-        window->show();
+        emit requestPageChange(8);
     } else {
-        auto *window = new StudyQuestions;
-        window->move(this->pos());
-        window->show();
+        emit requestPageChange(10);
     }
     close();
 }
@@ -78,6 +67,12 @@ void StudyQuestions::changeButtonState() const {
     } else {
         ui->continueButton->setEnabled(false);
     }
+}
+
+void StudyQuestions::studyQuestion() {
+    pickRandomTask();
+    ui->questionLabel->setText(question);
+    changeButtonState();
 }
 
 

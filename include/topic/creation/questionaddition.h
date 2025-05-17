@@ -17,6 +17,13 @@ QT_END_NAMESPACE
 class QuestionAddition final : public QWidget, public ContentAddition {
 Q_OBJECT
 
+signals:
+    void requestPageChange(int index);
+
+    void updateQuestionMapShowing();
+
+    void updateStudyQuestionsButton();
+
 public:
     explicit QuestionAddition(QWidget *parent = nullptr);
 

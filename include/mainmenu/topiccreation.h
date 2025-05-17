@@ -22,6 +22,11 @@ public:
 
     ~TopicCreation() override;
 
+signals:
+    void requestPageChange(int index);
+
+    void topicCreated(const QString &topic);
+
 private slots:
 
     void createNewTopic();

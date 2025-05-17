@@ -17,6 +17,13 @@ QT_END_NAMESPACE
 class DefinitionAddition final : public QWidget, public ContentAddition {
 Q_OBJECT
 
+signals:
+    void requestPageChange(int index);
+
+    void updateDefinitionMapShowing();
+
+    void updateStudyDefinitionsButton();
+
 public:
     explicit DefinitionAddition(QWidget *parent = nullptr);
 

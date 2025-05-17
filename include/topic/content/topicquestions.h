@@ -19,13 +19,20 @@ QT_END_NAMESPACE
 class TopicQuestions final : public QWidget, public TopicContentManagement {
 Q_OBJECT
 
+signals:
+    void requestPageChange(int index);
+
+    void updateStudyButton();
+
 public slots:
 
-    void deleteContent() const override;
+    void deleteContent() override;
 
     void goBack() override;
 
     void changeButtonState() const override;
+
+    void showContentList() override;
 
 public:
     explicit TopicQuestions(QWidget *parent = nullptr);
@@ -34,8 +41,6 @@ public:
 
 private:
     Ui::TopicQuestions *ui;
-
-    void showContentList() override;
 };
 
 

@@ -31,6 +31,10 @@ DefinitionAddition::~DefinitionAddition() {
 
 void DefinitionAddition::addNewContent() {
     Content::addIntoDefinitionMap(ui->termLineEdit->text(), ui->definitionLineEdit->text());
+    emit updateDefinitionMapShowing();
+    emit updateStudyDefinitionsButton();
+    ui->termLineEdit->clear();
+    ui->definitionLineEdit->clear();
     goBack();
 }
 
@@ -43,8 +47,5 @@ void DefinitionAddition::changeButtonState() const {
 }
 
 void DefinitionAddition::goBack() {
-    auto *window = new TopicManagement;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit requestPageChange(2);
 }

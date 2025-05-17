@@ -17,6 +17,9 @@ QT_END_NAMESPACE
 class TopicContent final : public QWidget {
 Q_OBJECT
 
+signals:
+    void requestPageChange(int index);
+
 public:
     explicit TopicContent(QWidget *parent = nullptr);
 

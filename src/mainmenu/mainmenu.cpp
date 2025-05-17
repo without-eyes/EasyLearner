@@ -8,8 +8,6 @@
 #include "mainmenu/mainmenu.h"
 
 #include <QStringListModel>
-#include "mainmenu/topiccreation.h"
-#include "topic/base/topicmanagement.h"
 #include "utils/database.h"
 #include "topic/base/content.h"
 #include "../../forms/ui_MainMenu.h"
@@ -17,7 +15,8 @@
 QList<QString> MainMenu::topicList;
 
 MainMenu::MainMenu(QWidget *parent) :
-        QWidget(parent), ui(new Ui::MainMenu) {
+        QWidget(parent),
+        ui(new Ui::MainMenu) {
     ui->setupUi(this);
     this->setWindowTitle("EasyLearner - Main Menu");
 
@@ -37,6 +36,7 @@ MainMenu::~MainMenu() {
 }
 
 void MainMenu::showTableContent() const {
+    ui->listWidget->clear();
     for (const auto &row: topicList) {
         ui->listWidget->addItem(row);
     }
@@ -44,11 +44,8 @@ void MainMenu::showTableContent() const {
 }
 
 void MainMenu::pickTopic() {
-    Content::setCurrentTopic(ui->listWidget->currentItem()->text());
-    auto *window = new TopicManagement;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit setTopic(ui->listWidget->currentItem()->text());
+    emit requestPageChange(2);
 }
 
 void MainMenu::changeButtonState() const {
@@ -61,12 +58,8 @@ void MainMenu::changeButtonState() const {
     }
 }
 
-
 void MainMenu::createTopic() {
-    auto *window = new TopicCreation;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit requestPageChange(1);
 }
 
 void MainMenu::deleteTopic() const {
@@ -81,7 +74,5 @@ void MainMenu::deleteTopic() const {
 
 void MainMenu::addTopicIntoList(const QString &topic) {
     topicList.push_back(topic);
+    showTableContent();
 }
-
-
-

@@ -15,7 +15,7 @@ class TopicContentManagement {
 public slots:
     virtual ~TopicContentManagement() = default;
 
-    virtual void deleteContent() const;
+    virtual void deleteContent();
 
     virtual void goBack();
 
