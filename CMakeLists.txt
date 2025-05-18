@@ -6,7 +6,6 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-
 find_package(Qt5 COMPONENTS
         Core
         Gui
@@ -14,7 +13,15 @@ find_package(Qt5 COMPONENTS
         Sql
         REQUIRED)
 
+if(WIN32)
+    set(WIN_ICON resources/resources.rc)
+else ()
+    qt5_add_resources(LINUX_ICON resources/resources.qrc)
+endif()
+
 add_executable(EasyLearner src/core/main.cpp
+        ${WIN_ICON}
+        ${LINUX_ICON}
         src/mainmenu/mainmenu.cpp
         include/mainmenu/mainmenu.h
         forms/MainMenu.ui

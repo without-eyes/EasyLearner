@@ -74,7 +74,8 @@ void MainWindow::connectSignalsToSlots() {
 }
 
 void MainWindow::configureMainWindow() {
-    this->setAttribute(Qt::WA_DeleteOnClose);
-    this->setCentralWidget(stackedWidget);
-    this->resize(400, 300);
+    setAttribute(Qt::WA_DeleteOnClose);
+    setWindowIcon(QIcon(":/assets/icon.png"));
+    setCentralWidget(stackedWidget);
+    resize(400, 300);
 }
