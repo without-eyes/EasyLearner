@@ -80,7 +80,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Defition:</string>
+    <string>Definition:</string>
    </property>
   </widget>
   <widget class="QPushButton" name="goBackButton">
