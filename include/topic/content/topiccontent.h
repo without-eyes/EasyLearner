@@ -20,6 +20,10 @@ Q_OBJECT
 signals:
     void requestPageChange(int index);
 
+    void updateDefinitionMapShowing();
+
+    void updateQuestionMapShowing();
+
 public:
     explicit TopicContent(QWidget *parent = nullptr);
 

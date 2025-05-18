@@ -63,11 +63,13 @@ MainWindow::MainWindow() {
     connect(topicCreation, &TopicCreation::topicCreated, mainMenu, &MainMenu::addTopicIntoList);
     connect(mainMenu, &MainMenu::setTopic, topicManagement, &TopicManagement::setTopic);
 
+    connect(topicContent, &TopicContent::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
     connect(definitionAddition, &DefinitionAddition::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
     connect(definitionAddition, &DefinitionAddition::updateStudyDefinitionsButton, topicStudy, &TopicStudy::updateStudyDefinitionsButton);
     connect(topicDefinitions, &TopicDefinitions::updateStudyDefinitionsButton, topicStudy, &TopicStudy::updateStudyDefinitionsButton);
     connect(topicStudy, &TopicStudy::startDefinitionsStudy, studyDefinitions, &StudyDefinitions::studyDefinition);
 
+    connect(topicContent, &TopicContent::updateQuestionMapShowing, topicQuestions, &TopicQuestions::showContentList);
     connect(questionAddition, &QuestionAddition::updateQuestionMapShowing, topicQuestions, &TopicQuestions::showContentList);
     connect(questionAddition, &QuestionAddition::updateStudyQuestionsButton, topicStudy, &TopicStudy::updateStudyQuestionsButton);
     connect(topicQuestions, &TopicQuestions::updateStudyButton, topicStudy, &TopicStudy::updateStudyQuestionsButton);

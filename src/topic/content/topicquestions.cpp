@@ -29,6 +29,7 @@ TopicQuestions::~TopicQuestions() {
 }
 
 void TopicQuestions::showContentList() {
+    ui->listWidget->clear();
     const std::map<QString, QString> questionMap = Content::getQuestionMap();
     for (const auto &[question, answer]: questionMap) {
         ui->listWidget->addItem(question + " - " + answer);

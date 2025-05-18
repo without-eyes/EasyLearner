@@ -29,6 +29,7 @@ TopicDefinitions::~TopicDefinitions() {
 }
 
 void TopicDefinitions::showContentList() {
+    ui->listWidget->clear();
     const std::map<QString, QString> definitionMap = Content::getDefinitionMap();
     for (const auto &[term, definition]: definitionMap) {
         ui->listWidget->addItem(term + " - " + definition);

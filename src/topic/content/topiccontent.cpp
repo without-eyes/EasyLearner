@@ -27,10 +27,12 @@ TopicContent::~TopicContent() {
 }
 
 void TopicContent::showDefinition() {
+    emit updateDefinitionMapShowing();
     emit requestPageChange(4);
 }
 
 void TopicContent::showQuestionsAnswers() {
+    emit updateQuestionMapShowing();
     emit requestPageChange(5);
 }
 
