@@ -39,23 +39,23 @@ void TopicManagement::setTopic(const QString &topic) {
 }
 
 void TopicManagement::startStudy() {
-    emit requestPageChange(8);
+    emit requestPageChange(TOPIC_STUDY_PAGE);
 }
 
 void TopicManagement::addDefinition() {
-    emit requestPageChange(6);
+    emit requestPageChange(DEFINITION_ADDITION_PAGE);
 }
 
 void TopicManagement::addQuestion() {
-    emit requestPageChange(7);
+    emit requestPageChange(QUESTION_ADDITION_PAGE);
 }
 
 void TopicManagement::showTopicContent() {
-    emit requestPageChange(3);
+    emit requestPageChange(TOPIC_CONTENT_PAGE);
 }
 
 void TopicManagement::goBack() {
-    emit requestPageChange(0);
+    emit requestPageChange(MAIN_MENU_PAGE);
 }
 
 

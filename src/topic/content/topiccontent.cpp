@@ -28,14 +28,14 @@ TopicContent::~TopicContent() {
 
 void TopicContent::showDefinition() {
     emit updateDefinitionMapShowing();
-    emit requestPageChange(4);
+    emit requestPageChange(TOPIC_DEFINITIONS_PAGE);
 }
 
 void TopicContent::showQuestionsAnswers() {
     emit updateQuestionMapShowing();
-    emit requestPageChange(5);
+    emit requestPageChange(TOPIC_QUESTIONS_PAGE);
 }
 
 void TopicContent::goBack() {
-    emit requestPageChange(2);
+    emit requestPageChange(TOPIC_MANAGEMENT_PAGE);
 }

@@ -9,6 +9,7 @@
 #define EASYLEARNER_QUESTIONADDITION_H
 
 #include "contentaddition.h"
+#include "core/pageindex.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class QuestionAddition; }
@@ -18,7 +19,7 @@ class QuestionAddition final : public QWidget, public ContentAddition {
 Q_OBJECT
 
 signals:
-    void requestPageChange(int index);
+    void requestPageChange(PageIndex index);
 
     void updateQuestionMapShowing();
 

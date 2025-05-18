@@ -47,5 +47,5 @@ void DefinitionAddition::changeButtonState() const {
 }
 
 void DefinitionAddition::goBack() {
-    emit requestPageChange(2);
+    emit requestPageChange(TOPIC_MANAGEMENT_PAGE);
 }

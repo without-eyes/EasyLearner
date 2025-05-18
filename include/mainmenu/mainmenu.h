@@ -9,6 +9,7 @@
 #define EASYLEARNER_MAINMENU_H
 
 #include <QWidget>
+#include "core/pageindex.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainMenu; }
@@ -26,7 +27,7 @@ public:
     void addTopicIntoList(const QString &topic);
 
 signals:
-    void requestPageChange(int index);
+    void requestPageChange(PageIndex index);
 
     void setTopic(const QString &topic);
 

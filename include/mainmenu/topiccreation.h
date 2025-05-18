@@ -9,6 +9,7 @@
 #define EASYLEARNER_TOPICCREATION_H
 
 #include <QWidget>
+#include "core/pageindex.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TopicCreation; }
@@ -23,7 +24,7 @@ public:
     ~TopicCreation() override;
 
 signals:
-    void requestPageChange(int index);
+    void requestPageChange(PageIndex index);
 
     void topicCreated(const QString &topic);
 

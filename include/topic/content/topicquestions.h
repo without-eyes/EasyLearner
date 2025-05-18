@@ -9,8 +9,8 @@
 #define EASYLEARNER_TOPICQUESTIONS_H
 
 #include <QWidget>
-
 #include "topiccontentmanagement.h"
+#include "core/pageindex.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TopicQuestions; }
@@ -20,7 +20,7 @@ class TopicQuestions final : public QWidget, public TopicContentManagement {
 Q_OBJECT
 
 signals:
-    void requestPageChange(int index);
+    void requestPageChange(PageIndex index);
 
     void updateStudyButton();
 

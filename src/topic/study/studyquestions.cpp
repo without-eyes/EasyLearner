@@ -29,7 +29,7 @@ StudyQuestions::~StudyQuestions() {
 
 void StudyQuestions::pickRandomTask() {
     if (taskMap.empty()) {
-        emit requestPageChange(8);
+        emit requestPageChange(TOPIC_STUDY_PAGE);
         return;
     }
     auto task = taskMap.begin();
@@ -56,7 +56,7 @@ void StudyQuestions::showNextTask() {
     disconnect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::showNextTask);
     connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
     if (taskMap.empty()) {
-        emit requestPageChange(8);
+        emit requestPageChange(TOPIC_STUDY_PAGE);
     } else {
         studyQuestion();
     }
@@ -74,7 +74,7 @@ void StudyQuestions::studyQuestion() {
     if (taskMap.empty()) {
         taskMap = Content::getQuestionMap();
         if (taskMap.empty()) {
-            emit requestPageChange(8);
+            emit requestPageChange(TOPIC_STUDY_PAGE);
             return;
         }
     }

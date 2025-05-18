@@ -62,6 +62,7 @@ add_executable(EasyLearner src/core/main.cpp
         include/topic/study/studycontent.h
         src/core/mainwindow.cpp
         include/core/mainwindow.h
+        include/core/pageindex.h
 )
 
 target_include_directories(EasyLearner PRIVATE

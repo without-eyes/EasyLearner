@@ -10,6 +10,7 @@
 
 #include <QWidget>
 #include "studycontent.h"
+#include "core/pageindex.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class StudyQuestions; }
@@ -19,7 +20,7 @@ class StudyQuestions final : public QWidget, public StudyContent {
 Q_OBJECT
 
 signals:
-    void requestPageChange(int index);
+    void requestPageChange(PageIndex index);
 
 public:
     explicit StudyQuestions(QWidget *parent = nullptr);

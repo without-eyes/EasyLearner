@@ -48,14 +48,14 @@ void TopicStudy::updateStudyDefinitionsButton() {
 
 void TopicStudy::studyQuestions() {
     emit startQuestionsStudy();
-    emit requestPageChange(10);
+    emit requestPageChange(STUDY_QUESTIONS_PAGE);
 }
 
 void TopicStudy::studyDefinitions() {
     emit startDefinitionsStudy();
-    emit requestPageChange(9);
+    emit requestPageChange(STUDY_DEFINITIONS_PAGE);
 }
 
 void TopicStudy::goBack() {
-    emit requestPageChange(2);
+    emit requestPageChange(TOPIC_MANAGEMENT_PAGE);
 }

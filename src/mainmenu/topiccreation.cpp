@@ -43,5 +43,5 @@ void TopicCreation::changeButtonState() const {
 }
 
 void TopicCreation::goBack() {
-    emit requestPageChange(0);
+    emit requestPageChange(MAIN_MENU_PAGE);
 }

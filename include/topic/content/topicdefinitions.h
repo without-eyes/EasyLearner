@@ -10,6 +10,7 @@
 
 #include <QWidget>
 #include "topiccontentmanagement.h"
+#include "core/pageindex.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TopicDefinitions; }
@@ -19,7 +20,7 @@ class TopicDefinitions final : public QWidget, public TopicContentManagement {
 Q_OBJECT
 
 signals:
-    void requestPageChange(int index);
+    void requestPageChange(PageIndex index);
 
     void updateStudyDefinitionsButton();
 

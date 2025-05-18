@@ -9,6 +9,7 @@
 #define EASYLEARNER_DEFINITIONADDITION_H
 
 #include "contentaddition.h"
+#include "core/pageindex.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class DefinitionAddition; }
@@ -18,7 +19,7 @@ class DefinitionAddition final : public QWidget, public ContentAddition {
 Q_OBJECT
 
 signals:
-    void requestPageChange(int index);
+    void requestPageChange(PageIndex index);
 
     void updateDefinitionMapShowing();
 

@@ -45,7 +45,7 @@ void MainMenu::showTableContent() const {
 
 void MainMenu::pickTopic() {
     emit setTopic(ui->listWidget->currentItem()->text());
-    emit requestPageChange(2);
+    emit requestPageChange(TOPIC_MANAGEMENT_PAGE);
 }
 
 void MainMenu::changeButtonState() {
@@ -59,7 +59,7 @@ void MainMenu::changeButtonState() {
 }
 
 void MainMenu::createTopic() {
-    emit requestPageChange(1);
+    emit requestPageChange(TOPIC_CREATION_PAGE);
 }
 
 void MainMenu::deleteTopic() {

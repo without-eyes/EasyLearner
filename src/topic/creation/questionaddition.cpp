@@ -46,5 +46,5 @@ void QuestionAddition::changeButtonState() const {
 }
 
 void QuestionAddition::goBack() {
-    emit requestPageChange(2);
+    emit requestPageChange(TOPIC_MANAGEMENT_PAGE);
 }

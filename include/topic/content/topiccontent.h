@@ -9,6 +9,7 @@
 #define EASYLEARNER_TOPICCONTENT_H
 
 #include <QWidget>
+#include "core/pageindex.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TopicContent; }
@@ -18,7 +19,7 @@ class TopicContent final : public QWidget {
 Q_OBJECT
 
 signals:
-    void requestPageChange(int index);
+    void requestPageChange(PageIndex index);
 
     void updateDefinitionMapShowing();
 

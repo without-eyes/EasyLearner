@@ -50,7 +50,7 @@ void TopicDefinitions::deleteContent() {
 }
 
 void TopicDefinitions::goBack() {
-    emit requestPageChange(3);
+    emit requestPageChange(TOPIC_CONTENT_PAGE);
 }
 
 void TopicDefinitions::changeButtonState() const {

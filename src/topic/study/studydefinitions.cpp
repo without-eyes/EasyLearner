@@ -45,7 +45,7 @@ void StudyDefinitions::showNextTask() {
     disconnect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::showNextTask);
     connect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::checkAnswer);
     if (taskMap.empty()) {
-        emit requestPageChange(8);
+        emit requestPageChange(TOPIC_STUDY_PAGE);
     } else {
         studyDefinition();
     }
@@ -61,7 +61,7 @@ void StudyDefinitions::changeButtonState() const {
 
 void StudyDefinitions::pickRandomTask() {
     if (taskMap.empty()) {
-        emit requestPageChange(8);
+        emit requestPageChange(TOPIC_STUDY_PAGE);
         return;
     }
     auto termAndDefinition = taskMap.begin();
@@ -75,7 +75,7 @@ void StudyDefinitions::studyDefinition() {
     if (taskMap.empty()) {
         taskMap = Content::getDefinitionMap();
         if (taskMap.empty()) {
-            emit requestPageChange(8);
+            emit requestPageChange(TOPIC_STUDY_PAGE);
             return;
         }
     }

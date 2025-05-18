@@ -10,6 +10,7 @@
 
 #include <QLabel>
 #include <set>
+#include "core/pageindex.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TopicManagement; }
@@ -24,7 +25,7 @@ public:
     ~TopicManagement() override;
 
 signals:
-    void requestPageChange(int index);
+    void requestPageChange(PageIndex index);
 
 public slots:
     void setTopic(const QString &topic);

@@ -9,8 +9,8 @@
 #define EASYLEARNER_STUDYDEFINITIONS_H
 
 #include <QWidget>
-
 #include "studycontent.h"
+#include "core/pageindex.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class StudyDefinitions; }
@@ -20,7 +20,7 @@ class StudyDefinitions final : public QWidget, public StudyContent {
     Q_OBJECT
 
 signals:
-    void requestPageChange(int index);
+    void requestPageChange(PageIndex index);
 
 public:
     explicit StudyDefinitions(QWidget *parent = nullptr);
