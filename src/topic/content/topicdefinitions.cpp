@@ -29,6 +29,7 @@ TopicDefinitions::~TopicDefinitions() {
 }
 
 void TopicDefinitions::showContentList() {
+    ui->listWidget->clear();
     const std::map<QString, QString> definitionMap = Content::getDefinitionMap();
     for (const auto &[term, definition]: definitionMap) {
         ui->listWidget->addItem(term + " - " + definition);
@@ -36,10 +37,12 @@ void TopicDefinitions::showContentList() {
     ui->listWidget->show();
 }
 
-void TopicDefinitions::deleteContent() const {
+void TopicDefinitions::deleteContent() {
     std::string text = ui->listWidget->takeItem(ui->listWidget->currentRow())->text().toStdString();
     const std::string definition = text.substr(0, text.find(" -"));
     Content::deleteFromDefinitionMap(QString::fromStdString(definition));
+
+    emit updateStudyDefinitionsButton();
 
     if (ui->listWidget->count() == 0) {
         changeButtonState();
@@ -47,10 +50,7 @@ void TopicDefinitions::deleteContent() const {
 }
 
 void TopicDefinitions::goBack() {
-    auto *window = new TopicContent;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit requestPageChange(3);
 }
 
 void TopicDefinitions::changeButtonState() const {

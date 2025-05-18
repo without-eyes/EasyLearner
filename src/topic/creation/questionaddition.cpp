@@ -30,6 +30,10 @@ QuestionAddition::~QuestionAddition() {
 
 void QuestionAddition::addNewContent() {
     Content::addIntoQuestionMap(ui->questionLineEdit->text(), ui->answerLineEdit->text());
+    emit updateQuestionMapShowing();
+    emit updateStudyQuestionsButton();
+    ui->questionLineEdit->clear();
+    ui->answerLineEdit->clear();
     goBack();
 }
 
@@ -42,8 +46,5 @@ void QuestionAddition::changeButtonState() const {
 }
 
 void QuestionAddition::goBack() {
-    auto *window = new TopicManagement;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit requestPageChange(2);
 }

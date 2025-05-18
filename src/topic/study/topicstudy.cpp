@@ -18,13 +18,8 @@ TopicStudy::TopicStudy(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("EasyLearner - Studying");
 
-    if (Content::getDefinitionMap().empty()) {
-        ui->definitionsButton->setEnabled(false);
-    }
-
-    if (Content::getQuestionMap().empty()) {
-        ui->questionsButton->setEnabled(false);
-    }
+    updateStudyQuestionsButton();
+    updateStudyDefinitionsButton();
 
     connect(ui->questionsButton, &QPushButton::clicked, this, &TopicStudy::studyQuestions);
     connect(ui->definitionsButton, &QPushButton::clicked, this, &TopicStudy::studyDefinitions);
@@ -35,23 +30,32 @@ TopicStudy::~TopicStudy() {
     delete ui;
 }
 
+void TopicStudy::updateStudyQuestionsButton() {
+    if (Content::getQuestionMap().empty()) {
+        ui->questionsButton->setEnabled(false);
+    } else {
+        ui->questionsButton->setEnabled(true);
+    }
+}
+
+void TopicStudy::updateStudyDefinitionsButton() {
+    if (Content::getDefinitionMap().empty()) {
+        ui->definitionsButton->setEnabled(false);
+    } else {
+        ui->definitionsButton->setEnabled(true);
+    }
+}
+
 void TopicStudy::studyQuestions() {
-    auto *window = new StudyQuestions;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit startQuestionsStudy();
+    emit requestPageChange(10);
 }
 
 void TopicStudy::studyDefinitions() {
-    auto *window = new StudyDefinitions;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit startDefinitionsStudy();
+    emit requestPageChange(9);
 }
 
 void TopicStudy::goBack() {
-    auto *window = new TopicManagement();
-    window->move(this->pos());
-    window->show();
-    close();
+    emit requestPageChange(2);
 }

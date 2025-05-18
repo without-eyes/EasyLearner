@@ -18,6 +18,9 @@ QT_END_NAMESPACE
 class StudyQuestions final : public QWidget, public StudyContent {
 Q_OBJECT
 
+signals:
+    void requestPageChange(int index);
+
 public:
     explicit StudyQuestions(QWidget *parent = nullptr);
 
@@ -29,6 +32,8 @@ public slots:
     void showNextTask() override;
 
     void changeButtonState() const override;
+
+    void studyQuestion();
 
 private:
     void pickRandomTask() override;

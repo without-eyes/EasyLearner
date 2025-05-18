@@ -29,6 +29,7 @@ TopicQuestions::~TopicQuestions() {
 }
 
 void TopicQuestions::showContentList() {
+    ui->listWidget->clear();
     const std::map<QString, QString> questionMap = Content::getQuestionMap();
     for (const auto &[question, answer]: questionMap) {
         ui->listWidget->addItem(question + " - " + answer);
@@ -36,10 +37,12 @@ void TopicQuestions::showContentList() {
     ui->listWidget->show();
 }
 
-void TopicQuestions::deleteContent() const {
+void TopicQuestions::deleteContent() {
     std::string text = ui->listWidget->takeItem(ui->listWidget->currentRow())->text().toStdString();
     const std::string question = text.substr(0, text.find(" -"));
     Content::deleteFromQuestionMap(QString::fromStdString(question));
+
+    emit updateStudyButton();
 
     if (ui->listWidget->count() == 0) {
         changeButtonState();
@@ -47,10 +50,7 @@ void TopicQuestions::deleteContent() const {
 }
 
 void TopicQuestions::goBack() {
-    auto *window = new TopicContent;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit requestPageChange(3);
 }
 
 void TopicQuestions::changeButtonState() const {

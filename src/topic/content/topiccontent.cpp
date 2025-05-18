@@ -27,22 +27,15 @@ TopicContent::~TopicContent() {
 }
 
 void TopicContent::showDefinition() {
-    auto *window = new TopicDefinitions;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit updateDefinitionMapShowing();
+    emit requestPageChange(4);
 }
 
 void TopicContent::showQuestionsAnswers() {
-    auto *window = new TopicQuestions;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit updateQuestionMapShowing();
+    emit requestPageChange(5);
 }
 
 void TopicContent::goBack() {
-    auto *window = new TopicManagement;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit requestPageChange(2);
 }

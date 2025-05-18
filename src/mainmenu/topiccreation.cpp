@@ -28,7 +28,8 @@ TopicCreation::~TopicCreation() {
 
 void TopicCreation::createNewTopic() {
     if (!ui->nameLineEdit->text().isEmpty()) {
-        MainMenu::addTopicIntoList(ui->nameLineEdit->text());
+        emit topicCreated(ui->nameLineEdit->text());
+        ui->nameLineEdit->clear();
         goBack();
     }
 }
@@ -42,12 +43,5 @@ void TopicCreation::changeButtonState() const {
 }
 
 void TopicCreation::goBack() {
-    auto *window = new MainMenu;
-    window->move(this->pos());
-    window->show();
-    close();
+    emit requestPageChange(0);
 }
-
-
-
-

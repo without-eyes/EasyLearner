@@ -7,6 +7,7 @@
 
 #include "topic/study/studydefinitions.h"
 
+#include <QDebug>
 #include "topic/study/topicstudy.h"
 #include "topic/base/content.h"
 #include "utils/randomizer.h"
@@ -19,14 +20,6 @@ StudyDefinitions::StudyDefinitions(QWidget *parent)
     , ui(new Ui::StudyDefinitions) {
     ui->setupUi(this);
     this->setWindowTitle("EasyLearner - Definition Studying");
-
-    if (taskMap.empty()) {
-        taskMap = Content::getDefinitionMap();
-    }
-
-    pickRandomTask();
-    ui->termLabel->setText(term);
-    changeButtonState();
 
     connect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::checkAnswer);
     connect(ui->definitionLineEdit, &QLineEdit::textChanged, this, &StudyDefinitions::changeButtonState);
@@ -44,20 +37,18 @@ void StudyDefinitions::checkAnswer() {
     }
     ui->definitionLineEdit->setEnabled(false);
     ui->continueButton->setText("Continue");
+    disconnect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::checkAnswer);
     connect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::showNextTask);
 }
 
 void StudyDefinitions::showNextTask() {
+    disconnect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::showNextTask);
+    connect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::checkAnswer);
     if (taskMap.empty()) {
-        auto* window = new TopicStudy;
-        window->move(this->pos());
-        window->show();
+        emit requestPageChange(8);
     } else {
-        auto* window = new StudyDefinitions;
-        window->move(this->pos());
-        window->show();
+        studyDefinition();
     }
-    close();
 }
 
 void StudyDefinitions::changeButtonState() const {
@@ -70,15 +61,28 @@ void StudyDefinitions::changeButtonState() const {
 
 void StudyDefinitions::pickRandomTask() {
     if (taskMap.empty()) {
-        auto* window = new TopicStudy;
-        window->move(this->pos());
-        window->show();
-        close();
+        emit requestPageChange(8);
         return;
     }
     auto termAndDefinition = taskMap.begin();
-    std::advance(termAndDefinition, Randomizer::getInstance()->getInt(taskMap.size() - 1));
+    std::advance(termAndDefinition, Randomizer::getInstance()->getInt(static_cast<int>(taskMap.size()) - 1));
     term = termAndDefinition->first;
     definition = termAndDefinition->second;
     taskMap.erase(termAndDefinition);
+}
+
+void StudyDefinitions::studyDefinition() {
+    if (taskMap.empty()) {
+        taskMap = Content::getDefinitionMap();
+        if (taskMap.empty()) {
+            emit requestPageChange(8);
+            return;
+        }
+    }
+    pickRandomTask();
+    ui->termLabel->setText(term);
+    ui->correctnessLabel->clear();
+    ui->definitionLineEdit->setEnabled(true);
+    ui->definitionLineEdit->clear();
+    changeButtonState();
 }

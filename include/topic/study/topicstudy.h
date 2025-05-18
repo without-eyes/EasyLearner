@@ -17,12 +17,22 @@ QT_END_NAMESPACE
 class TopicStudy final : public QWidget {
 Q_OBJECT
 
+signals:
+    void requestPageChange(int index);
+
+    void startQuestionsStudy();
+
+    void startDefinitionsStudy();
+
 public:
     explicit TopicStudy(QWidget *parent = nullptr);
 
     ~TopicStudy() override;
 
 public slots:
+    void updateStudyQuestionsButton();
+
+    void updateStudyDefinitionsButton();
 
     void studyQuestions();
 

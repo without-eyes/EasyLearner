@@ -19,12 +19,6 @@ StudyQuestions::StudyQuestions(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("EasyLearner - Question Studying");
 
-    taskMap = Content::getQuestionMap();
-
-    pickRandomTask();
-    ui->questionLabel->setText(question);
-    changeButtonState();
-
     connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
     connect(ui->answerLineEdit, &QLineEdit::textChanged, this, &StudyQuestions::changeButtonState);
 }
@@ -35,17 +29,15 @@ StudyQuestions::~StudyQuestions() {
 
 void StudyQuestions::pickRandomTask() {
     if (taskMap.empty()) {
-        auto *window = new TopicStudy;
-        window->move(this->pos());
-        window->show();
-        close();
+        emit requestPageChange(8);
         return;
     }
     auto task = taskMap.begin();
-    std::advance(task, Randomizer::getInstance()->getInt(taskMap.size() - 1));
+    std::advance(task, Randomizer::getInstance()->getInt(static_cast<int>(taskMap.size()) - 1));
     question = task->first;
     answer = task->second;
     taskMap.erase(task);
+    ui->questionLabel->setText(question);
 }
 
 void StudyQuestions::checkAnswer() {
@@ -56,20 +48,18 @@ void StudyQuestions::checkAnswer() {
     }
     ui->answerLineEdit->setEnabled(false);
     ui->continueButton->setText("Continue");
+    disconnect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
     connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::showNextTask);
 }
 
 void StudyQuestions::showNextTask() {
+    disconnect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::showNextTask);
+    connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
     if (taskMap.empty()) {
-        auto *window = new TopicStudy;
-        window->move(this->pos());
-        window->show();
+        emit requestPageChange(8);
     } else {
-        auto *window = new StudyQuestions;
-        window->move(this->pos());
-        window->show();
+        studyQuestion();
     }
-    close();
 }
 
 void StudyQuestions::changeButtonState() const {
@@ -78,6 +68,22 @@ void StudyQuestions::changeButtonState() const {
     } else {
         ui->continueButton->setEnabled(false);
     }
+}
+
+void StudyQuestions::studyQuestion() {
+    if (taskMap.empty()) {
+        taskMap = Content::getQuestionMap();
+        if (taskMap.empty()) {
+            emit requestPageChange(8);
+            return;
+        }
+    }
+    pickRandomTask();
+    ui->questionLabel->setText(question);
+    ui->correctnessLabel->clear();
+    ui->answerLineEdit->setEnabled(true);
+    ui->answerLineEdit->clear();
+    changeButtonState();
 }
 
 

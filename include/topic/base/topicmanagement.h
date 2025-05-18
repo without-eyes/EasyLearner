@@ -23,7 +23,11 @@ public:
 
     ~TopicManagement() override;
 
+signals:
+    void requestPageChange(int index);
+
 public slots:
+    void setTopic(const QString &topic);
 
     void startStudy();
 

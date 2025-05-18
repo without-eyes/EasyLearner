@@ -7,7 +7,7 @@
 
 #include "topic/content/topiccontentmanagement.h"
 
-void TopicContentManagement::deleteContent() const {}
+void TopicContentManagement::deleteContent() {}
 void TopicContentManagement::goBack() {}
 void TopicContentManagement::changeButtonState() const {}
 void TopicContentManagement::showContentList() {}
