@@ -42,12 +42,12 @@ void StudyDefinitions::checkAnswer() {
 }
 
 void StudyDefinitions::showNextTask() {
+    disconnect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::showNextTask);
+    connect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::checkAnswer);
     if (taskMap.empty()) {
         emit requestPageChange(8);
     } else {
         studyDefinition();
-        disconnect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::showNextTask);
-        connect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::checkAnswer);
     }
 }
 

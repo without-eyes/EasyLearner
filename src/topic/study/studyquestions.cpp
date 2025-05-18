@@ -53,12 +53,12 @@ void StudyQuestions::checkAnswer() {
 }
 
 void StudyQuestions::showNextTask() {
+    disconnect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::showNextTask);
+    connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
     if (taskMap.empty()) {
         emit requestPageChange(8);
     } else {
         studyQuestion();
-        disconnect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::showNextTask);
-        connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
     }
 }
 
