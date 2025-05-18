@@ -30,14 +30,15 @@ signals:
 
     void setTopic(const QString &topic);
 
+public slots:
+    void changeButtonState();
+
 private slots:
     void pickTopic();
 
     void createTopic();
 
-    void deleteTopic() const;
-
-    void changeButtonState() const;
+    void deleteTopic();
 
 private:
     Ui::MainMenu *ui;

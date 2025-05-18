@@ -48,7 +48,7 @@ void MainMenu::pickTopic() {
     emit requestPageChange(2);
 }
 
-void MainMenu::changeButtonState() const {
+void MainMenu::changeButtonState() {
     if (const auto *item = ui->listWidget->currentItem(); item && !item->text().isEmpty()) {
         ui->pickButton->setEnabled(true);
         ui->deleteButton->setEnabled(true);
@@ -62,7 +62,7 @@ void MainMenu::createTopic() {
     emit requestPageChange(1);
 }
 
-void MainMenu::deleteTopic() const {
+void MainMenu::deleteTopic() {
     const auto *item = ui->listWidget->currentItem();
     topicList.removeOne(item->text());
     delete ui->listWidget->takeItem(ui->listWidget->row(item));

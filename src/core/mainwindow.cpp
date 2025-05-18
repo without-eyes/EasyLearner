@@ -61,6 +61,7 @@ MainWindow::MainWindow() {
     connect(studyQuestions, &StudyQuestions::requestPageChange, stack, &QStackedWidget::setCurrentIndex);
 
     connect(topicCreation, &TopicCreation::topicCreated, mainMenu, &MainMenu::addTopicIntoList);
+    connect(topicCreation, &TopicCreation::topicCreated, mainMenu, &MainMenu::changeButtonState);
     connect(mainMenu, &MainMenu::setTopic, topicManagement, &TopicManagement::setTopic);
 
     connect(topicContent, &TopicContent::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
