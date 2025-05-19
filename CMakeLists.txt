@@ -11,17 +11,20 @@ find_package(Qt5 COMPONENTS
         Gui
         Widgets
         Sql
+        Multimedia
         REQUIRED)
 
+qt5_add_resources(RESOURCES resources/resources.qrc)
+
 if(WIN32)
-    set(WIN_ICON resources/resources.rc)
-else ()
-    qt5_add_resources(LINUX_ICON resources/resources.qrc)
+    set(WIN_ICON resources/resources.rc
+            src/utils/soundplayer.cpp
+            include/utils/soundplayer.h)
 endif()
 
 add_executable(EasyLearner src/core/main.cpp
         ${WIN_ICON}
-        ${LINUX_ICON}
+        ${RESOURCES}
         src/mainmenu/mainmenu.cpp
         include/mainmenu/mainmenu.h
         forms/MainMenu.ui
@@ -70,6 +73,8 @@ add_executable(EasyLearner src/core/main.cpp
         src/core/mainwindow.cpp
         include/core/mainwindow.h
         include/core/pageindex.h
+        src/utils/soundplayer.cpp
+        include/utils/soundplayer.h
 )
 
 target_include_directories(EasyLearner PRIVATE
@@ -80,5 +85,6 @@ target_link_libraries(EasyLearner
         Qt5::Gui
         Qt5::Widgets
         Qt5::Sql
+        Qt5::Multimedia
 )
 

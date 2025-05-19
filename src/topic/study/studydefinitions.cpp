@@ -7,7 +7,6 @@
 
 #include "topic/study/studydefinitions.h"
 
-#include <QDebug>
 #include "topic/study/topicstudy.h"
 #include "topic/base/content.h"
 #include "utils/randomizer.h"
@@ -32,8 +31,10 @@ StudyDefinitions::~StudyDefinitions() {
 void StudyDefinitions::checkAnswer() {
     if (compareAnswers(ui->definitionLineEdit->text(), definition)) {
         ui->correctnessLabel->setText("Correct!");
+        soundPlayer.playCorrectAnswerSound();
     } else {
         ui->correctnessLabel->setText("Wrong! Correct answer: " + definition);
+        soundPlayer.playBadAnswerSound();
     }
     ui->definitionLineEdit->setEnabled(false);
     ui->continueButton->setText("Continue");
@@ -46,6 +47,7 @@ void StudyDefinitions::showNextTask() {
     connect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::checkAnswer);
     if (taskMap.empty()) {
         emit requestPageChange(TOPIC_STUDY_PAGE);
+        soundPlayer.playFinishedStudySound();
     } else {
         studyDefinition();
     }
@@ -62,6 +64,7 @@ void StudyDefinitions::changeButtonState() const {
 void StudyDefinitions::pickRandomTask() {
     if (taskMap.empty()) {
         emit requestPageChange(TOPIC_STUDY_PAGE);
+        soundPlayer.playFinishedStudySound();
         return;
     }
     auto termAndDefinition = taskMap.begin();

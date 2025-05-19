@@ -1,6 +1,9 @@
 <!DOCTYPE RCC>
 <RCC>
-    <qresource prefix="/assets">
-        <file>../assets/icon.png</file>
+    <qresource prefix="/">
+        <file>../assets/img/icon.png</file>
+        <file>../assets/sounds/bad_answer.mp3</file>
+        <file>../assets/sounds/correct_answer.mp3</file>
+        <file>../assets/sounds/finished_study.mp3</file>
     </qresource>
 </RCC>

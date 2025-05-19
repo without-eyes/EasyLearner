@@ -11,6 +11,7 @@
 #include <QWidget>
 #include "studycontent.h"
 #include "core/pageindex.h"
+#include "utils/soundplayer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class StudyQuestions; }
@@ -43,6 +44,7 @@ private:
     static std::map<QString, QString> taskMap;
     QString question;
     QString answer;
+    SoundPlayer soundPlayer;
 };
 
 

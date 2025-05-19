@@ -30,6 +30,7 @@ StudyQuestions::~StudyQuestions() {
 void StudyQuestions::pickRandomTask() {
     if (taskMap.empty()) {
         emit requestPageChange(TOPIC_STUDY_PAGE);
+        soundPlayer.playFinishedStudySound();
         return;
     }
     auto task = taskMap.begin();
@@ -43,8 +44,10 @@ void StudyQuestions::pickRandomTask() {
 void StudyQuestions::checkAnswer() {
     if (compareAnswers(ui->answerLineEdit->text(), answer)) {
         ui->correctnessLabel->setText("Correct!");
+        soundPlayer.playCorrectAnswerSound();
     } else {
         ui->correctnessLabel->setText("Wrong! Correct answer: " + answer);
+        soundPlayer.playBadAnswerSound();
     }
     ui->answerLineEdit->setEnabled(false);
     ui->continueButton->setText("Continue");
@@ -57,6 +60,7 @@ void StudyQuestions::showNextTask() {
     connect(ui->continueButton, &QPushButton::clicked, this, &StudyQuestions::checkAnswer);
     if (taskMap.empty()) {
         emit requestPageChange(TOPIC_STUDY_PAGE);
+        soundPlayer.playFinishedStudySound();
     } else {
         studyQuestion();
     }
