@@ -50,7 +50,7 @@ void TopicQuestions::deleteContent() {
 }
 
 void TopicQuestions::goBack() {
-    emit requestPageChange(TOPIC_STUDY_PAGE);
+    emit requestPageChange(TOPIC_CONTENT_PAGE);
 }
 
 void TopicQuestions::changeButtonState() const {
