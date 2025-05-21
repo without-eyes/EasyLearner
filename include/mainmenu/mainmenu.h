@@ -8,6 +8,7 @@
 #ifndef EASYLEARNER_MAINMENU_H
 #define EASYLEARNER_MAINMENU_H
 
+#include <QSqlTableModel>
 #include <QWidget>
 #include "core/pageindex.h"
 
@@ -31,6 +32,8 @@ signals:
 
     void setTopic(const QString &topic);
 
+    void loadTopicContent();
+
 public slots:
     void changeButtonState();
 
@@ -46,6 +49,8 @@ private:
     static QList<QString> topicList;
 
     void showTableContent() const;
+
+    static void loadTopicsFromModel(const QSqlTableModel* model);
 };
 
 

@@ -9,12 +9,12 @@
 #ifndef EASYLEARNER_CONTENT_H
 #define EASYLEARNER_CONTENT_H
 
-#include <QString>
 #include <map>
+#include "utils/database.h"
 
 class Content {
 public:
-    explicit Content(const QString &topicName);
+    explicit Content();
 
     static void addIntoDefinitionMap(const QString &term, const QString &definition);
 
@@ -32,10 +32,17 @@ public:
 
     static QString getCurrentTopic();
 
+    static void loadContentFromDatabase();
+
 private:
+    static Database database;
     static QString currentTopic;
     static std::map<QString, std::map<QString, QString>> topicDefinitionMap;
     static std::map<QString, std::map<QString, QString>> topicQuestionMap;
+
+    static void loadDefinitionsFromModel(const QSqlTableModel* model);
+
+    static void loadQuestionsFromModel(const QSqlTableModel* model);
 };
 
 

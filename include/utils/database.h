@@ -14,26 +14,28 @@ class Database {
 public:
     Database();
 
-    void addTopic(QString topic);
+    void createDatabase();
+
+    void addTopic(const QString& topic);
 
     void addTerm(QString term, QString definition);
 
-    void addQuestion(QString question, QString answer);
+    void addQuestion(const QString& question, const QString& answer);
 
-    void deleteTopic(QString topic);
+    void deleteTopic(const QString& topic);
 
-    void deleteTerm(QString term, QString definition);
+    void deleteTerm(const QString& term);
 
-    void deleteQuestion(QString question, QString answer);
+    void deleteQuestion(const QString& question);
 
-    QSqlTableModel getAllTopics();
+    QSqlTableModel* getAllTopics() const;
 
-    QSqlTableModel getAllTerms();
+    QSqlTableModel* getAllTerms(const QString& topic) const;
 
-    QSqlTableModel getAllQuestions();
+    QSqlTableModel* getAllQuestions(const QString& topic) const;
 
 private:
-    static QSqlDatabase database;
+    QSqlDatabase database;
 };
 
 

@@ -27,7 +27,13 @@ public:
 signals:
     void requestPageChange(PageIndex index);
 
+    void updateDefinitionMapShowing();
+
+    void updateQuestionMapShowing();
+
 public slots:
+    void loadTopicContent();
+
     void setTopic(const QString &topic);
 
     void startStudy();

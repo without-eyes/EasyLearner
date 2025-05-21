@@ -8,8 +8,8 @@
 #include "mainmenu/mainmenu.h"
 
 #include <QStringListModel>
+#include <QSqlRecord>
 #include "utils/database.h"
-#include "topic/base/content.h"
 #include "../../forms/ui_MainMenu.h"
 
 QList<QString> MainMenu::topicList;
@@ -20,7 +20,8 @@ MainMenu::MainMenu(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("EasyLearner - Main Menu");
 
-    Database();
+    const Database database;
+    loadTopicsFromModel(database.getAllTopics());
 
     showTableContent();
     changeButtonState();
@@ -43,8 +44,22 @@ void MainMenu::showTableContent() const {
     ui->listWidget->show();
 }
 
+void MainMenu::loadTopicsFromModel(const QSqlTableModel* model) {
+    topicList.clear();
+
+    const int topicCol = model->fieldIndex("topic");
+
+    for (int i = 0; i < model->rowCount(); ++i) {
+        QString topic = model->record(i).value(topicCol).toString();
+        topicList.push_back(topic);
+    }
+
+    delete model;
+}
+
 void MainMenu::pickTopic() {
     emit setTopic(ui->listWidget->currentItem()->text());
+    emit loadTopicContent();
     emit requestPageChange(TOPIC_MANAGEMENT_PAGE);
 }
 
@@ -66,6 +81,8 @@ void MainMenu::deleteTopic() {
     const auto *item = ui->listWidget->currentItem();
     topicList.removeOne(item->text());
     delete ui->listWidget->takeItem(ui->listWidget->row(item));
+    Database database;
+    database.deleteTopic(item->text());
 
     if (ui->listWidget->count() == 0) {
         changeButtonState();

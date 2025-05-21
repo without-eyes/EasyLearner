@@ -9,6 +9,7 @@
 
 #include "mainmenu/mainmenu.h"
 #include "../../forms/ui_TopicCreation.h"
+#include "utils/database.h"
 
 TopicCreation::TopicCreation(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicCreation) {
@@ -28,7 +29,10 @@ TopicCreation::~TopicCreation() {
 
 void TopicCreation::createNewTopic() {
     if (!ui->nameLineEdit->text().isEmpty()) {
-        emit topicCreated(ui->nameLineEdit->text());
+        Database database;
+        const QString topic = ui->nameLineEdit->text();
+        database.addTopic(topic);
+        emit topicCreated(topic);
         ui->nameLineEdit->clear();
         goBack();
     }
