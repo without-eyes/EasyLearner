@@ -45,6 +45,7 @@ private:
     QString term;
     QString definition;
     SoundPlayer soundPlayer;
+    size_t definitionMapSizeBeforeStudying;
 };
 
 #endif // EASYLEARNER_STUDYDEFINITIONS_H

@@ -45,6 +45,7 @@ private:
     QString question;
     QString answer;
     SoundPlayer soundPlayer;
+    size_t questionMapSizeBeforeStudying;
 };
 
 

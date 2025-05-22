@@ -22,3 +22,11 @@ QListWidget {
     border: 1px solid lightgrey;
     border-radius: 4px;
 }
+
+QProgressBar {
+    background-color: #3399FF;
+    border: 1px solid white;
+    border-radius: 4px;
+    color: white;
+    text-align: center;
+}

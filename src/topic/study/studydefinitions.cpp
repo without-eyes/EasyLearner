@@ -81,8 +81,20 @@ void StudyDefinitions::studyDefinition() {
             emit requestPageChange(TOPIC_STUDY_PAGE);
             return;
         }
+        definitionMapSizeBeforeStudying = static_cast<int>(taskMap.size());
     }
+
+    if (definitionMapSizeBeforeStudying == 0) {
+        definitionMapSizeBeforeStudying = taskMap.size();
+    }
+
     pickRandomTask();
+
+    const int remained = static_cast<int>(taskMap.size());
+    const int studied = definitionMapSizeBeforeStudying - remained;
+    const int percent = static_cast<int>((studied * 100.0) / definitionMapSizeBeforeStudying);
+    ui->progressBar->setValue(percent);
+
     ui->termLabel->setText(term);
     ui->correctnessLabel->clear();
     ui->definitionLineEdit->setEnabled(true);

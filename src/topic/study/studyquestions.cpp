@@ -81,8 +81,20 @@ void StudyQuestions::studyQuestion() {
             emit requestPageChange(TOPIC_STUDY_PAGE);
             return;
         }
+        questionMapSizeBeforeStudying = static_cast<int>(taskMap.size());
     }
+
+    if (questionMapSizeBeforeStudying == 0) {
+        questionMapSizeBeforeStudying = taskMap.size();
+    }
+
     pickRandomTask();
+
+    const int remained = static_cast<int>(taskMap.size());
+    const int studied = questionMapSizeBeforeStudying - remained;
+    const int percent = static_cast<int>((studied * 100.0) / questionMapSizeBeforeStudying);
+    ui->progressBar->setValue(percent);
+
     ui->questionLabel->setText(question);
     ui->correctnessLabel->clear();
     ui->answerLineEdit->setEnabled(true);
