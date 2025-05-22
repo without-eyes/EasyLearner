@@ -48,6 +48,8 @@ private:
     void connectSignalsToSlots();
 
     void configureMainWindow();
+
+    void setAppStyle();
 };
 
 

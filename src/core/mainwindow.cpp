@@ -7,6 +7,8 @@
 
 #include "core/mainwindow.h"
 
+#include <qfile.h>
+
 MainWindow::MainWindow() {
     allocateFields();
     addEveryWidgetToStack();
@@ -79,4 +81,14 @@ void MainWindow::configureMainWindow() {
     setWindowIcon(QIcon(":/assets/img/icon.png"));
     setCentralWidget(stackedWidget);
     resize(400, 300);
+    this->setFixedSize(this->size());
+    setAppStyle();
+}
+
+void MainWindow::setAppStyle() {
+    if (QFile file(":/assets/style.qss"); file.open(QFile::ReadOnly | QFile::Text)) {
+        const QString style = file.readAll();
+        this->setStyleSheet(style);
+        file.close();
+    }
 }

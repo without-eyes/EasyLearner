@@ -5,5 +5,6 @@
         <file>../assets/sounds/bad_answer.mp3</file>
         <file>../assets/sounds/correct_answer.mp3</file>
         <file>../assets/sounds/finished_study.mp3</file>
+        <file>../assets/style.qss</file>
     </qresource>
 </RCC>
