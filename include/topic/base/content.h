@@ -40,9 +40,9 @@ private:
     static std::map<QString, std::map<QString, QString>> topicDefinitionMap;
     static std::map<QString, std::map<QString, QString>> topicQuestionMap;
 
-    static void loadDefinitionsFromModel(const QSqlTableModel* model);
+    static void loadDefinitionsFromModel(const QSharedPointer<QSqlTableModel>& model);
 
-    static void loadQuestionsFromModel(const QSqlTableModel* model);
+    static void loadQuestionsFromModel(const QSharedPointer<QSqlTableModel>& model);
 };
 
 

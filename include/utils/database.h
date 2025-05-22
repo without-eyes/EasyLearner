@@ -28,11 +28,11 @@ public:
 
     void deleteQuestion(const QString& question);
 
-    QSqlTableModel* getAllTopics() const;
+    QSharedPointer<QSqlTableModel> getAllTopics() const;
 
-    QSqlTableModel* getAllTerms(const QString& topic) const;
+    QSharedPointer<QSqlTableModel> getAllTerms(const QString& topic) const;
 
-    QSqlTableModel* getAllQuestions(const QString& topic) const;
+    QSharedPointer<QSqlTableModel> getAllQuestions(const QString& topic) const;
 
 private:
     QSqlDatabase database;

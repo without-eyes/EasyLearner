@@ -50,7 +50,7 @@ private:
 
     void showTableContent() const;
 
-    static void loadTopicsFromModel(const QSqlTableModel* model);
+    static void loadTopicsFromModel(const QSharedPointer<QSqlTableModel>& model);
 };
 
 

@@ -9,6 +9,7 @@
 
 #include <QStringListModel>
 #include <QSqlRecord>
+#include <QSharedPointer>
 #include "utils/database.h"
 #include "../../forms/ui_MainMenu.h"
 
@@ -44,7 +45,7 @@ void MainMenu::showTableContent() const {
     ui->listWidget->show();
 }
 
-void MainMenu::loadTopicsFromModel(const QSqlTableModel* model) {
+void MainMenu::loadTopicsFromModel(const QSharedPointer<QSqlTableModel>& model) {
     topicList.clear();
 
     const int topicCol = model->fieldIndex("topic");
@@ -53,8 +54,6 @@ void MainMenu::loadTopicsFromModel(const QSqlTableModel* model) {
         QString topic = model->record(i).value(topicCol).toString();
         topicList.push_back(topic);
     }
-
-    delete model;
 }
 
 void MainMenu::pickTopic() {
@@ -80,9 +79,9 @@ void MainMenu::createTopic() {
 void MainMenu::deleteTopic() {
     const auto *item = ui->listWidget->currentItem();
     topicList.removeOne(item->text());
-    delete ui->listWidget->takeItem(ui->listWidget->row(item));
     Database database;
     database.deleteTopic(item->text());
+    delete ui->listWidget->takeItem(ui->listWidget->row(item));
 
     if (ui->listWidget->count() == 0) {
         changeButtonState();

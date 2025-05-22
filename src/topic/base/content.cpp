@@ -8,7 +8,7 @@
 #include "topic/base/content.h"
 
 #include <QSqlRecord>
-
+#include <QSharedPointer>
 #include "utils/database.h"
 
 Database Content::database;
@@ -61,7 +61,7 @@ void Content::loadContentFromDatabase() {
     loadQuestionsFromModel(database.getAllQuestions(currentTopic));
 }
 
-void Content::loadDefinitionsFromModel(const QSqlTableModel* model) {
+void Content::loadDefinitionsFromModel(const QSharedPointer<QSqlTableModel>& model) {
     topicDefinitionMap[currentTopic].clear();
 
     const int termCol = model->fieldIndex("term");
@@ -74,7 +74,7 @@ void Content::loadDefinitionsFromModel(const QSqlTableModel* model) {
     }
 }
 
-void Content::loadQuestionsFromModel(const QSqlTableModel*model) {
+void Content::loadQuestionsFromModel(const QSharedPointer<QSqlTableModel>& model) {
     topicQuestionMap[currentTopic].clear();
 
     const int rowCount = model->rowCount();

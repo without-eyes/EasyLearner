@@ -7,7 +7,7 @@
 
 #include "utils/database.h"
 
-#include <QDebug>
+#include <QSharedPointer>
 #include <QSqlQuery>
 
 Database::Database() {
@@ -108,14 +108,14 @@ void Database::deleteQuestion(const QString& question) {
     query.exec();
 }
 
-QSqlTableModel* Database::getAllTopics() const {
-    auto* model = new QSqlTableModel(nullptr, database);
+QSharedPointer<QSqlTableModel> Database::getAllTopics() const {
+    QSharedPointer<QSqlTableModel> model(new QSqlTableModel(nullptr, database));
     model->setTable("topics");
     model->select();
     return model;
 }
 
-QSqlTableModel* Database::getAllTerms(const QString& topic) const {
+QSharedPointer<QSqlTableModel> Database::getAllTerms(const QString& topic) const {
     QSqlQuery idQuery(database);
     idQuery.prepare("SELECT id FROM topics WHERE topic = :topic");
     idQuery.bindValue(":topic", topic);
@@ -125,7 +125,7 @@ QSqlTableModel* Database::getAllTerms(const QString& topic) const {
 
     const int topicId = idQuery.value(0).toInt();
 
-    auto* model = new QSqlTableModel(nullptr, database);
+    QSharedPointer<QSqlTableModel> model(new QSqlTableModel(nullptr, database));
     model->setTable("termsanddefinitions");
     model->setFilter(QString("topic_id = %1").arg(topicId));
     model->setSort(model->fieldIndex("topic_id"), Qt::AscendingOrder);
@@ -134,7 +134,7 @@ QSqlTableModel* Database::getAllTerms(const QString& topic) const {
     return model;
 }
 
-QSqlTableModel* Database::getAllQuestions(const QString& topic) const {
+QSharedPointer<QSqlTableModel> Database::getAllQuestions(const QString& topic) const {
     QSqlQuery idQuery(database);
     idQuery.prepare("SELECT id FROM topics WHERE topic = :topic");
     idQuery.bindValue(":topic", topic);
@@ -144,7 +144,7 @@ QSqlTableModel* Database::getAllQuestions(const QString& topic) const {
 
     const int topicId = idQuery.value(0).toInt();
 
-    auto* model = new QSqlTableModel(nullptr, database);
+    QSharedPointer<QSqlTableModel> model(new QSqlTableModel(nullptr, database));
     model->setTable("questionsandanswers");
     model->setFilter(QString("topic_id = %1").arg(topicId));
     model->setSort(model->fieldIndex("topic_id"), Qt::AscendingOrder);
