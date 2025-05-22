@@ -16,7 +16,6 @@
 TopicStudy::TopicStudy(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicStudy) {
     ui->setupUi(this);
-    this->setWindowTitle("EasyLearner - Studying");
 
     updateStudyQuestionsButton();
     updateStudyDefinitionsButton();

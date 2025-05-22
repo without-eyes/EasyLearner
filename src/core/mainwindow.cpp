@@ -12,6 +12,7 @@
 MainWindow::MainWindow() {
     allocateFields();
     addEveryWidgetToStack();
+    setWindowNameArray();
     connectSignalsToSlots();
     configureMainWindow();
 }
@@ -45,18 +46,32 @@ void MainWindow::addEveryWidgetToStack() const {
     stackedWidget->addWidget(studyQuestions);
 }
 
+void MainWindow::setWindowNameArray() {
+    windowNames[MAIN_MENU_PAGE] = "EasyLearner - Main Menu";
+    windowNames[TOPIC_CREATION_PAGE] = "EasyLearner - Topic Creation";
+    windowNames[TOPIC_MANAGEMENT_PAGE] = "EasyLearner - Topic Management";
+    windowNames[TOPIC_CONTENT_PAGE] = "EasyLearner - Content";
+    windowNames[TOPIC_DEFINITIONS_PAGE] = "EasyLearner - Definitions";
+    windowNames[TOPIC_QUESTIONS_PAGE] = "EasyLearner - Questions";
+    windowNames[DEFINITION_ADDITION_PAGE] = "EasyLearner - Definition Addition";
+    windowNames[QUESTION_ADDITION_PAGE] = "EasyLearner - Question Addition";
+    windowNames[TOPIC_STUDY_PAGE] = "EasyLearner - Studying";
+    windowNames[STUDY_DEFINITIONS_PAGE] = "EasyLearner - Definition Studying";
+    windowNames[STUDY_QUESTIONS_PAGE] = "EasyLearner - Question Studying";
+}
+
 void MainWindow::connectSignalsToSlots() {
-    connect(mainMenu, &MainMenu::requestPageChange, stackedWidget, &QStackedWidget::setCurrentIndex);
-    connect(topicCreation, &TopicCreation::requestPageChange, stackedWidget, &QStackedWidget::setCurrentIndex);
-    connect(topicManagement, &TopicManagement::requestPageChange, stackedWidget, &QStackedWidget::setCurrentIndex);
-    connect(topicContent, &TopicContent::requestPageChange, stackedWidget, &QStackedWidget::setCurrentIndex);
-    connect(topicDefinitions, &TopicDefinitions::requestPageChange, stackedWidget, &QStackedWidget::setCurrentIndex);
-    connect(topicQuestions, &TopicQuestions::requestPageChange, stackedWidget, &QStackedWidget::setCurrentIndex);
-    connect(definitionAddition, &DefinitionAddition::requestPageChange, stackedWidget, &QStackedWidget::setCurrentIndex);
-    connect(questionAddition, &QuestionAddition::requestPageChange, stackedWidget, &QStackedWidget::setCurrentIndex);
-    connect(topicStudy, &TopicStudy::requestPageChange, stackedWidget, &QStackedWidget::setCurrentIndex);
-    connect(studyDefinitions, &StudyDefinitions::requestPageChange, stackedWidget, &QStackedWidget::setCurrentIndex);
-    connect(studyQuestions, &StudyQuestions::requestPageChange, stackedWidget, &QStackedWidget::setCurrentIndex);
+    connect(mainMenu, &MainMenu::requestPageChange, this, &MainWindow::changePage);
+    connect(topicCreation, &TopicCreation::requestPageChange, this, &MainWindow::changePage);
+    connect(topicManagement, &TopicManagement::requestPageChange, this, &MainWindow::changePage);
+    connect(topicContent, &TopicContent::requestPageChange, this, &MainWindow::changePage);
+    connect(topicDefinitions, &TopicDefinitions::requestPageChange, this, &MainWindow::changePage);
+    connect(topicQuestions, &TopicQuestions::requestPageChange, this, &MainWindow::changePage);
+    connect(definitionAddition, &DefinitionAddition::requestPageChange, this, &MainWindow::changePage);
+    connect(questionAddition, &QuestionAddition::requestPageChange, this, &MainWindow::changePage);
+    connect(topicStudy, &TopicStudy::requestPageChange, this, &MainWindow::changePage);
+    connect(studyDefinitions, &StudyDefinitions::requestPageChange, this, &MainWindow::changePage);
+    connect(studyQuestions, &StudyQuestions::requestPageChange, this, &MainWindow::changePage);
 
     connect(topicCreation, &TopicCreation::topicCreated, mainMenu, &MainMenu::addTopicIntoList);
     connect(topicCreation, &TopicCreation::topicCreated, mainMenu, &MainMenu::changeButtonState);
@@ -87,6 +102,7 @@ void MainWindow::connectSignalsToSlots() {
 void MainWindow::configureMainWindow() {
     setAttribute(Qt::WA_DeleteOnClose);
     setWindowIcon(QIcon(":/assets/img/icon.png"));
+    setWindowTitle(windowNames[0]);
     setCentralWidget(stackedWidget);
     resize(400, 300);
     this->setFixedSize(this->size());
@@ -99,4 +115,9 @@ void MainWindow::setAppStyle() {
         this->setStyleSheet(style);
         file.close();
     }
+}
+
+void MainWindow::changePage(const PageIndex index) {
+    setWindowTitle(windowNames[index]);
+    stackedWidget->setCurrentIndex(index);
 }

@@ -14,7 +14,6 @@
 TopicQuestions::TopicQuestions(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicQuestions) {
     ui->setupUi(this);
-    this->setWindowTitle("EasyLearner - Questions");
 
     showContentList();
     changeButtonState();

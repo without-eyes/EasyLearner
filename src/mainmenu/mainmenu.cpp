@@ -19,7 +19,6 @@ MainMenu::MainMenu(QWidget *parent) :
         QWidget(parent),
         ui(new Ui::MainMenu) {
     ui->setupUi(this);
-    this->setWindowTitle("EasyLearner - Main Menu");
 
     const Database database;
     loadTopicsFromModel(database.getAllTopics());

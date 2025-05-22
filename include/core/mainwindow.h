@@ -40,16 +40,21 @@ private:
     TopicStudy* topicStudy;
     StudyDefinitions* studyDefinitions;
     StudyQuestions* studyQuestions;
+    std::array<QString, 11> windowNames;
 
     void allocateFields();
 
     void addEveryWidgetToStack() const;
+
+    void setWindowNameArray();
 
     void connectSignalsToSlots();
 
     void configureMainWindow();
 
     void setAppStyle();
+
+    void changePage(PageIndex index);
 };
 
 

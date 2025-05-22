@@ -15,7 +15,6 @@
 TopicContent::TopicContent(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicContent) {
     ui->setupUi(this);
-    this->setWindowTitle("EasyLearner - Content");
 
     connect(ui->definitionButton, &QPushButton::clicked, this, &TopicContent::showDefinition);
     connect(ui->qaButton, &QPushButton::clicked, this, &TopicContent::showQuestionsAnswers);
