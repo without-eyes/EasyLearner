@@ -8,7 +8,7 @@
 #include "topic/content/topicquestions.h"
 
 #include "topic/content/topiccontent.h"
-#include "topic/base/content.h"
+#include "topic/base/contentmanager.h"
 #include "../../../forms/ui_TopicQuestions.h"
 
 TopicQuestions::TopicQuestions(QWidget *parent) :
@@ -30,17 +30,20 @@ TopicQuestions::~TopicQuestions() {
 
 void TopicQuestions::showContentList() {
     ui->listWidget->clear();
-    const std::map<QString, QString> questionMap = Content::getQuestionMap();
-    for (const auto &[question, answer]: questionMap) {
+    for (const auto &[question, answer]: contentManager.getQuestionMap()) {
         ui->listWidget->addItem(question + " - " + answer);
     }
     ui->listWidget->show();
 }
 
+void TopicQuestions::setContentManager(const ContentManager &contentManager) {
+    this->contentManager = contentManager;
+}
+
 void TopicQuestions::deleteContent() {
     std::string text = ui->listWidget->takeItem(ui->listWidget->currentRow())->text().toStdString();
     const std::string question = text.substr(0, text.find(" -"));
-    Content::deleteFromQuestionMap(QString::fromStdString(question));
+    contentManager.deleteFromQuestionMap(QString::fromStdString(question));
 
     if (ui->listWidget->count() == 0) {
         changeButtonState();

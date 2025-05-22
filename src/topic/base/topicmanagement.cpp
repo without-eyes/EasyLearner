@@ -9,7 +9,7 @@
 
 #include "mainmenu/mainmenu.h"
 #include "topic/creation/questionaddition.h"
-#include "topic/base/content.h"
+#include "topic/base/contentmanager.h"
 #include "../../../forms/ui_TopicManagement.h"
 
 TopicManagement::TopicManagement(QWidget *parent) :
@@ -29,13 +29,14 @@ TopicManagement::~TopicManagement() {
 }
 
 void TopicManagement::loadTopicContent() {
-    Content::loadContentFromDatabase();
+    contentManager.loadContentFromDatabase();
+    emit setContentManager(contentManager);
     emit updateDefinitionMapShowing();
     emit updateQuestionMapShowing();
 }
 
 void TopicManagement::setTopic(const QString &topic) {
-    Content::setCurrentTopic(topic);
+    contentManager.setCurrentTopic(topic);
     ui->label->setText(topic);
 }
 

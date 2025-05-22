@@ -8,7 +8,6 @@
 #include "topic/study/studyquestions.h"
 
 #include "topic/study/topicstudy.h"
-#include "topic/base/content.h"
 #include "utils/randomizer.h"
 #include "../../../forms/ui_StudyQuestions.h"
 
@@ -25,6 +24,11 @@ StudyQuestions::StudyQuestions(QWidget *parent) :
 
 StudyQuestions::~StudyQuestions() {
     delete ui;
+}
+
+void StudyQuestions::setTaskMap(const std::map<QString, QString> &taskMap) {
+    this->taskMap = taskMap;
+    questionMapSizeBeforeStudying = taskMap.size();
 }
 
 void StudyQuestions::pickRandomTask() {
@@ -76,16 +80,9 @@ void StudyQuestions::changeButtonState() const {
 
 void StudyQuestions::studyQuestion() {
     if (taskMap.empty()) {
-        taskMap = Content::getQuestionMap();
-        if (taskMap.empty()) {
-            emit requestPageChange(TOPIC_STUDY_PAGE);
-            return;
-        }
-        questionMapSizeBeforeStudying = static_cast<int>(taskMap.size());
-    }
-
-    if (questionMapSizeBeforeStudying == 0) {
-        questionMapSizeBeforeStudying = taskMap.size();
+        questionMapSizeBeforeStudying = 0;
+        emit requestPageChange(TOPIC_STUDY_PAGE);
+        return;
     }
 
     pickRandomTask();

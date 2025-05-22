@@ -8,7 +8,6 @@
 #include "topic/study/studydefinitions.h"
 
 #include "topic/study/topicstudy.h"
-#include "topic/base/content.h"
 #include "utils/randomizer.h"
 #include "../../../forms/ui_StudyDefinitions.h"
 
@@ -26,6 +25,11 @@ StudyDefinitions::StudyDefinitions(QWidget *parent)
 
 StudyDefinitions::~StudyDefinitions() {
     delete ui;
+}
+
+void StudyDefinitions::setTaskMap(const std::map<QString, QString> &taskMap) {
+    this->taskMap = taskMap;
+    definitionMapSizeBeforeStudying = static_cast<int>(taskMap.size());
 }
 
 void StudyDefinitions::checkAnswer() {
@@ -76,16 +80,9 @@ void StudyDefinitions::pickRandomTask() {
 
 void StudyDefinitions::studyDefinition() {
     if (taskMap.empty()) {
-        taskMap = Content::getDefinitionMap();
-        if (taskMap.empty()) {
-            emit requestPageChange(TOPIC_STUDY_PAGE);
-            return;
-        }
-        definitionMapSizeBeforeStudying = static_cast<int>(taskMap.size());
-    }
-
-    if (definitionMapSizeBeforeStudying == 0) {
-        definitionMapSizeBeforeStudying = taskMap.size();
+        definitionMapSizeBeforeStudying = 0;
+        emit requestPageChange(TOPIC_STUDY_PAGE);
+        return;
     }
 
     pickRandomTask();

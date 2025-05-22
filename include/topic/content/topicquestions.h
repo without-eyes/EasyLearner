@@ -11,6 +11,7 @@
 #include <QWidget>
 #include "topiccontentmanagement.h"
 #include "core/pageindex.h"
+#include "topic/base/contentmanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TopicQuestions; }
@@ -23,6 +24,8 @@ signals:
     void requestPageChange(PageIndex index);
 
 public slots:
+
+    void setContentManager(const ContentManager& contentManager);
 
     void deleteContent() override;
 
@@ -39,6 +42,7 @@ public:
 
 private:
     Ui::TopicQuestions *ui;
+    ContentManager contentManager;
 };
 
 

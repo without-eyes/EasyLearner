@@ -1,67 +1,62 @@
 /**
-    * @file: content.cpp
+    * @file: contentmanager.cpp
     * @author: without eyes
     *
-    * This file contains methods' implementation of Content class.
+    * This file contains methods' implementation of ContentManager class.
 */
 
-#include "topic/base/content.h"
+#include "topic/base/contentmanager.h"
 
 #include <QSqlRecord>
 #include <QSharedPointer>
 #include "utils/database.h"
 
-Database Content::database;
-QString Content::currentTopic;
-std::map<QString, std::map<QString, QString>> Content::topicDefinitionMap;
-std::map<QString, std::map<QString, QString>> Content::topicQuestionMap;
+ContentManager::ContentManager() = default;
 
-Content::Content() = default;
-
-void Content::addIntoDefinitionMap(const QString &term, const QString &definition) {
+void ContentManager::addIntoDefinitionMap(const QString &term, const QString &definition) {
     topicDefinitionMap[currentTopic][term] = definition;
     database.addTerm(term, definition);
 }
 
-void Content::deleteFromDefinitionMap(const QString &term) {
+void ContentManager::deleteFromDefinitionMap(const QString &term) {
     topicDefinitionMap[currentTopic].erase(term);
     database.deleteTerm(term);
 }
 
-std::map<QString, QString> Content::getDefinitionMap() {
+std::map<QString, QString> ContentManager::getDefinitionMap() {
     return topicDefinitionMap[currentTopic];
 }
 
-void Content::addIntoQuestionMap(const QString &question, const QString &answer) {
+void ContentManager::addIntoQuestionMap(const QString &question, const QString &answer) {
     topicQuestionMap[currentTopic][question] = answer;
     database.addQuestion(question, answer);
 }
 
-void Content::deleteFromQuestionMap(const QString &question) {
+void ContentManager::deleteFromQuestionMap(const QString &question) {
     topicQuestionMap[currentTopic].erase(question);
     database.deleteQuestion(question);
 }
 
 
-std::map<QString, QString> Content::getQuestionMap() {
+std::map<QString, QString> ContentManager::getQuestionMap() {
     return topicQuestionMap[currentTopic];
 }
 
-void Content::setCurrentTopic(const QString &topic) {
+void ContentManager::setCurrentTopic(const QString &topic) {
     currentTopic = topic;
 }
 
-QString Content::getCurrentTopic() {
+QString ContentManager::getCurrentTopic() {
     return currentTopic;
 }
 
-void Content::loadContentFromDatabase() {
+void ContentManager::loadContentFromDatabase() {
     const Database database;
     loadDefinitionsFromModel(database.getAllTerms(currentTopic));
     loadQuestionsFromModel(database.getAllQuestions(currentTopic));
 }
 
-void Content::loadDefinitionsFromModel(const QSharedPointer<QSqlTableModel>& model) {
+void ContentManager::loadDefinitionsFromModel(const QSharedPointer<QSqlTableModel>& model) {
     topicDefinitionMap[currentTopic].clear();
 
     const int termCol = model->fieldIndex("term");
@@ -74,7 +69,7 @@ void Content::loadDefinitionsFromModel(const QSharedPointer<QSqlTableModel>& mod
     }
 }
 
-void Content::loadQuestionsFromModel(const QSharedPointer<QSqlTableModel>& model) {
+void ContentManager::loadQuestionsFromModel(const QSharedPointer<QSqlTableModel>& model) {
     topicQuestionMap[currentTopic].clear();
 
     const int rowCount = model->rowCount();

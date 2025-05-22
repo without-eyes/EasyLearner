@@ -29,6 +29,8 @@ public:
     ~StudyDefinitions() override;
 
 public slots:
+    void setTaskMap(const std::map<QString, QString> &taskMap);
+
     void checkAnswer() override;
 
     void showNextTask() override;

@@ -2,7 +2,7 @@
     * @file: topiccontent.h
     * @author: without eyes
     *
-    * This file contains TopicContent class for "Topic Content" window.
+    * This file contains TopicContent class for "Topic ContentManager" window.
 */
 
 #ifndef EASYLEARNER_TOPICCONTENT_H

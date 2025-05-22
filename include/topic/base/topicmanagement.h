@@ -10,6 +10,8 @@
 
 #include <QLabel>
 #include <set>
+
+#include "contentmanager.h"
 #include "core/pageindex.h"
 
 QT_BEGIN_NAMESPACE
@@ -35,6 +37,8 @@ signals:
 
     void updateStudyQuestionsButton();
 
+    void setContentManager(const ContentManager& contentManager);
+
 public slots:
     void loadTopicContent();
 
@@ -52,6 +56,7 @@ public slots:
 
 private:
     Ui::TopicManagement *ui;
+    ContentManager contentManager;
 };
 
 

@@ -55,8 +55,8 @@ add_executable(EasyLearner src/core/main.cpp
         src/topic/study/studyquestions.cpp
         include/topic/study/studyquestions.h
         forms/StudyQuestions.ui
-        src/topic/base/content.cpp
-        include/topic/base/content.h
+        src/topic/base/contentmanager.cpp
+        include/topic/base/contentmanager.h
         src/utils/database.cpp
         include/utils/database.h
         src/utils/randomizer.cpp

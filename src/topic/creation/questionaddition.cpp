@@ -8,7 +8,7 @@
 #include "topic/creation/questionaddition.h"
 
 #include "topic/base/topicmanagement.h"
-#include "topic/base/content.h"
+#include "topic/base/contentmanager.h"
 #include "../../../forms/ui_QuestionAddition.h"
 
 QuestionAddition::QuestionAddition(QWidget *parent) :
@@ -28,8 +28,12 @@ QuestionAddition::~QuestionAddition() {
     delete ui;
 }
 
+void QuestionAddition::setContentManager(const ContentManager &contentManager) {
+    this->contentManager = contentManager;
+}
+
 void QuestionAddition::addNewContent() {
-    Content::addIntoQuestionMap(ui->questionLineEdit->text(), ui->answerLineEdit->text());
+    contentManager.addIntoQuestionMap(ui->questionLineEdit->text(), ui->answerLineEdit->text());
     emit updateQuestionMapShowing();
     ui->questionLineEdit->clear();
     ui->answerLineEdit->clear();

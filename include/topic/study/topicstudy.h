@@ -10,6 +10,7 @@
 
 #include <QWidget>
 #include "core/pageindex.h"
+#include "topic/base/contentmanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TopicStudy; }
@@ -25,12 +26,18 @@ signals:
 
     void startDefinitionsStudy();
 
+    void setDefinitionMap(const std::map<QString, QString>& definitionMap);
+
+    void setQuestionMap(const std::map<QString, QString>& questionMap);
+
 public:
     explicit TopicStudy(QWidget *parent = nullptr);
 
     ~TopicStudy() override;
 
 public slots:
+    void setContentManager(const ContentManager& contentManager);
+
     void updateStudyQuestionsButton();
 
     void updateStudyDefinitionsButton();
@@ -43,6 +50,7 @@ public slots:
 
 private:
     Ui::TopicStudy *ui;
+    ContentManager contentManager;
 };
 
 

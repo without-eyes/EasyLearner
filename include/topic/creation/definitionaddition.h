@@ -10,6 +10,7 @@
 
 #include "contentaddition.h"
 #include "core/pageindex.h"
+#include "topic/base/contentmanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class DefinitionAddition; }
@@ -30,6 +31,8 @@ public:
 
 public slots:
 
+    void setContentManager(const ContentManager& contentManager);
+
     void addNewContent() override;
 
     void changeButtonState() const override;
@@ -38,6 +41,7 @@ public slots:
 
 private:
     Ui::DefinitionAddition *ui;
+    ContentManager contentManager;
 };
 
 

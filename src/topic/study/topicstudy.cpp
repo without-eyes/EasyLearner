@@ -9,7 +9,7 @@
 
 #include "topic/study/studyquestions.h"
 #include "topic/study/studydefinitions.h"
-#include "topic/base/content.h"
+#include "topic/base/contentmanager.h"
 #include "topic/base/topicmanagement.h"
 #include "../../../forms/ui_TopicStudy.h"
 
@@ -30,8 +30,12 @@ TopicStudy::~TopicStudy() {
     delete ui;
 }
 
+void TopicStudy::setContentManager(const ContentManager &contentManager) {
+    this->contentManager = contentManager;
+}
+
 void TopicStudy::updateStudyQuestionsButton() {
-    if (Content::getQuestionMap().empty()) {
+    if (contentManager.getQuestionMap().empty()) {
         ui->questionsButton->setEnabled(false);
     } else {
         ui->questionsButton->setEnabled(true);
@@ -39,7 +43,7 @@ void TopicStudy::updateStudyQuestionsButton() {
 }
 
 void TopicStudy::updateStudyDefinitionsButton() {
-    if (Content::getDefinitionMap().empty()) {
+    if (contentManager.getDefinitionMap().empty()) {
         ui->definitionsButton->setEnabled(false);
     } else {
         ui->definitionsButton->setEnabled(true);
@@ -47,11 +51,13 @@ void TopicStudy::updateStudyDefinitionsButton() {
 }
 
 void TopicStudy::studyQuestions() {
+    emit setQuestionMap(contentManager.getQuestionMap());
     emit startQuestionsStudy();
     emit requestPageChange(STUDY_QUESTIONS_PAGE);
 }
 
 void TopicStudy::studyDefinitions() {
+    emit setDefinitionMap(contentManager.getDefinitionMap());
     emit startDefinitionsStudy();
     emit requestPageChange(STUDY_DEFINITIONS_PAGE);
 }

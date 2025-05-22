@@ -8,7 +8,7 @@
 #include "topic/content/topicdefinitions.h"
 
 #include "topic/content/topiccontent.h"
-#include "topic/base/content.h"
+#include "topic/base/contentmanager.h"
 #include "../../../forms/ui_TopicDefinitions.h"
 
 TopicDefinitions::TopicDefinitions(QWidget *parent) :
@@ -30,17 +30,20 @@ TopicDefinitions::~TopicDefinitions() {
 
 void TopicDefinitions::showContentList() {
     ui->listWidget->clear();
-    const std::map<QString, QString> definitionMap = Content::getDefinitionMap();
-    for (const auto &[term, definition]: definitionMap) {
+    for (const auto &[term, definition]: contentManager.getDefinitionMap()) {
         ui->listWidget->addItem(term + " - " + definition);
     }
     ui->listWidget->show();
 }
 
+void TopicDefinitions::setContentManager(const ContentManager& contentManager) {
+    this->contentManager = contentManager;
+}
+
 void TopicDefinitions::deleteContent() {
     std::string text = ui->listWidget->takeItem(ui->listWidget->currentRow())->text().toStdString();
     const std::string definition = text.substr(0, text.find(" -"));
-    Content::deleteFromDefinitionMap(QString::fromStdString(definition));
+    contentManager.deleteFromDefinitionMap(QString::fromStdString(definition));
 
     if (ui->listWidget->count() == 0) {
         changeButtonState();

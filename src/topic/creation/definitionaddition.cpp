@@ -9,7 +9,7 @@
 
 
 #include "topic/base/topicmanagement.h"
-#include "topic/base/content.h"
+#include "topic/base/contentmanager.h"
 #include "../../../forms/ui_DefinitionAddition.h"
 
 DefinitionAddition::DefinitionAddition(QWidget *parent) :
@@ -29,8 +29,12 @@ DefinitionAddition::~DefinitionAddition() {
     delete ui;
 }
 
+void DefinitionAddition::setContentManager(const ContentManager &contentManager) {
+    this->contentManager = contentManager;
+}
+
 void DefinitionAddition::addNewContent() {
-    Content::addIntoDefinitionMap(ui->termLineEdit->text(), ui->definitionLineEdit->text());
+    contentManager.addIntoDefinitionMap(ui->termLineEdit->text(), ui->definitionLineEdit->text());
     emit updateDefinitionMapShowing();
     ui->termLineEdit->clear();
     ui->definitionLineEdit->clear();
