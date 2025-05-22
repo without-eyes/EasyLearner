@@ -47,5 +47,8 @@ void DefinitionAddition::changeButtonState() const {
 }
 
 void DefinitionAddition::goBack() {
+    ui->termLineEdit->setFocus();
+    ui->termLineEdit->clear();
+    ui->definitionLineEdit->clear();
     emit requestPageChange(TOPIC_MANAGEMENT_PAGE);
 }

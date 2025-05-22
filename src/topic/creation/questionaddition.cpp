@@ -46,5 +46,8 @@ void QuestionAddition::changeButtonState() const {
 }
 
 void QuestionAddition::goBack() {
+    ui->questionLineEdit->setFocus();
+    ui->questionLineEdit->clear();
+    ui->answerLineEdit->clear();
     emit requestPageChange(TOPIC_MANAGEMENT_PAGE);
 }
