@@ -42,8 +42,6 @@ void TopicQuestions::deleteContent() {
     const std::string question = text.substr(0, text.find(" -"));
     Content::deleteFromQuestionMap(QString::fromStdString(question));
 
-    emit updateStudyButton();
-
     if (ui->listWidget->count() == 0) {
         changeButtonState();
     }

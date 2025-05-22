@@ -32,7 +32,6 @@ DefinitionAddition::~DefinitionAddition() {
 void DefinitionAddition::addNewContent() {
     Content::addIntoDefinitionMap(ui->termLineEdit->text(), ui->definitionLineEdit->text());
     emit updateDefinitionMapShowing();
-    emit updateStudyDefinitionsButton();
     ui->termLineEdit->clear();
     ui->definitionLineEdit->clear();
     goBack();

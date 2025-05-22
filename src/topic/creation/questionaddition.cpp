@@ -31,7 +31,6 @@ QuestionAddition::~QuestionAddition() {
 void QuestionAddition::addNewContent() {
     Content::addIntoQuestionMap(ui->questionLineEdit->text(), ui->answerLineEdit->text());
     emit updateQuestionMapShowing();
-    emit updateStudyQuestionsButton();
     ui->questionLineEdit->clear();
     ui->answerLineEdit->clear();
     goBack();

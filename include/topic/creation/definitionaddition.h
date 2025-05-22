@@ -23,8 +23,6 @@ signals:
 
     void updateDefinitionMapShowing();
 
-    void updateStudyDefinitionsButton();
-
 public:
     explicit DefinitionAddition(QWidget *parent = nullptr);
 

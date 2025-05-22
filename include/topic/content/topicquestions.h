@@ -22,8 +22,6 @@ Q_OBJECT
 signals:
     void requestPageChange(PageIndex index);
 
-    void updateStudyButton();
-
 public slots:
 
     void deleteContent() override;

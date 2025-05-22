@@ -23,8 +23,6 @@ signals:
 
     void updateQuestionMapShowing();
 
-    void updateStudyQuestionsButton();
-
 public:
     explicit QuestionAddition(QWidget *parent = nullptr);
 

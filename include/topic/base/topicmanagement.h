@@ -31,6 +31,10 @@ signals:
 
     void updateQuestionMapShowing();
 
+    void updateStudyDefinitionsButton();
+
+    void updateStudyQuestionsButton();
+
 public slots:
     void loadTopicContent();
 

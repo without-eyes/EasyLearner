@@ -42,8 +42,6 @@ void TopicDefinitions::deleteContent() {
     const std::string definition = text.substr(0, text.find(" -"));
     Content::deleteFromDefinitionMap(QString::fromStdString(definition));
 
-    emit updateStudyDefinitionsButton();
-
     if (ui->listWidget->count() == 0) {
         changeButtonState();
     }

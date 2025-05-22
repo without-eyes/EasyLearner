@@ -40,6 +40,8 @@ void TopicManagement::setTopic(const QString &topic) {
 }
 
 void TopicManagement::startStudy() {
+    emit updateStudyDefinitionsButton();
+    emit updateStudyQuestionsButton();
     emit requestPageChange(TOPIC_STUDY_PAGE);
 }
 

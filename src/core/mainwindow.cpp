@@ -64,15 +64,13 @@ void MainWindow::connectSignalsToSlots() {
     connect(topicManagement, &TopicManagement::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
     connect(topicContent, &TopicContent::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
     connect(definitionAddition, &DefinitionAddition::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
-    connect(definitionAddition, &DefinitionAddition::updateStudyDefinitionsButton, topicStudy, &TopicStudy::updateStudyDefinitionsButton);
-    connect(topicDefinitions, &TopicDefinitions::updateStudyDefinitionsButton, topicStudy, &TopicStudy::updateStudyDefinitionsButton);
+    connect(topicManagement, &TopicManagement::updateStudyDefinitionsButton, topicStudy, &TopicStudy::updateStudyDefinitionsButton);
     connect(topicStudy, &TopicStudy::startDefinitionsStudy, studyDefinitions, &StudyDefinitions::studyDefinition);
 
     connect(topicManagement, &TopicManagement::updateQuestionMapShowing, topicQuestions, &TopicQuestions::showContentList);
     connect(topicContent, &TopicContent::updateQuestionMapShowing, topicQuestions, &TopicQuestions::showContentList);
     connect(questionAddition, &QuestionAddition::updateQuestionMapShowing, topicQuestions, &TopicQuestions::showContentList);
-    connect(questionAddition, &QuestionAddition::updateStudyQuestionsButton, topicStudy, &TopicStudy::updateStudyQuestionsButton);
-    connect(topicQuestions, &TopicQuestions::updateStudyButton, topicStudy, &TopicStudy::updateStudyQuestionsButton);
+    connect(topicManagement, &TopicManagement::updateStudyQuestionsButton, topicStudy, &TopicStudy::updateStudyQuestionsButton);
     connect(topicStudy, &TopicStudy::startQuestionsStudy, studyQuestions, &StudyQuestions::studyQuestion);
 }
 
