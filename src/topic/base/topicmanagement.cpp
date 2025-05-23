@@ -27,9 +27,13 @@ TopicManagement::~TopicManagement() {
     delete ui;
 }
 
+void TopicManagement::setContentManager(const ContentManager &contentManager) {
+    this->contentManager = contentManager;
+}
+
 void TopicManagement::loadTopicContent() {
     contentManager.loadContentFromDatabase();
-    emit setContentManager(contentManager);
+    emit setContentManagerSignal(contentManager);
     emit updateDefinitionMapShowing();
     emit updateQuestionMapShowing();
 }

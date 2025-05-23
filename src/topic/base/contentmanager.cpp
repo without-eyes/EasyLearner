@@ -50,6 +50,24 @@ QString ContentManager::getCurrentTopic() {
     return currentTopic;
 }
 
+QList<QString> ContentManager::getTopicList() {
+    return topicList;
+}
+
+void ContentManager::pickTopic(const QString &topic) {
+
+}
+
+void ContentManager::createTopic(const QString &topic) {
+    topicList.push_back(topic);
+}
+
+void ContentManager::deleteTopic(const QString &topic) {
+    topicList.removeOne(topic);
+    Database database;
+    database.deleteTopic(topic);
+}
+
 void ContentManager::loadContentFromDatabase() {
     const Database database;
     loadDefinitionsFromModel(database.getAllTerms(currentTopic));
@@ -82,4 +100,15 @@ void ContentManager::loadQuestionsFromModel(const QSharedPointer<QSqlTableModel>
         topicQuestionMap[currentTopic][question] = answer;
     }
 
+}
+
+void ContentManager::loadTopicsFromModel(const QSharedPointer<QSqlTableModel> &model) {
+    topicList.clear();
+
+    const int topicCol = model->fieldIndex("topic");
+
+    for (int i = 0; i < model->rowCount(); ++i) {
+        QString topic = model->record(i).value(topicCol).toString();
+        topicList.push_back(topic);
+    }
 }

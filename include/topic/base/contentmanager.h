@@ -32,11 +32,22 @@ public:
 
     QString getCurrentTopic();
 
+    QList<QString> getTopicList();
+
+    void pickTopic(const QString &topic);
+
+    void createTopic(const QString &topic);
+
+    void deleteTopic(const QString &topic);
+
     void loadContentFromDatabase();
+
+    void loadTopicsFromModel(const QSharedPointer<QSqlTableModel>& model);
 
 private:
     Database database;
     QString currentTopic;
+    QList<QString> topicList;
     std::map<QString, std::map<QString, QString>> topicDefinitionMap;
     std::map<QString, std::map<QString, QString>> topicQuestionMap;
 

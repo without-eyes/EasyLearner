@@ -8,9 +8,9 @@
 #ifndef EASYLEARNER_MAINMENU_H
 #define EASYLEARNER_MAINMENU_H
 
-#include <QSqlTableModel>
 #include <QWidget>
 #include "core/pageindex.h"
+#include "topic/base/contentmanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainMenu; }
@@ -34,23 +34,22 @@ signals:
 
     void loadTopicContent();
 
+    void setContentManagerSignal(const ContentManager& contentManager);
+
 public slots:
     void changeButtonState();
 
-private slots:
+private:
+    Ui::MainMenu *ui;
+    ContentManager contentManager;
+
     void pickTopic();
 
     void createTopic();
 
     void deleteTopic();
 
-private:
-    Ui::MainMenu *ui;
-    static QList<QString> topicList;
-
-    void showTableContent() const;
-
-    static void loadTopicsFromModel(const QSharedPointer<QSqlTableModel>& model);
+    void showTableContent();
 };
 
 

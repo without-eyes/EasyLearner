@@ -9,11 +9,8 @@
 
 #include <QStringListModel>
 #include <QSqlRecord>
-#include <QSharedPointer>
 #include "utils/database.h"
 #include "../../forms/ui_MainMenu.h"
-
-QList<QString> MainMenu::topicList;
 
 MainMenu::MainMenu(QWidget *parent) :
         QWidget(parent),
@@ -21,7 +18,7 @@ MainMenu::MainMenu(QWidget *parent) :
     ui->setupUi(this);
 
     const Database database;
-    loadTopicsFromModel(database.getAllTopics());
+    contentManager.loadTopicsFromModel(database.getAllTopics());
 
     showTableContent();
     changeButtonState();
@@ -36,23 +33,12 @@ MainMenu::~MainMenu() {
     delete ui;
 }
 
-void MainMenu::showTableContent() const {
+void MainMenu::showTableContent() {
     ui->listWidget->clear();
-    for (const auto &row: topicList) {
+    for (const auto &row: contentManager.getTopicList()) {
         ui->listWidget->addItem(row);
     }
     ui->listWidget->show();
-}
-
-void MainMenu::loadTopicsFromModel(const QSharedPointer<QSqlTableModel>& model) {
-    topicList.clear();
-
-    const int topicCol = model->fieldIndex("topic");
-
-    for (int i = 0; i < model->rowCount(); ++i) {
-        QString topic = model->record(i).value(topicCol).toString();
-        topicList.push_back(topic);
-    }
 }
 
 void MainMenu::pickTopic() {
@@ -77,17 +63,14 @@ void MainMenu::createTopic() {
 
 void MainMenu::deleteTopic() {
     const auto *item = ui->listWidget->currentItem();
-    topicList.removeOne(item->text());
-    Database database;
-    database.deleteTopic(item->text());
+    contentManager.deleteTopic(item->text());
     delete ui->listWidget->takeItem(ui->listWidget->row(item));
-
     if (ui->listWidget->count() == 0) {
         changeButtonState();
     }
 }
 
 void MainMenu::addTopicIntoList(const QString &topic) {
-    topicList.push_back(topic);
+    contentManager.createTopic(topic);
     showTableContent();
 }

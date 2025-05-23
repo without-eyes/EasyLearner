@@ -77,21 +77,22 @@ void MainWindow::connectSignalsToSlots() {
     connect(topicCreation, &TopicCreation::topicCreated, mainMenu, &MainMenu::changeButtonState);
     connect(mainMenu, &MainMenu::setTopic, topicManagement, &TopicManagement::setTopic);
     connect(mainMenu, &MainMenu::loadTopicContent, topicManagement, &TopicManagement::loadTopicContent);
+    connect(mainMenu, &MainMenu::setContentManagerSignal, topicManagement, &TopicManagement::setContentManagerSignal);
 
-    connect(topicManagement, &TopicManagement::setContentManager, topicStudy, &TopicStudy::setContentManager);
+    connect(topicManagement, &TopicManagement::setContentManagerSignal, topicStudy, &TopicStudy::setContentManager);
     connect(topicStudy, &TopicStudy::setDefinitionMap, studyDefinitions, &StudyDefinitions::setTaskMap);
     connect(topicStudy, &TopicStudy::setQuestionMap, studyQuestions, &StudyQuestions::setTaskMap);
 
-    connect(topicManagement, &TopicManagement::setContentManager, topicDefinitions, &TopicDefinitions::setContentManager);
-    connect(topicManagement, &TopicManagement::setContentManager, definitionAddition, &DefinitionAddition::setContentManager);
+    connect(topicManagement, &TopicManagement::setContentManagerSignal, topicDefinitions, &TopicDefinitions::setContentManager);
+    connect(topicManagement, &TopicManagement::setContentManagerSignal, definitionAddition, &DefinitionAddition::setContentManager);
     connect(topicManagement, &TopicManagement::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
     connect(topicContent, &TopicContent::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
     connect(definitionAddition, &DefinitionAddition::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
     connect(topicManagement, &TopicManagement::updateStudyDefinitionsButton, topicStudy, &TopicStudy::updateStudyDefinitionsButton);
     connect(topicStudy, &TopicStudy::startDefinitionsStudy, studyDefinitions, &StudyDefinitions::studyDefinition);
 
-    connect(topicManagement, &TopicManagement::setContentManager, topicQuestions, &TopicQuestions::setContentManager);
-    connect(topicManagement, &TopicManagement::setContentManager, questionAddition, &QuestionAddition::setContentManager);
+    connect(topicManagement, &TopicManagement::setContentManagerSignal, topicQuestions, &TopicQuestions::setContentManager);
+    connect(topicManagement, &TopicManagement::setContentManagerSignal, questionAddition, &QuestionAddition::setContentManager);
     connect(topicManagement, &TopicManagement::updateQuestionMapShowing, topicQuestions, &TopicQuestions::showContentList);
     connect(topicContent, &TopicContent::updateQuestionMapShowing, topicQuestions, &TopicQuestions::showContentList);
     connect(questionAddition, &QuestionAddition::updateQuestionMapShowing, topicQuestions, &TopicQuestions::showContentList);

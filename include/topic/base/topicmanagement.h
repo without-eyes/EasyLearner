@@ -37,9 +37,11 @@ signals:
 
     void updateStudyQuestionsButton();
 
-    void setContentManager(const ContentManager& contentManager);
+    void setContentManagerSignal(const ContentManager& contentManager);
 
 public slots:
+    void setContentManager(const ContentManager& contentManager);
+
     void loadTopicContent();
 
     void setTopic(const QString &topic);
