@@ -15,8 +15,6 @@ TopicCreation::TopicCreation(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicCreation) {
     ui->setupUi(this);
 
-    changeButtonState();
-
     connect(ui->createButton, &QPushButton::clicked, this, &TopicCreation::createNewTopic);
     connect(ui->goBackButton, &QPushButton::clicked, this, &TopicCreation::goBack);
     connect(ui->nameLineEdit, &QLineEdit::textChanged, this, &TopicCreation::changeButtonState);
@@ -24,6 +22,11 @@ TopicCreation::TopicCreation(QWidget *parent) :
 
 TopicCreation::~TopicCreation() {
     delete ui;
+}
+
+void TopicCreation::setContentManager(const std::shared_ptr<ContentManager> &contentManager) {
+    this->contentManager = contentManager;
+    changeButtonState();
 }
 
 void TopicCreation::createNewTopic() {
@@ -38,11 +41,18 @@ void TopicCreation::createNewTopic() {
 }
 
 void TopicCreation::changeButtonState() const {
-    if (!ui->nameLineEdit->text().isEmpty()) {
-        ui->createButton->setEnabled(true);
-    } else {
+    if (ui->nameLineEdit->text().isEmpty()) {
         ui->createButton->setEnabled(false);
+        return;
     }
+
+    QList<QString> topicList = contentManager->getTopicList();
+    if (std::find(topicList.begin(), topicList.end(), ui->nameLineEdit->text()) != topicList.end()) {
+        ui->createButton->setEnabled(false);
+        return;
+    }
+
+    ui->createButton->setEnabled(true);
 }
 
 void TopicCreation::goBack() {

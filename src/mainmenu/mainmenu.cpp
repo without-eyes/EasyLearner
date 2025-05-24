@@ -61,6 +61,7 @@ void MainMenu::changeButtonState() {
 }
 
 void MainMenu::createTopic() {
+    emit setContentManagerSignal(contentManager);
     emit requestPageChange(TOPIC_CREATION_PAGE);
 }
 

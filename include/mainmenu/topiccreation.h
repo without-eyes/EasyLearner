@@ -10,6 +10,7 @@
 
 #include <QWidget>
 #include "core/pageindex.h"
+#include "topic/base/contentmanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TopicCreation; }
@@ -28,8 +29,10 @@ signals:
 
     void topicCreated(const QString &topic);
 
-private slots:
+public slots:
+    void setContentManager(const std::shared_ptr<ContentManager>& contentManager);
 
+private slots:
     void createNewTopic();
 
     void changeButtonState() const;
@@ -38,6 +41,7 @@ private slots:
 
 private:
     Ui::TopicCreation *ui;
+    std::shared_ptr<ContentManager> contentManager;
 };
 
 
