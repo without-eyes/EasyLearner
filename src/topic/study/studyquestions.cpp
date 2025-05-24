@@ -26,7 +26,7 @@ StudyQuestions::~StudyQuestions() {
 }
 
 void StudyQuestions::setTaskMap(const std::map<QString, QString> &taskMap) {
-    this->taskMap = taskMap;
+    StudyQuestions::taskMap = taskMap;
     questionMapSizeBeforeStudying = taskMap.size();
 }
 

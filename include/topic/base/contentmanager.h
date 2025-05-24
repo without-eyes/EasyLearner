@@ -34,8 +34,6 @@ public:
 
     QList<QString> getTopicList();
 
-    void pickTopic(const QString &topic);
-
     void createTopic(const QString &topic);
 
     void deleteTopic(const QString &topic);

@@ -38,7 +38,7 @@ void TopicManagement::loadTopicContent() {
     emit updateQuestionMapShowing();
 }
 
-void TopicManagement::setTopic(const QString &topic) {
+void TopicManagement::setTopic(const QString &topic) const {
     contentManager->setCurrentTopic(topic);
     ui->label->setText(topic);
 }

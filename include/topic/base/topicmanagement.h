@@ -44,7 +44,7 @@ public slots:
 
     void loadTopicContent();
 
-    void setTopic(const QString &topic);
+    void setTopic(const QString &topic) const;
 
     void startStudy();
 

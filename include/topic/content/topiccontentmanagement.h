@@ -9,10 +9,14 @@
 #ifndef TOPICCONTENTMANAGMENT_H
 #define TOPICCONTENTMANAGMENT_H
 
+#include <memory>
 #include <qobjectdefs.h>
+#include "topic/base/contentmanager.h"
 
 class TopicContentManagement {
 public slots:
+    virtual void setContentManager(const std::shared_ptr<ContentManager> &contentManager);
+
     virtual ~TopicContentManagement() = default;
 
     virtual void deleteContent();
@@ -22,6 +26,8 @@ public slots:
     virtual void changeButtonState() const;
 
 protected:
+    std::shared_ptr<ContentManager> contentManager;
+
     virtual void showContentList();
 };
 

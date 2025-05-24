@@ -35,7 +35,7 @@ MainMenu::~MainMenu() {
     delete ui;
 }
 
-void MainMenu::showTableContent() {
+void MainMenu::showTableContent() const {
     ui->listWidget->clear();
     for (const auto &row: contentManager->getTopicList()) {
         ui->listWidget->addItem(row);
@@ -50,7 +50,7 @@ void MainMenu::pickTopic() {
     emit requestPageChange(TOPIC_MANAGEMENT_PAGE);
 }
 
-void MainMenu::changeButtonState() {
+void MainMenu::changeButtonState() const {
     if (const auto *item = ui->listWidget->currentItem(); item && !item->text().isEmpty()) {
         ui->pickButton->setEnabled(true);
         ui->deleteButton->setEnabled(true);
@@ -65,7 +65,7 @@ void MainMenu::createTopic() {
     emit requestPageChange(TOPIC_CREATION_PAGE);
 }
 
-void MainMenu::deleteTopic() {
+void MainMenu::deleteTopic() const {
     const auto *item = ui->listWidget->currentItem();
     contentManager->deleteTopic(item->text());
     delete ui->listWidget->takeItem(ui->listWidget->row(item));
@@ -74,7 +74,7 @@ void MainMenu::deleteTopic() {
     }
 }
 
-void MainMenu::addTopicIntoList(const QString &topic) {
+void MainMenu::addTopicIntoList(const QString &topic) const {
     contentManager->createTopic(topic);
     showTableContent();
 }

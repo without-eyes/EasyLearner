@@ -38,9 +38,9 @@ public:
 public slots:
     void setContentManager(const std::shared_ptr<ContentManager> &contentManager);
 
-    void updateStudyQuestionsButton();
+    void updateStudyQuestionsButton() const;
 
-    void updateStudyDefinitionsButton();
+    void updateStudyDefinitionsButton() const;
 
     void studyQuestions();
 

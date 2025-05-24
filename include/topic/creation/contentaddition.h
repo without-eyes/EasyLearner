@@ -11,9 +11,12 @@
 
 #include <QLineEdit>
 #include <qobjectdefs.h>
+#include "topic/base/contentmanager.h"
 
 class ContentAddition {
 public slots:
+    virtual void setContentManager(const std::shared_ptr<ContentManager> &contentManager);
+
     virtual ~ContentAddition() = default;
 
     virtual void addNewContent();
@@ -22,6 +25,8 @@ public slots:
 
     virtual void goBack();
 
+protected:
+    std::shared_ptr<ContentManager> contentManager;
 };
 
 

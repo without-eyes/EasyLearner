@@ -34,10 +34,6 @@ void TopicQuestions::showContentList() {
     ui->listWidget->show();
 }
 
-void TopicQuestions::setContentManager(const std::shared_ptr<ContentManager> &contentManager) {
-    this->contentManager = contentManager;
-}
-
 void TopicQuestions::deleteContent() {
     std::string text = ui->listWidget->takeItem(ui->listWidget->currentRow())->text().toStdString();
     const std::string question = text.substr(0, text.find(" -"));

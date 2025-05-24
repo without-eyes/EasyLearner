@@ -30,7 +30,7 @@ void TopicStudy::setContentManager(const std::shared_ptr<ContentManager> &conten
     this->contentManager = contentManager;
 }
 
-void TopicStudy::updateStudyQuestionsButton() {
+void TopicStudy::updateStudyQuestionsButton() const {
     if (contentManager->getQuestionMap().empty()) {
         ui->questionsButton->setEnabled(false);
     } else {
@@ -38,7 +38,7 @@ void TopicStudy::updateStudyQuestionsButton() {
     }
 }
 
-void TopicStudy::updateStudyDefinitionsButton() {
+void TopicStudy::updateStudyDefinitionsButton() const {
     if (contentManager->getDefinitionMap().empty()) {
         ui->definitionsButton->setEnabled(false);
     } else {

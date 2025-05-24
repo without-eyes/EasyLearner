@@ -24,7 +24,7 @@ public:
 private:
     QMediaPlayer* player;
 
-    void playSound(const QString& soundName);
+    void playSound(const QString& soundName) const;
 
 };
 

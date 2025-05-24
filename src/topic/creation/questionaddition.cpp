@@ -25,11 +25,6 @@ QuestionAddition::~QuestionAddition() {
     delete ui;
 }
 
-void QuestionAddition::setContentManager(const std::shared_ptr<ContentManager> &contentManager) {
-    this->contentManager = contentManager;
-    changeButtonState();
-}
-
 void QuestionAddition::addNewContent() {
     contentManager->addIntoQuestionMap(ui->questionLineEdit->text(), ui->answerLineEdit->text());
     emit updateQuestionMapShowing();

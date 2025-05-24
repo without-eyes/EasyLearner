@@ -25,8 +25,6 @@ signals:
 
 public slots:
 
-    void setContentManager(const std::shared_ptr<ContentManager> &contentManager);
-
     void deleteContent() override;
 
     void goBack() override;
@@ -42,7 +40,6 @@ public:
 
 private:
     Ui::TopicQuestions *ui;
-    std::shared_ptr<ContentManager> contentManager;
 };
 
 

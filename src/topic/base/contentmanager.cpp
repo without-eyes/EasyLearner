@@ -54,10 +54,6 @@ QList<QString> ContentManager::getTopicList() {
     return topicList;
 }
 
-void ContentManager::pickTopic(const QString &topic) {
-
-}
-
 void ContentManager::createTopic(const QString &topic) {
     topicList.push_back(topic);
 }
@@ -82,7 +78,7 @@ void ContentManager::loadDefinitionsFromModel(const QSharedPointer<QSqlTableMode
 
     for (int i = 0; i < model->rowCount(); ++i) {
         QString term = model->record(i).value(termCol).toString();
-        QString definition = model->record(i).value(definitionCol).toString();
+        const QString definition = model->record(i).value(definitionCol).toString();
         topicDefinitionMap[currentTopic][term] = definition;
     }
 }
@@ -96,7 +92,7 @@ void ContentManager::loadQuestionsFromModel(const QSharedPointer<QSqlTableModel>
 
     for (int i = 0; i < rowCount; ++i) {
         QString question = model->record(i).value(questionCol).toString();
-        QString answer = model->record(i).value(answerCol).toString();
+        const QString answer = model->record(i).value(answerCol).toString();
         topicQuestionMap[currentTopic][question] = answer;
     }
 
@@ -106,7 +102,6 @@ void ContentManager::loadTopicsFromModel(const QSharedPointer<QSqlTableModel> &m
     topicList.clear();
 
     const int topicCol = model->fieldIndex("topic");
-
     for (int i = 0; i < model->rowCount(); ++i) {
         QString topic = model->record(i).value(topicCol).toString();
         topicList.push_back(topic);

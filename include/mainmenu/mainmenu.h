@@ -25,8 +25,6 @@ public:
 
     ~MainMenu() override;
 
-    void addTopicIntoList(const QString &topic);
-
 signals:
     void requestPageChange(PageIndex index);
 
@@ -37,7 +35,9 @@ signals:
     void setContentManagerSignal(const std::shared_ptr<ContentManager>& contentManager);
 
 public slots:
-    void changeButtonState();
+    void changeButtonState() const;
+
+    void addTopicIntoList(const QString &topic) const;
 
 private:
     Ui::MainMenu *ui;
@@ -47,9 +47,9 @@ private:
 
     void createTopic();
 
-    void deleteTopic();
+    void deleteTopic() const;
 
-    void showTableContent();
+    void showTableContent() const;
 };
 
 

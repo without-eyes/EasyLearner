@@ -30,14 +30,16 @@ void TopicCreation::setContentManager(const std::shared_ptr<ContentManager> &con
 }
 
 void TopicCreation::createNewTopic() {
-    if (!ui->nameLineEdit->text().isEmpty()) {
-        Database database;
-        const QString topic = ui->nameLineEdit->text();
-        database.addTopic(topic);
-        emit topicCreated(topic);
-        ui->nameLineEdit->clear();
-        goBack();
+    if (ui->nameLineEdit->text().isEmpty()) {
+        return;
     }
+
+    Database database;
+    const QString topic = ui->nameLineEdit->text();
+    database.addTopic(topic);
+    emit topicCreated(topic);
+    ui->nameLineEdit->clear();
+    goBack();
 }
 
 void TopicCreation::changeButtonState() const {

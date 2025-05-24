@@ -26,11 +26,6 @@ DefinitionAddition::~DefinitionAddition() {
     delete ui;
 }
 
-void DefinitionAddition::setContentManager(const std::shared_ptr<ContentManager> &contentManager) {
-    this->contentManager = contentManager;
-    changeButtonState();
-}
-
 void DefinitionAddition::addNewContent() {
     contentManager->addIntoDefinitionMap(ui->termLineEdit->text(), ui->definitionLineEdit->text());
     emit updateDefinitionMapShowing();

@@ -27,7 +27,7 @@ StudyDefinitions::~StudyDefinitions() {
 }
 
 void StudyDefinitions::setTaskMap(const std::map<QString, QString> &taskMap) {
-    this->taskMap = taskMap;
+    StudyDefinitions::taskMap = taskMap;
     definitionMapSizeBeforeStudying = static_cast<int>(taskMap.size());
 }
 
@@ -39,8 +39,10 @@ void StudyDefinitions::checkAnswer() {
         ui->correctnessLabel->setText("Wrong! Correct answer: " + definition);
         soundPlayer.playBadAnswerSound();
     }
+
     ui->definitionLineEdit->setEnabled(false);
     ui->continueButton->setText("Continue");
+
     disconnect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::checkAnswer);
     connect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::showNextTask);
 }
@@ -48,6 +50,7 @@ void StudyDefinitions::checkAnswer() {
 void StudyDefinitions::showNextTask() {
     disconnect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::showNextTask);
     connect(ui->continueButton, &QPushButton::clicked, this, &StudyDefinitions::checkAnswer);
+
     if (taskMap.empty()) {
         emit requestPageChange(TOPIC_STUDY_PAGE);
         soundPlayer.playFinishedStudySound();
@@ -70,6 +73,7 @@ void StudyDefinitions::pickRandomTask() {
         soundPlayer.playFinishedStudySound();
         return;
     }
+
     auto termAndDefinition = taskMap.begin();
     std::advance(termAndDefinition, Randomizer::getInstance()->getInt(static_cast<int>(taskMap.size()) - 1));
     term = termAndDefinition->first;

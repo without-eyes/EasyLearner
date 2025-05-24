@@ -24,7 +24,7 @@ void SoundPlayer::playFinishedStudySound() {
     playSound("finished_study.mp3");
 }
 
-void SoundPlayer::playSound(const QString &soundName) {
+void SoundPlayer::playSound(const QString &soundName) const {
     player->setMedia(QUrl("qrc:/assets/sounds/" + soundName));
     player->play();
 }
