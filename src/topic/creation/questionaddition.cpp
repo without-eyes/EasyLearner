@@ -15,8 +15,6 @@ QuestionAddition::QuestionAddition(QWidget *parent) :
         QWidget(parent), ui(new Ui::QuestionAddition) {
     ui->setupUi(this);
 
-    changeButtonState();
-
     connect(ui->createButton, &QPushButton::clicked, this, &QuestionAddition::addNewContent);
     connect(ui->goBackButton, &QPushButton::clicked, this, &QuestionAddition::goBack);
     connect(ui->questionLineEdit, &QLineEdit::textChanged, this, &QuestionAddition::changeButtonState);
@@ -29,6 +27,7 @@ QuestionAddition::~QuestionAddition() {
 
 void QuestionAddition::setContentManager(const std::shared_ptr<ContentManager> &contentManager) {
     this->contentManager = contentManager;
+    changeButtonState();
 }
 
 void QuestionAddition::addNewContent() {
@@ -40,11 +39,18 @@ void QuestionAddition::addNewContent() {
 }
 
 void QuestionAddition::changeButtonState() const {
-    if (!ui->questionLineEdit->text().isEmpty() && !ui->answerLineEdit->text().isEmpty()) {
-        ui->createButton->setEnabled(true);
-    } else {
+    if (ui->questionLineEdit->text().isEmpty() || ui->answerLineEdit->text().isEmpty()) {
         ui->createButton->setEnabled(false);
+        return;
     }
+
+    std::map<QString, QString> questionMap = contentManager->getQuestionMap();
+    if (questionMap.find(ui->questionLineEdit->text()) != questionMap.end()) {
+        ui->createButton->setEnabled(false);
+        return;
+    }
+
+    ui->createButton->setEnabled(true);
 }
 
 void QuestionAddition::goBack() {

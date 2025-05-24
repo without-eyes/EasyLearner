@@ -16,8 +16,6 @@ DefinitionAddition::DefinitionAddition(QWidget *parent) :
         QWidget(parent), ui(new Ui::DefinitionAddition) {
     ui->setupUi(this);
 
-    changeButtonState();
-
     connect(ui->createButton, &QPushButton::clicked, this, &DefinitionAddition::addNewContent);
     connect(ui->goBackButton, &QPushButton::clicked, this, &DefinitionAddition::goBack);
     connect(ui->termLineEdit, &QLineEdit::textChanged, this, &DefinitionAddition::changeButtonState);
@@ -30,6 +28,7 @@ DefinitionAddition::~DefinitionAddition() {
 
 void DefinitionAddition::setContentManager(const std::shared_ptr<ContentManager> &contentManager) {
     this->contentManager = contentManager;
+    changeButtonState();
 }
 
 void DefinitionAddition::addNewContent() {
@@ -41,11 +40,18 @@ void DefinitionAddition::addNewContent() {
 }
 
 void DefinitionAddition::changeButtonState() const {
-    if (!ui->termLineEdit->text().isEmpty() && !ui->definitionLineEdit->text().isEmpty()) {
-        ui->createButton->setEnabled(true);
-    } else {
+    if (ui->termLineEdit->text().isEmpty() || ui->definitionLineEdit->text().isEmpty()) {
         ui->createButton->setEnabled(false);
+        return;
     }
+
+    std::map<QString, QString> definitionMap = contentManager->getDefinitionMap();
+    if (definitionMap.find(ui->termLineEdit->text()) != definitionMap.end()) {
+        ui->createButton->setEnabled(false);
+        return;
+    }
+
+    ui->createButton->setEnabled(true);
 }
 
 void DefinitionAddition::goBack() {
