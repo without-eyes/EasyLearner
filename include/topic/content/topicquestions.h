@@ -17,7 +17,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class TopicQuestions; }
 QT_END_NAMESPACE
 
-class TopicQuestions final : public QWidget, public TopicContentManagement {
+class TopicQuestions final : public TopicContentManagement {
 Q_OBJECT
 
 signals:

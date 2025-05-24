@@ -12,7 +12,7 @@
 #include "../../../forms/ui_QuestionAddition.h"
 
 QuestionAddition::QuestionAddition(QWidget *parent) :
-        QWidget(parent), ui(new Ui::QuestionAddition) {
+        ContentAddition(parent), ui(new Ui::QuestionAddition) {
     ui->setupUi(this);
 
     connect(ui->createButton, &QPushButton::clicked, this, &QuestionAddition::addNewContent);

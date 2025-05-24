@@ -16,7 +16,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class QuestionAddition; }
 QT_END_NAMESPACE
 
-class QuestionAddition final : public QWidget, public ContentAddition {
+class QuestionAddition final : public ContentAddition {
 Q_OBJECT
 
 signals:

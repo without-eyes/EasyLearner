@@ -13,7 +13,7 @@
 #include "../../../forms/ui_DefinitionAddition.h"
 
 DefinitionAddition::DefinitionAddition(QWidget *parent) :
-        QWidget(parent), ui(new Ui::DefinitionAddition) {
+        ContentAddition(parent), ui(new Ui::DefinitionAddition) {
     ui->setupUi(this);
 
     connect(ui->createButton, &QPushButton::clicked, this, &DefinitionAddition::addNewContent);

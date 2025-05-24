@@ -1,28 +1,19 @@
-/**
-    * @file: topiccontentmanagement.h
-    * @author: without eyes
-    *
-    * This file contains TopicContentManagement class that is parent
-    * for TopicDefinitions and TopicQuestions.
-*/
-
 #ifndef TOPICCONTENTMANAGMENT_H
 #define TOPICCONTENTMANAGMENT_H
 
 #include <memory>
-#include <qobjectdefs.h>
+#include <QWidget>
 #include "topic/base/contentmanager.h"
 
-class TopicContentManagement {
+class TopicContentManagement : public QWidget {
+Q_OBJECT
+public:
+    explicit TopicContentManagement(QWidget *parent = nullptr) : QWidget(parent) {}
+
 public slots:
     virtual void setContentManager(const std::shared_ptr<ContentManager> &contentManager);
-
-    virtual ~TopicContentManagement() = default;
-
     virtual void deleteContent();
-
     virtual void goBack();
-
     virtual void changeButtonState() const;
 
 protected:
@@ -30,7 +21,5 @@ protected:
 
     virtual void showContentList();
 };
-
-
 
 #endif //TOPICCONTENTMANAGMENT_H

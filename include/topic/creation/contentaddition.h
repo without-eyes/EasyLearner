@@ -13,11 +13,13 @@
 #include <qobjectdefs.h>
 #include "topic/base/contentmanager.h"
 
-class ContentAddition {
+class ContentAddition : public QWidget {
+    Q_OBJECT
+public:
+    explicit ContentAddition(QWidget *parent = nullptr) : QWidget(parent) {}
+
 public slots:
     virtual void setContentManager(const std::shared_ptr<ContentManager> &contentManager);
-
-    virtual ~ContentAddition() = default;
 
     virtual void addNewContent();
 
