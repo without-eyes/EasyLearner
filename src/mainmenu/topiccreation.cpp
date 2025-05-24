@@ -56,5 +56,6 @@ void TopicCreation::changeButtonState() const {
 }
 
 void TopicCreation::goBack() {
+    ui->nameLineEdit->clear();
     emit requestPageChange(MAIN_MENU_PAGE);
 }
