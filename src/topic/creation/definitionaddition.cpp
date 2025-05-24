@@ -28,12 +28,12 @@ DefinitionAddition::~DefinitionAddition() {
     delete ui;
 }
 
-void DefinitionAddition::setContentManager(const ContentManager &contentManager) {
+void DefinitionAddition::setContentManager(const std::shared_ptr<ContentManager> &contentManager) {
     this->contentManager = contentManager;
 }
 
 void DefinitionAddition::addNewContent() {
-    contentManager.addIntoDefinitionMap(ui->termLineEdit->text(), ui->definitionLineEdit->text());
+    contentManager->addIntoDefinitionMap(ui->termLineEdit->text(), ui->definitionLineEdit->text());
     emit updateDefinitionMapShowing();
     ui->termLineEdit->clear();
     ui->definitionLineEdit->clear();

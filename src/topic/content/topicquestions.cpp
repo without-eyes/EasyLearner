@@ -15,7 +15,6 @@ TopicQuestions::TopicQuestions(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicQuestions) {
     ui->setupUi(this);
 
-    showContentList();
     changeButtonState();
 
     connect(ui->listWidget, &QListWidget::itemClicked, this, &TopicQuestions::changeButtonState);
@@ -29,20 +28,20 @@ TopicQuestions::~TopicQuestions() {
 
 void TopicQuestions::showContentList() {
     ui->listWidget->clear();
-    for (const auto &[question, answer]: contentManager.getQuestionMap()) {
+    for (const auto &[question, answer]: contentManager->getQuestionMap()) {
         ui->listWidget->addItem(question + " - " + answer);
     }
     ui->listWidget->show();
 }
 
-void TopicQuestions::setContentManager(const ContentManager &contentManager) {
+void TopicQuestions::setContentManager(const std::shared_ptr<ContentManager> &contentManager) {
     this->contentManager = contentManager;
 }
 
 void TopicQuestions::deleteContent() {
     std::string text = ui->listWidget->takeItem(ui->listWidget->currentRow())->text().toStdString();
     const std::string question = text.substr(0, text.find(" -"));
-    contentManager.deleteFromQuestionMap(QString::fromStdString(question));
+    contentManager->deleteFromQuestionMap(QString::fromStdString(question));
 
     if (ui->listWidget->count() == 0) {
         changeButtonState();

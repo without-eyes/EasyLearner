@@ -15,7 +15,6 @@ TopicDefinitions::TopicDefinitions(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicDefinitions) {
     ui->setupUi(this);
 
-    showContentList();
     changeButtonState();
 
     connect(ui->listWidget, &QListWidget::itemClicked, this, &TopicDefinitions::changeButtonState);
@@ -29,20 +28,20 @@ TopicDefinitions::~TopicDefinitions() {
 
 void TopicDefinitions::showContentList() {
     ui->listWidget->clear();
-    for (const auto &[term, definition]: contentManager.getDefinitionMap()) {
+    for (const auto &[term, definition]: contentManager->getDefinitionMap()) {
         ui->listWidget->addItem(term + " - " + definition);
     }
     ui->listWidget->show();
 }
 
-void TopicDefinitions::setContentManager(const ContentManager& contentManager) {
+void TopicDefinitions::setContentManager(const std::shared_ptr<ContentManager> &contentManager) {
     this->contentManager = contentManager;
 }
 
 void TopicDefinitions::deleteContent() {
     std::string text = ui->listWidget->takeItem(ui->listWidget->currentRow())->text().toStdString();
     const std::string definition = text.substr(0, text.find(" -"));
-    contentManager.deleteFromDefinitionMap(QString::fromStdString(definition));
+    contentManager->deleteFromDefinitionMap(QString::fromStdString(definition));
 
     if (ui->listWidget->count() == 0) {
         changeButtonState();

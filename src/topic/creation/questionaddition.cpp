@@ -27,12 +27,12 @@ QuestionAddition::~QuestionAddition() {
     delete ui;
 }
 
-void QuestionAddition::setContentManager(const ContentManager &contentManager) {
+void QuestionAddition::setContentManager(const std::shared_ptr<ContentManager> &contentManager) {
     this->contentManager = contentManager;
 }
 
 void QuestionAddition::addNewContent() {
-    contentManager.addIntoQuestionMap(ui->questionLineEdit->text(), ui->answerLineEdit->text());
+    contentManager->addIntoQuestionMap(ui->questionLineEdit->text(), ui->answerLineEdit->text());
     emit updateQuestionMapShowing();
     ui->questionLineEdit->clear();
     ui->answerLineEdit->clear();

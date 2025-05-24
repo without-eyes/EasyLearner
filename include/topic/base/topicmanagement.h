@@ -37,10 +37,10 @@ signals:
 
     void updateStudyQuestionsButton();
 
-    void setContentManagerSignal(const ContentManager& contentManager);
+    void setContentManagerSignal(const std::shared_ptr<ContentManager> &contentManager);
 
 public slots:
-    void setContentManager(const ContentManager& contentManager);
+    void setContentManager(const std::shared_ptr<ContentManager> &contentManager);
 
     void loadTopicContent();
 
@@ -58,7 +58,7 @@ public slots:
 
 private:
     Ui::TopicManagement *ui;
-    ContentManager contentManager;
+    std::shared_ptr<ContentManager> contentManager;
 };
 
 

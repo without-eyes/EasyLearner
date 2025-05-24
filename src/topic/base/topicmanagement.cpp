@@ -27,19 +27,19 @@ TopicManagement::~TopicManagement() {
     delete ui;
 }
 
-void TopicManagement::setContentManager(const ContentManager &contentManager) {
+void TopicManagement::setContentManager(const std::shared_ptr<ContentManager> &contentManager) {
     this->contentManager = contentManager;
 }
 
 void TopicManagement::loadTopicContent() {
-    contentManager.loadContentFromDatabase();
+    contentManager->loadContentFromDatabase();
     emit setContentManagerSignal(contentManager);
     emit updateDefinitionMapShowing();
     emit updateQuestionMapShowing();
 }
 
 void TopicManagement::setTopic(const QString &topic) {
-    contentManager.setCurrentTopic(topic);
+    contentManager->setCurrentTopic(topic);
     ui->label->setText(topic);
 }
 

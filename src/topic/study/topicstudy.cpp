@@ -17,9 +17,6 @@ TopicStudy::TopicStudy(QWidget *parent) :
         QWidget(parent), ui(new Ui::TopicStudy) {
     ui->setupUi(this);
 
-    updateStudyQuestionsButton();
-    updateStudyDefinitionsButton();
-
     connect(ui->questionsButton, &QPushButton::clicked, this, &TopicStudy::studyQuestions);
     connect(ui->definitionsButton, &QPushButton::clicked, this, &TopicStudy::studyDefinitions);
     connect(ui->goBackButton, &QPushButton::clicked, this, &TopicStudy::goBack);
@@ -29,12 +26,12 @@ TopicStudy::~TopicStudy() {
     delete ui;
 }
 
-void TopicStudy::setContentManager(const ContentManager &contentManager) {
+void TopicStudy::setContentManager(const std::shared_ptr<ContentManager> &contentManager) {
     this->contentManager = contentManager;
 }
 
 void TopicStudy::updateStudyQuestionsButton() {
-    if (contentManager.getQuestionMap().empty()) {
+    if (contentManager->getQuestionMap().empty()) {
         ui->questionsButton->setEnabled(false);
     } else {
         ui->questionsButton->setEnabled(true);
@@ -42,7 +39,7 @@ void TopicStudy::updateStudyQuestionsButton() {
 }
 
 void TopicStudy::updateStudyDefinitionsButton() {
-    if (contentManager.getDefinitionMap().empty()) {
+    if (contentManager->getDefinitionMap().empty()) {
         ui->definitionsButton->setEnabled(false);
     } else {
         ui->definitionsButton->setEnabled(true);
@@ -50,13 +47,13 @@ void TopicStudy::updateStudyDefinitionsButton() {
 }
 
 void TopicStudy::studyQuestions() {
-    emit setQuestionMap(contentManager.getQuestionMap());
+    emit setQuestionMap(contentManager->getQuestionMap());
     emit startQuestionsStudy();
     emit requestPageChange(STUDY_QUESTIONS_PAGE);
 }
 
 void TopicStudy::studyDefinitions() {
-    emit setDefinitionMap(contentManager.getDefinitionMap());
+    emit setDefinitionMap(contentManager->getDefinitionMap());
     emit startDefinitionsStudy();
     emit requestPageChange(STUDY_DEFINITIONS_PAGE);
 }

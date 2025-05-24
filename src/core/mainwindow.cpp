@@ -77,7 +77,7 @@ void MainWindow::connectSignalsToSlots() {
     connect(topicCreation, &TopicCreation::topicCreated, mainMenu, &MainMenu::changeButtonState);
     connect(mainMenu, &MainMenu::setTopic, topicManagement, &TopicManagement::setTopic);
     connect(mainMenu, &MainMenu::loadTopicContent, topicManagement, &TopicManagement::loadTopicContent);
-    connect(mainMenu, &MainMenu::setContentManagerSignal, topicManagement, &TopicManagement::setContentManagerSignal);
+    connect(mainMenu, &MainMenu::setContentManagerSignal, topicManagement, &TopicManagement::setContentManager);
 
     connect(topicManagement, &TopicManagement::setContentManagerSignal, topicStudy, &TopicStudy::setContentManager);
     connect(topicStudy, &TopicStudy::setDefinitionMap, studyDefinitions, &StudyDefinitions::setTaskMap);

@@ -17,8 +17,10 @@ MainMenu::MainMenu(QWidget *parent) :
         ui(new Ui::MainMenu) {
     ui->setupUi(this);
 
+    contentManager = std::make_shared<ContentManager>();
+
     const Database database;
-    contentManager.loadTopicsFromModel(database.getAllTopics());
+    contentManager->loadTopicsFromModel(database.getAllTopics());
 
     showTableContent();
     changeButtonState();
@@ -35,13 +37,14 @@ MainMenu::~MainMenu() {
 
 void MainMenu::showTableContent() {
     ui->listWidget->clear();
-    for (const auto &row: contentManager.getTopicList()) {
+    for (const auto &row: contentManager->getTopicList()) {
         ui->listWidget->addItem(row);
     }
     ui->listWidget->show();
 }
 
 void MainMenu::pickTopic() {
+    emit setContentManagerSignal(contentManager);
     emit setTopic(ui->listWidget->currentItem()->text());
     emit loadTopicContent();
     emit requestPageChange(TOPIC_MANAGEMENT_PAGE);
@@ -63,7 +66,7 @@ void MainMenu::createTopic() {
 
 void MainMenu::deleteTopic() {
     const auto *item = ui->listWidget->currentItem();
-    contentManager.deleteTopic(item->text());
+    contentManager->deleteTopic(item->text());
     delete ui->listWidget->takeItem(ui->listWidget->row(item));
     if (ui->listWidget->count() == 0) {
         changeButtonState();
@@ -71,6 +74,6 @@ void MainMenu::deleteTopic() {
 }
 
 void MainMenu::addTopicIntoList(const QString &topic) {
-    contentManager.createTopic(topic);
+    contentManager->createTopic(topic);
     showTableContent();
 }

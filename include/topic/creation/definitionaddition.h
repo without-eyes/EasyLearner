@@ -31,7 +31,7 @@ public:
 
 public slots:
 
-    void setContentManager(const ContentManager& contentManager);
+    void setContentManager(const std::shared_ptr<ContentManager> &contentManager);
 
     void addNewContent() override;
 
@@ -41,7 +41,7 @@ public slots:
 
 private:
     Ui::DefinitionAddition *ui;
-    ContentManager contentManager;
+    std::shared_ptr<ContentManager> contentManager;
 };
 
 

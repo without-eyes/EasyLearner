@@ -36,7 +36,7 @@ public:
     ~TopicStudy() override;
 
 public slots:
-    void setContentManager(const ContentManager& contentManager);
+    void setContentManager(const std::shared_ptr<ContentManager> &contentManager);
 
     void updateStudyQuestionsButton();
 
@@ -50,7 +50,7 @@ public slots:
 
 private:
     Ui::TopicStudy *ui;
-    ContentManager contentManager;
+    std::shared_ptr<ContentManager> contentManager;
 };
 
 

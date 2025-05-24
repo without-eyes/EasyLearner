@@ -34,14 +34,14 @@ signals:
 
     void loadTopicContent();
 
-    void setContentManagerSignal(const ContentManager& contentManager);
+    void setContentManagerSignal(const std::shared_ptr<ContentManager>& contentManager);
 
 public slots:
     void changeButtonState();
 
 private:
     Ui::MainMenu *ui;
-    ContentManager contentManager;
+    std::shared_ptr<ContentManager> contentManager;
 
     void pickTopic();
 
