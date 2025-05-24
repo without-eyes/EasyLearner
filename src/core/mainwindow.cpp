@@ -60,7 +60,7 @@ void MainWindow::setWindowNameArray() {
     windowNames[STUDY_QUESTIONS_PAGE] = "EasyLearner - Question Studying";
 }
 
-void MainWindow::connectSignalsToSlots() {
+void MainWindow::connectPageChangeSignals() {
     connect(mainMenu, &MainMenu::requestPageChange, this, &MainWindow::changePage);
     connect(topicCreation, &TopicCreation::requestPageChange, this, &MainWindow::changePage);
     connect(topicManagement, &TopicManagement::requestPageChange, this, &MainWindow::changePage);
@@ -72,33 +72,49 @@ void MainWindow::connectSignalsToSlots() {
     connect(topicStudy, &TopicStudy::requestPageChange, this, &MainWindow::changePage);
     connect(studyDefinitions, &StudyDefinitions::requestPageChange, this, &MainWindow::changePage);
     connect(studyQuestions, &StudyQuestions::requestPageChange, this, &MainWindow::changePage);
+}
 
-    connect(topicCreation, &TopicCreation::topicCreated, mainMenu, &MainMenu::addTopicIntoList);
-    connect(topicCreation, &TopicCreation::topicCreated, mainMenu, &MainMenu::changeButtonState);
+void MainWindow::connectMainMenuSignals() {
     connect(mainMenu, &MainMenu::setTopic, topicManagement, &TopicManagement::setTopic);
     connect(mainMenu, &MainMenu::loadTopicContent, topicManagement, &TopicManagement::loadTopicContent);
     connect(mainMenu, &MainMenu::setContentManagerSignal, topicManagement, &TopicManagement::setContentManager);
     connect(mainMenu, &MainMenu::setContentManagerSignal, topicCreation, &TopicCreation::setContentManager);
+}
 
+void MainWindow::connectTopicManagementSignals() {
     connect(topicManagement, &TopicManagement::setContentManagerSignal, topicStudy, &TopicStudy::setContentManager);
-    connect(topicStudy, &TopicStudy::setDefinitionMap, studyDefinitions, &StudyDefinitions::setTaskMap);
-    connect(topicStudy, &TopicStudy::setQuestionMap, studyQuestions, &StudyQuestions::setTaskMap);
-
     connect(topicManagement, &TopicManagement::setContentManagerSignal, topicDefinitions, &TopicDefinitions::setContentManager);
     connect(topicManagement, &TopicManagement::setContentManagerSignal, definitionAddition, &DefinitionAddition::setContentManager);
     connect(topicManagement, &TopicManagement::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
-    connect(topicContent, &TopicContent::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
-    connect(definitionAddition, &DefinitionAddition::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
     connect(topicManagement, &TopicManagement::updateStudyDefinitionsButton, topicStudy, &TopicStudy::updateStudyDefinitionsButton);
-    connect(topicStudy, &TopicStudy::startDefinitionsStudy, studyDefinitions, &StudyDefinitions::studyDefinition);
-
     connect(topicManagement, &TopicManagement::setContentManagerSignal, topicQuestions, &TopicQuestions::setContentManager);
     connect(topicManagement, &TopicManagement::setContentManagerSignal, questionAddition, &QuestionAddition::setContentManager);
     connect(topicManagement, &TopicManagement::updateQuestionMapShowing, topicQuestions, &TopicQuestions::showContentList);
+    connect(topicManagement, &TopicManagement::updateStudyQuestionsButton, topicStudy, &TopicStudy::updateStudyQuestionsButton);
+}
+
+void MainWindow::connectTopicStudySignals() {
+    connect(topicStudy, &TopicStudy::setDefinitionMap, studyDefinitions, &StudyDefinitions::setTaskMap);
+    connect(topicStudy, &TopicStudy::setQuestionMap, studyQuestions, &StudyQuestions::setTaskMap);
+    connect(topicStudy, &TopicStudy::startDefinitionsStudy, studyDefinitions, &StudyDefinitions::studyDefinition);
+    connect(topicStudy, &TopicStudy::startQuestionsStudy, studyQuestions, &StudyQuestions::studyQuestion);
+}
+
+void MainWindow::connectOtherSignals() {
+    connect(topicCreation, &TopicCreation::topicCreated, mainMenu, &MainMenu::addTopicIntoList);
+    connect(topicCreation, &TopicCreation::topicCreated, mainMenu, &MainMenu::changeButtonState);
+    connect(topicContent, &TopicContent::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
+    connect(definitionAddition, &DefinitionAddition::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
     connect(topicContent, &TopicContent::updateQuestionMapShowing, topicQuestions, &TopicQuestions::showContentList);
     connect(questionAddition, &QuestionAddition::updateQuestionMapShowing, topicQuestions, &TopicQuestions::showContentList);
-    connect(topicManagement, &TopicManagement::updateStudyQuestionsButton, topicStudy, &TopicStudy::updateStudyQuestionsButton);
-    connect(topicStudy, &TopicStudy::startQuestionsStudy, studyQuestions, &StudyQuestions::studyQuestion);
+}
+
+void MainWindow::connectSignalsToSlots() {
+    connectPageChangeSignals();
+    connectMainMenuSignals();
+    connectTopicManagementSignals();
+    connectTopicStudySignals();
+    connectOtherSignals();
 }
 
 void MainWindow::configureMainWindow() {

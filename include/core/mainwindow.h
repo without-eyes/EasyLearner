@@ -48,6 +48,16 @@ private:
 
     void setWindowNameArray();
 
+    void connectPageChangeSignals();
+
+    void connectMainMenuSignals();
+
+    void connectTopicManagementSignals();
+
+    void connectTopicStudySignals();
+
+    void connectOtherSignals();
+
     void connectSignalsToSlots();
 
     void configureMainWindow();
