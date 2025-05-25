@@ -9,7 +9,7 @@
 #define EASYLEARNER_STUDYDEFINITIONS_H
 
 #include <QWidget>
-#include "studycontent.h"
+#include "istudycontent.h"
 #include "core/pageindex.h"
 #include "utils/soundplayer.h"
 
@@ -17,7 +17,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class StudyDefinitions; }
 QT_END_NAMESPACE
 
-class StudyDefinitions final : public QWidget, public StudyContent {
+class StudyDefinitions final : public QWidget, public IStudyContent {
     Q_OBJECT
 
 signals:

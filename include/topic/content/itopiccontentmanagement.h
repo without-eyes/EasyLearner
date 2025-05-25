@@ -1,23 +1,23 @@
 /**
-    * @file: topiccontentmanagement.h
+    * @file: itopiccontentmanagement.h
     * @author: without eyes
     *
-    * This file contains TopicContentManagement class that is parent
+    * This file contains ITopicContentManagement interface that is parent
     * for TopicDefinitions and TopicQuestions.
 */
 
-#ifndef TOPICCONTENTMANAGMENT_H
-#define TOPICCONTENTMANAGMENT_H
+#ifndef ITOPICCONTENTMANAGMENT_H
+#define ITOPICCONTENTMANAGMENT_H
 
 #include <memory>
 #include <qobjectdefs.h>
 #include "topic/base/contentmanager.h"
 
-class TopicContentManagement {
+class ITopicContentManagement {
 public slots:
     virtual void setContentManager(const std::shared_ptr<ContentManager> &contentManager);
 
-    virtual ~TopicContentManagement() = default;
+    virtual ~ITopicContentManagement() = default;
 
     virtual void deleteContent();
 
@@ -33,4 +33,4 @@ protected:
 
 
 
-#endif //TOPICCONTENTMANAGMENT_H
+#endif //ITOPICCONTENTMANAGMENT_H

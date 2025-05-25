@@ -8,7 +8,7 @@
 #ifndef EASYLEARNER_QUESTIONADDITION_H
 #define EASYLEARNER_QUESTIONADDITION_H
 
-#include "contentaddition.h"
+#include "icontentaddition.h"
 #include "core/pageindex.h"
 #include "topic/base/contentmanager.h"
 
@@ -16,7 +16,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class QuestionAddition; }
 QT_END_NAMESPACE
 
-class QuestionAddition final : public QWidget, public ContentAddition {
+class QuestionAddition final : public QWidget, public IContentAddition {
 Q_OBJECT
 
 signals:

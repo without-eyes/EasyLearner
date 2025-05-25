@@ -1,21 +1,21 @@
 /**
-    * @file: studycontent.h
+    * @file: istudycontent.h
     * @author: without eyes
     *
-    * This file contains StudyDefinitions class that is parent class
+    * This file contains IStudyContent interface that is parent class
     * for StudyDefinitions and StudyQuestions classes.
 */
 
-#ifndef STUDYCONTENT_H
-#define STUDYCONTENT_H
+#ifndef ISTUDYCONTENT_H
+#define ISTUDYCONTENT_H
 
 #include <map>
 #include <qobjectdefs.h>
 #include <QString>
 
-class StudyContent {
+class IStudyContent {
 public:
-    virtual ~StudyContent() = default;
+    virtual ~IStudyContent() = default;
 
 public slots:
     virtual void checkAnswer();
@@ -32,4 +32,4 @@ protected:
 
 
 
-#endif //STUDYCONTENT_H
+#endif //ISTUDYCONTENT_H

@@ -64,12 +64,12 @@ add_executable(EasyLearner src/core/main.cpp
         src/topic/study/studydefinitions.cpp
         include/topic/study/studydefinitions.h
         forms/StudyDefinitions.ui
-        include/topic/creation/contentaddition.h
-        src/topic/creation/contentaddition.cpp
-        src/topic/content/topiccontentmanagement.cpp
-        include/topic/content/topiccontentmanagement.h
-        src/topic/study/studycontent.cpp
-        include/topic/study/studycontent.h
+        include/topic/creation/icontentaddition.h
+        src/topic/creation/icontentaddition.cpp
+        src/topic/content/itopiccontentmanagement.cpp
+        include/topic/content/itopiccontentmanagement.h
+        src/topic/study/istudycontent.cpp
+        include/topic/study/istudycontent.h
         src/core/mainwindow.cpp
         include/core/mainwindow.h
         include/core/pageindex.h
