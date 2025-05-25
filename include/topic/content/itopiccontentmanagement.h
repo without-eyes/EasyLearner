@@ -10,10 +10,14 @@
 #define ITOPICCONTENTMANAGMENT_H
 
 #include <memory>
-#include <qobjectdefs.h>
+#include <QWidget>
 #include "topic/base/contentmanager.h"
 
-class ITopicContentManagement {
+class ITopicContentManagement : public QWidget {
+Q_OBJECT
+public:
+    explicit ITopicContentManagement(QWidget *parent = nullptr) : QWidget(parent) {}
+
 public slots:
     virtual void setContentManager(const std::shared_ptr<ContentManager> &contentManager);
 

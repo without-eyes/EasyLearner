@@ -8,7 +8,6 @@
 #ifndef EASYLEARNER_TOPICDEFINITIONS_H
 #define EASYLEARNER_TOPICDEFINITIONS_H
 
-#include <QWidget>
 #include "itopiccontentmanagement.h"
 #include "core/pageindex.h"
 #include "topic/base/contentmanager.h"
@@ -17,7 +16,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class TopicDefinitions; }
 QT_END_NAMESPACE
 
-class TopicDefinitions final : public QWidget, public ITopicContentManagement {
+class TopicDefinitions final : public ITopicContentManagement {
 Q_OBJECT
 
 signals:

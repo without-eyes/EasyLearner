@@ -12,7 +12,7 @@
 #include "../../../forms/ui_TopicDefinitions.h"
 
 TopicDefinitions::TopicDefinitions(QWidget *parent) :
-        QWidget(parent), ui(new Ui::TopicDefinitions) {
+        TopicContentManagement(parent), ui(new Ui::TopicDefinitions) {
     ui->setupUi(this);
 
     changeButtonState();
