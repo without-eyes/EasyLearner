@@ -21,8 +21,6 @@ public:
 public slots:
     virtual void setContentManager(const std::shared_ptr<ContentManager> &contentManager);
 
-    virtual ~IContentAddition() = default;
-
     virtual void addNewContent();
 
     virtual void changeButtonState() const;

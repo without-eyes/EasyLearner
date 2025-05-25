@@ -21,8 +21,6 @@ public:
 public slots:
     virtual void setContentManager(const std::shared_ptr<ContentManager> &contentManager);
 
-    virtual ~ITopicContentManagement() = default;
-
     virtual void deleteContent();
 
     virtual void goBack();
