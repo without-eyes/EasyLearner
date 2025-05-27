@@ -39,6 +39,8 @@ public slots:
 private:
     Ui::QuestionAddition *ui;
     std::shared_ptr<ContentManager> contentManager;
+
+    bool isQuestionExists() const;
 };
 
 
