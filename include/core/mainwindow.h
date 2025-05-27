@@ -12,39 +12,18 @@
 #include <QMainWindow>
 #include <QStackedWidget>
 #include "mainmenu/mainmenu.h"
-#include "mainmenu/topiccreation.h"
-#include "topic/base/topicmanagement.h"
-#include "topic/content/topiccontent.h"
-#include "topic/content/topicdefinitions.h"
-#include "topic/content/topicquestions.h"
-#include "topic/creation/definitionaddition.h"
-#include "topic/creation/questionaddition.h"
-#include "topic/study/studydefinitions.h"
 #include "topic/study/studyquestions.h"
-#include "topic/study/topicstudy.h"
 
 class MainWindow final : public QMainWindow {
 public:
     MainWindow();
 
 private:
-    QStackedWidget* stackedWidget;
-    MainMenu* mainMenu;
-    TopicCreation* topicCreation;
-    TopicManagement* topicManagement;
-    TopicContent* topicContent;
-    TopicDefinitions* topicDefinitions;
-    TopicQuestions* topicQuestions;
-    DefinitionAddition* definitionAddition;
-    QuestionAddition* questionAddition;
-    TopicStudy* topicStudy;
-    StudyDefinitions* studyDefinitions;
-    StudyQuestions* studyQuestions;
+    QStackedWidget* stackedWidget{};
+    std::vector<QWidget*> widgets;
     std::array<QString, 11> windowNames;
 
-    void allocateFields();
-
-    void addEveryWidgetToStack() const;
+    void addEveryWidgetToStack();
 
     void setWindowNameArray();
 
