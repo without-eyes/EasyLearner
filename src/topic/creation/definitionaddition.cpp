@@ -13,7 +13,7 @@
 #include "../../../forms/ui_DefinitionAddition.h"
 
 DefinitionAddition::DefinitionAddition(QWidget *parent) :
-        ContentAddition(parent), ui(new Ui::DefinitionAddition) {
+        IContentAddition(parent), ui(new Ui::DefinitionAddition) {
     ui->setupUi(this);
 
     connect(ui->createButton, &QPushButton::clicked, this, &DefinitionAddition::addNewContent);
@@ -35,16 +35,12 @@ void DefinitionAddition::addNewContent() {
 }
 
 void DefinitionAddition::changeButtonState() const {
-    if (ui->termLineEdit->text().isEmpty() || ui->definitionLineEdit->text().isEmpty()) {
+    if (ui->termLineEdit->text().isEmpty() || ui->definitionLineEdit->text().isEmpty() || isDefinitionExists()) {
         ui->createButton->setEnabled(false);
         return;
     }
 
-    std::map<QString, QString> definitionMap = contentManager->getDefinitionMap();
-    if (definitionMap.find(ui->termLineEdit->text()) != definitionMap.end()) {
-        ui->createButton->setEnabled(false);
-        return;
-    }
+
 
     ui->createButton->setEnabled(true);
 }
@@ -54,4 +50,9 @@ void DefinitionAddition::goBack() {
     ui->termLineEdit->clear();
     ui->definitionLineEdit->clear();
     emit requestPageChange(TOPIC_MANAGEMENT_PAGE);
+}
+
+bool DefinitionAddition::isDefinitionExists() const {
+    std::map<QString, QString> definitionMap = contentManager->getDefinitionMap();
+    return definitionMap.find(ui->termLineEdit->text()) != definitionMap.end();
 }

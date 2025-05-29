@@ -12,7 +12,7 @@
 #include "../../../forms/ui_QuestionAddition.h"
 
 QuestionAddition::QuestionAddition(QWidget *parent) :
-        ContentAddition(parent), ui(new Ui::QuestionAddition) {
+        IContentAddition(parent), ui(new Ui::QuestionAddition) {
     ui->setupUi(this);
 
     connect(ui->createButton, &QPushButton::clicked, this, &QuestionAddition::addNewContent);
@@ -34,13 +34,7 @@ void QuestionAddition::addNewContent() {
 }
 
 void QuestionAddition::changeButtonState() const {
-    if (ui->questionLineEdit->text().isEmpty() || ui->answerLineEdit->text().isEmpty()) {
-        ui->createButton->setEnabled(false);
-        return;
-    }
-
-    std::map<QString, QString> questionMap = contentManager->getQuestionMap();
-    if (questionMap.find(ui->questionLineEdit->text()) != questionMap.end()) {
+    if (ui->questionLineEdit->text().isEmpty() || ui->answerLineEdit->text().isEmpty() || isQuestionExists()) {
         ui->createButton->setEnabled(false);
         return;
     }
@@ -53,4 +47,9 @@ void QuestionAddition::goBack() {
     ui->questionLineEdit->clear();
     ui->answerLineEdit->clear();
     emit requestPageChange(TOPIC_MANAGEMENT_PAGE);
+}
+
+bool QuestionAddition::isQuestionExists() const {
+    std::map<QString, QString> questionMap = contentManager->getQuestionMap();
+    return questionMap.find(ui->questionLineEdit->text()) != questionMap.end();
 }

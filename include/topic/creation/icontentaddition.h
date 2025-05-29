@@ -1,22 +1,22 @@
 /**
-    * @file: contentaddition.h
+    * @file: icontentaddition.h
     * @author: without eyes
     *
-    * This file contains ContentAddition class that is parent of.
+    * This file contains IContentAddition interface that is parent of.
     * QuestionAddition and Definition addition classes.
 */
 
-#ifndef CONTENTADDITION_H
-#define CONTENTADDITION_H
+#ifndef ICONTENTADDITION_H
+#define ICONTENTADDITION_H
 
 #include <QLineEdit>
 #include <qobjectdefs.h>
 #include "topic/base/contentmanager.h"
 
-class ContentAddition : public QWidget {
+class IContentAddition : public QWidget {
     Q_OBJECT
 public:
-    explicit ContentAddition(QWidget *parent = nullptr) : QWidget(parent) {}
+    explicit IContentAddition(QWidget *parent = nullptr) : QWidget(parent) {}
 
 public slots:
     virtual void setContentManager(const std::shared_ptr<ContentManager> &contentManager);
@@ -33,4 +33,4 @@ protected:
 
 
 
-#endif //CONTENTADDITION_H
+#endif //ICONTENTADDITION_H

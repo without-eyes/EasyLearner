@@ -43,13 +43,7 @@ void TopicCreation::createNewTopic() {
 }
 
 void TopicCreation::changeButtonState() const {
-    if (ui->nameLineEdit->text().isEmpty()) {
-        ui->createButton->setEnabled(false);
-        return;
-    }
-
-    QList<QString> topicList = contentManager->getTopicList();
-    if (std::find(topicList.begin(), topicList.end(), ui->nameLineEdit->text()) != topicList.end()) {
+    if (ui->nameLineEdit->text().isEmpty() || isTopicExists()) {
         ui->createButton->setEnabled(false);
         return;
     }
@@ -60,4 +54,9 @@ void TopicCreation::changeButtonState() const {
 void TopicCreation::goBack() {
     ui->nameLineEdit->clear();
     emit requestPageChange(MAIN_MENU_PAGE);
+}
+
+bool TopicCreation::isTopicExists() const {
+    QList<QString> topicList = contentManager->getTopicList();
+    return std::find(topicList.begin(), topicList.end(), ui->nameLineEdit->text()) != topicList.end();
 }

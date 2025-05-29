@@ -1,18 +1,18 @@
 /**
-    * @file: studycontent.cpp
+    * @file: istudycontent.cpp
     * @author: without eyes
     *
-    * This file contains methods' implementation of StudyContent class.
+    * This file contains methods' implementation of IStudyContent class.
 */
 
-#include "topic/study/studycontent.h"
+#include "topic/study/istudycontent.h"
 
-void StudyContent::checkAnswer() {}
-void StudyContent::showNextTask() {}
-void StudyContent::changeButtonState() const {}
-void StudyContent::pickRandomTask() {}
+void IStudyContent::checkAnswer() {}
+void IStudyContent::showNextTask() {}
+void IStudyContent::changeButtonState() const {}
+void IStudyContent::pickRandomTask() {}
 
-bool StudyContent::compareAnswers(QString correctAnswer, QString &userAnswer) {
+bool IStudyContent::compareAnswers(QString correctAnswer, QString &userAnswer) {
     if (correctAnswer == userAnswer) {
         return true;
     }

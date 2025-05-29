@@ -8,7 +8,7 @@
 #ifndef EASYLEARNER_DEFINITIONADDITION_H
 #define EASYLEARNER_DEFINITIONADDITION_H
 
-#include "contentaddition.h"
+#include "icontentaddition.h"
 #include "core/pageindex.h"
 #include "topic/base/contentmanager.h"
 
@@ -16,7 +16,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class DefinitionAddition; }
 QT_END_NAMESPACE
 
-class DefinitionAddition final : public ContentAddition {
+class DefinitionAddition final : public IContentAddition {
 Q_OBJECT
 
 signals:
@@ -39,6 +39,8 @@ public slots:
 private:
     Ui::DefinitionAddition *ui;
     std::shared_ptr<ContentManager> contentManager;
+
+    bool isDefinitionExists() const;
 };
 
 

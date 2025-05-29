@@ -42,6 +42,8 @@ private slots:
 private:
     Ui::TopicCreation *ui;
     std::shared_ptr<ContentManager> contentManager;
+
+    bool isTopicExists() const;
 };
 
 

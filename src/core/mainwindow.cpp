@@ -9,41 +9,42 @@
 
 #include <qfile.h>
 
+#include "mainmenu/topiccreation.h"
+#include "topic/base/topicmanagement.h"
+#include "topic/content/topiccontent.h"
+#include "topic/content/topicdefinitions.h"
+#include "topic/content/topicquestions.h"
+#include "topic/creation/definitionaddition.h"
+#include "topic/creation/questionaddition.h"
+#include "topic/study/studydefinitions.h"
+#include "topic/study/topicstudy.h"
+
 MainWindow::MainWindow() {
-    allocateFields();
     addEveryWidgetToStack();
     setWindowNameArray();
     connectSignalsToSlots();
     configureMainWindow();
 }
 
-void MainWindow::allocateFields() {
-    stackedWidget = new QStackedWidget(this);
-    mainMenu = new MainMenu(this);
-    topicCreation = new TopicCreation(this);
-    topicManagement = new TopicManagement(this);
-    topicContent = new TopicContent(this);
-    topicDefinitions = new TopicDefinitions(this);
-    topicQuestions = new TopicQuestions(this);
-    definitionAddition = new DefinitionAddition(this);
-    questionAddition = new QuestionAddition(this);
-    topicStudy = new TopicStudy(this);
-    studyDefinitions = new StudyDefinitions(this);
-    studyQuestions = new StudyQuestions(this);
-}
+void MainWindow::addEveryWidgetToStack() {
+    widgets = {
+        new MainMenu(),
+        new TopicCreation(this),
+        new TopicManagement(this),
+        new TopicContent(this),
+        new TopicDefinitions(this),
+        new TopicQuestions(this),
+        new DefinitionAddition(this),
+        new QuestionAddition(this),
+        new TopicStudy(this),
+        new StudyDefinitions(this),
+        new StudyQuestions(this),
+    };
 
-void MainWindow::addEveryWidgetToStack() const {
-    stackedWidget->addWidget(mainMenu);
-    stackedWidget->addWidget(topicCreation);
-    stackedWidget->addWidget(topicManagement);
-    stackedWidget->addWidget(topicContent);
-    stackedWidget->addWidget(topicDefinitions);
-    stackedWidget->addWidget(topicQuestions);
-    stackedWidget->addWidget(definitionAddition);
-    stackedWidget->addWidget(questionAddition);
-    stackedWidget->addWidget(topicStudy);
-    stackedWidget->addWidget(studyDefinitions);
-    stackedWidget->addWidget(studyQuestions);
+    stackedWidget = new QStackedWidget(this);
+    for (const auto widget : widgets) {
+        stackedWidget->addWidget(widget);
+    }
 }
 
 void MainWindow::setWindowNameArray() {
@@ -61,52 +62,52 @@ void MainWindow::setWindowNameArray() {
 }
 
 void MainWindow::connectPageChangeSignals() {
-    connect(mainMenu, &MainMenu::requestPageChange, this, &MainWindow::changePage);
-    connect(topicCreation, &TopicCreation::requestPageChange, this, &MainWindow::changePage);
-    connect(topicManagement, &TopicManagement::requestPageChange, this, &MainWindow::changePage);
-    connect(topicContent, &TopicContent::requestPageChange, this, &MainWindow::changePage);
-    connect(topicDefinitions, &TopicDefinitions::requestPageChange, this, &MainWindow::changePage);
-    connect(topicQuestions, &TopicQuestions::requestPageChange, this, &MainWindow::changePage);
-    connect(definitionAddition, &DefinitionAddition::requestPageChange, this, &MainWindow::changePage);
-    connect(questionAddition, &QuestionAddition::requestPageChange, this, &MainWindow::changePage);
-    connect(topicStudy, &TopicStudy::requestPageChange, this, &MainWindow::changePage);
-    connect(studyDefinitions, &StudyDefinitions::requestPageChange, this, &MainWindow::changePage);
-    connect(studyQuestions, &StudyQuestions::requestPageChange, this, &MainWindow::changePage);
+    connect(qobject_cast<MainMenu*>(widgets[MAIN_MENU_PAGE]), &MainMenu::requestPageChange, this, &MainWindow::changePage);
+    connect(qobject_cast<TopicCreation*>(widgets[TOPIC_CREATION_PAGE]), &TopicCreation::requestPageChange, this, &MainWindow::changePage);
+    connect(qobject_cast<TopicManagement*>(widgets[TOPIC_MANAGEMENT_PAGE]), &TopicManagement::requestPageChange, this, &MainWindow::changePage);
+    connect(qobject_cast<TopicContent*>(widgets[TOPIC_CONTENT_PAGE]), &TopicContent::requestPageChange, this, &MainWindow::changePage);
+    connect(qobject_cast<TopicDefinitions*>(widgets[TOPIC_DEFINITIONS_PAGE]), &TopicDefinitions::requestPageChange, this, &MainWindow::changePage);
+    connect(qobject_cast<TopicQuestions*>(widgets[TOPIC_QUESTIONS_PAGE]), &TopicQuestions::requestPageChange, this, &MainWindow::changePage);
+    connect(qobject_cast<DefinitionAddition*>(widgets[DEFINITION_ADDITION_PAGE]), &DefinitionAddition::requestPageChange, this, &MainWindow::changePage);
+    connect(qobject_cast<QuestionAddition*>(widgets[QUESTION_ADDITION_PAGE]), &QuestionAddition::requestPageChange, this, &MainWindow::changePage);
+    connect(qobject_cast<TopicStudy*>(widgets[TOPIC_STUDY_PAGE]), &TopicStudy::requestPageChange, this, &MainWindow::changePage);
+    connect(qobject_cast<StudyDefinitions*>(widgets[STUDY_DEFINITIONS_PAGE]), &StudyDefinitions::requestPageChange, this, &MainWindow::changePage);
+    connect(qobject_cast<StudyQuestions*>(widgets[STUDY_QUESTIONS_PAGE]), &StudyQuestions::requestPageChange, this, &MainWindow::changePage);
 }
 
 void MainWindow::connectMainMenuSignals() {
-    connect(mainMenu, &MainMenu::setTopic, topicManagement, &TopicManagement::setTopic);
-    connect(mainMenu, &MainMenu::loadTopicContent, topicManagement, &TopicManagement::loadTopicContent);
-    connect(mainMenu, &MainMenu::setContentManagerSignal, topicManagement, &TopicManagement::setContentManager);
-    connect(mainMenu, &MainMenu::setContentManagerSignal, topicCreation, &TopicCreation::setContentManager);
+    connect(qobject_cast<MainMenu*>(widgets[MAIN_MENU_PAGE]), &MainMenu::setTopic, qobject_cast<TopicManagement*>(widgets[TOPIC_MANAGEMENT_PAGE]), &TopicManagement::setTopic);
+    connect(qobject_cast<MainMenu*>(widgets[MAIN_MENU_PAGE]), &MainMenu::loadTopicContent, qobject_cast<TopicManagement*>(widgets[TOPIC_MANAGEMENT_PAGE]), &TopicManagement::loadTopicContent);
+    connect(qobject_cast<MainMenu*>(widgets[MAIN_MENU_PAGE]), &MainMenu::setContentManagerSignal, qobject_cast<TopicManagement*>(widgets[TOPIC_MANAGEMENT_PAGE]), &TopicManagement::setContentManager);
+    connect(qobject_cast<MainMenu*>(widgets[MAIN_MENU_PAGE]), &MainMenu::setContentManagerSignal, qobject_cast<TopicCreation*>(widgets[TOPIC_CREATION_PAGE]), &TopicCreation::setContentManager);
 }
 
 void MainWindow::connectTopicManagementSignals() {
-    connect(topicManagement, &TopicManagement::setContentManagerSignal, topicStudy, &TopicStudy::setContentManager);
-    connect(topicManagement, &TopicManagement::setContentManagerSignal, topicDefinitions, &TopicDefinitions::setContentManager);
-    connect(topicManagement, &TopicManagement::setContentManagerSignal, definitionAddition, &DefinitionAddition::setContentManager);
-    connect(topicManagement, &TopicManagement::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
-    connect(topicManagement, &TopicManagement::updateStudyDefinitionsButton, topicStudy, &TopicStudy::updateStudyDefinitionsButton);
-    connect(topicManagement, &TopicManagement::setContentManagerSignal, topicQuestions, &TopicQuestions::setContentManager);
-    connect(topicManagement, &TopicManagement::setContentManagerSignal, questionAddition, &QuestionAddition::setContentManager);
-    connect(topicManagement, &TopicManagement::updateQuestionMapShowing, topicQuestions, &TopicQuestions::showContentList);
-    connect(topicManagement, &TopicManagement::updateStudyQuestionsButton, topicStudy, &TopicStudy::updateStudyQuestionsButton);
+    connect(qobject_cast<TopicManagement*>(widgets[TOPIC_MANAGEMENT_PAGE]), &TopicManagement::setContentManagerSignal, qobject_cast<TopicStudy*>(widgets[TOPIC_STUDY_PAGE]), &TopicStudy::setContentManager);
+    connect(qobject_cast<TopicManagement*>(widgets[TOPIC_MANAGEMENT_PAGE]), &TopicManagement::setContentManagerSignal, qobject_cast<TopicDefinitions*>(widgets[TOPIC_DEFINITIONS_PAGE]), &TopicDefinitions::setContentManager);
+    connect(qobject_cast<TopicManagement*>(widgets[TOPIC_MANAGEMENT_PAGE]), &TopicManagement::setContentManagerSignal, qobject_cast<DefinitionAddition*>(widgets[DEFINITION_ADDITION_PAGE]), &DefinitionAddition::setContentManager);
+    connect(qobject_cast<TopicManagement*>(widgets[TOPIC_MANAGEMENT_PAGE]), &TopicManagement::updateDefinitionMapShowing, qobject_cast<TopicDefinitions*>(widgets[TOPIC_DEFINITIONS_PAGE]), &TopicDefinitions::showContentList);
+    connect(qobject_cast<TopicManagement*>(widgets[TOPIC_MANAGEMENT_PAGE]), &TopicManagement::updateStudyDefinitionsButton, qobject_cast<TopicStudy*>(widgets[TOPIC_STUDY_PAGE]), &TopicStudy::updateStudyDefinitionsButton);
+    connect(qobject_cast<TopicManagement*>(widgets[TOPIC_MANAGEMENT_PAGE]), &TopicManagement::setContentManagerSignal, qobject_cast<TopicQuestions*>(widgets[TOPIC_QUESTIONS_PAGE]), &TopicQuestions::setContentManager);
+    connect(qobject_cast<TopicManagement*>(widgets[TOPIC_MANAGEMENT_PAGE]), &TopicManagement::setContentManagerSignal, qobject_cast<QuestionAddition*>(widgets[QUESTION_ADDITION_PAGE]), &QuestionAddition::setContentManager);
+    connect(qobject_cast<TopicManagement*>(widgets[TOPIC_MANAGEMENT_PAGE]), &TopicManagement::updateQuestionMapShowing, qobject_cast<TopicQuestions*>(widgets[TOPIC_QUESTIONS_PAGE]), &TopicQuestions::showContentList);
+    connect(qobject_cast<TopicManagement*>(widgets[TOPIC_MANAGEMENT_PAGE]), &TopicManagement::updateStudyQuestionsButton, qobject_cast<TopicStudy*>(widgets[TOPIC_STUDY_PAGE]), &TopicStudy::updateStudyQuestionsButton);
 }
 
 void MainWindow::connectTopicStudySignals() {
-    connect(topicStudy, &TopicStudy::setDefinitionMap, studyDefinitions, &StudyDefinitions::setTaskMap);
-    connect(topicStudy, &TopicStudy::setQuestionMap, studyQuestions, &StudyQuestions::setTaskMap);
-    connect(topicStudy, &TopicStudy::startDefinitionsStudy, studyDefinitions, &StudyDefinitions::studyDefinition);
-    connect(topicStudy, &TopicStudy::startQuestionsStudy, studyQuestions, &StudyQuestions::studyQuestion);
+    connect(qobject_cast<TopicStudy*>(widgets[TOPIC_STUDY_PAGE]), &TopicStudy::setDefinitionMap, qobject_cast<StudyDefinitions*>(widgets[STUDY_DEFINITIONS_PAGE]), &StudyDefinitions::setTaskMap);
+    connect(qobject_cast<TopicStudy*>(widgets[TOPIC_STUDY_PAGE]), &TopicStudy::setQuestionMap, qobject_cast<StudyQuestions*>(widgets[STUDY_QUESTIONS_PAGE]), &StudyQuestions::setTaskMap);
+    connect(qobject_cast<TopicStudy*>(widgets[TOPIC_STUDY_PAGE]), &TopicStudy::startDefinitionsStudy, qobject_cast<StudyDefinitions*>(widgets[STUDY_DEFINITIONS_PAGE]), &StudyDefinitions::studyDefinition);
+    connect(qobject_cast<TopicStudy*>(widgets[TOPIC_STUDY_PAGE]), &TopicStudy::startQuestionsStudy, qobject_cast<StudyQuestions*>(widgets[STUDY_QUESTIONS_PAGE]), &StudyQuestions::studyQuestion);
 }
 
 void MainWindow::connectOtherSignals() {
-    connect(topicCreation, &TopicCreation::topicCreated, mainMenu, &MainMenu::addTopicIntoList);
-    connect(topicCreation, &TopicCreation::topicCreated, mainMenu, &MainMenu::changeButtonState);
-    connect(topicContent, &TopicContent::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
-    connect(definitionAddition, &DefinitionAddition::updateDefinitionMapShowing, topicDefinitions, &TopicDefinitions::showContentList);
-    connect(topicContent, &TopicContent::updateQuestionMapShowing, topicQuestions, &TopicQuestions::showContentList);
-    connect(questionAddition, &QuestionAddition::updateQuestionMapShowing, topicQuestions, &TopicQuestions::showContentList);
+    connect(qobject_cast<TopicCreation*>(widgets[TOPIC_CREATION_PAGE]), &TopicCreation::topicCreated, qobject_cast<MainMenu*>(widgets[MAIN_MENU_PAGE]), &MainMenu::addTopicIntoList);
+    connect(qobject_cast<TopicCreation*>(widgets[TOPIC_CREATION_PAGE]), &TopicCreation::topicCreated, qobject_cast<MainMenu*>(widgets[MAIN_MENU_PAGE]), &MainMenu::changeButtonState);
+    connect(qobject_cast<TopicContent*>(widgets[TOPIC_CONTENT_PAGE]), &TopicContent::updateDefinitionMapShowing, qobject_cast<TopicDefinitions*>(widgets[TOPIC_DEFINITIONS_PAGE]), &TopicDefinitions::showContentList);
+    connect(qobject_cast<DefinitionAddition*>(widgets[DEFINITION_ADDITION_PAGE]), &DefinitionAddition::updateDefinitionMapShowing, qobject_cast<TopicDefinitions*>(widgets[TOPIC_DEFINITIONS_PAGE]), &TopicDefinitions::showContentList);
+    connect(qobject_cast<TopicContent*>(widgets[TOPIC_CONTENT_PAGE]), &TopicContent::updateQuestionMapShowing, qobject_cast<TopicQuestions*>(widgets[TOPIC_QUESTIONS_PAGE]), &TopicQuestions::showContentList);
+    connect(qobject_cast<QuestionAddition*>(widgets[QUESTION_ADDITION_PAGE]), &QuestionAddition::updateQuestionMapShowing, qobject_cast<TopicQuestions*>(widgets[TOPIC_QUESTIONS_PAGE]), &TopicQuestions::showContentList);
 }
 
 void MainWindow::connectSignalsToSlots() {
