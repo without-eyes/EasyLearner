@@ -38,7 +38,6 @@ public slots:
 
 private:
     Ui::DefinitionAddition *ui;
-    std::shared_ptr<ContentManager> contentManager;
 
     bool isDefinitionExists() const;
 };
