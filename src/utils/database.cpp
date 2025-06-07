@@ -36,14 +36,14 @@ void Database::createDatabase() {
                "topic_id INTEGER,"
                "question TEXT,"
                "answer TEXT,"
-               "FOREIGN KEY (topic_id) REFERENCES topics(id));");
+               "FOREIGN KEY (topic_id) REFERENCES topics(id) ON DELETE CASCADE);");
 
     query.exec("CREATE TABLE IF NOT EXISTS termsanddefinitions ("
                "id INTEGER PRIMARY KEY,"
                "topic_id INTEGER,"
                "term TEXT,"
                "definition TEXT,"
-               "FOREIGN KEY (topic_id) REFERENCES topics(id));");
+               "FOREIGN KEY (topic_id) REFERENCES topics(id) ON DELETE CASCADE);");
 }
 
 void Database::addTopic(const QString& topic) {
