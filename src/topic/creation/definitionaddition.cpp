@@ -7,9 +7,6 @@
 
 #include "topic/creation/definitionaddition.h"
 
-
-#include "topic/base/topicmanagement.h"
-#include "topic/base/contentmanager.h"
 #include "../../../forms/ui_DefinitionAddition.h"
 
 DefinitionAddition::DefinitionAddition(QWidget *parent) :
@@ -39,9 +36,6 @@ void DefinitionAddition::changeButtonState() const {
         ui->createButton->setEnabled(false);
         return;
     }
-
-
-
     ui->createButton->setEnabled(true);
 }
 

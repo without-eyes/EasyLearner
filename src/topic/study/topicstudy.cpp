@@ -7,10 +7,6 @@
 
 #include "topic/study/topicstudy.h"
 
-#include "topic/study/studyquestions.h"
-#include "topic/study/studydefinitions.h"
-#include "topic/base/contentmanager.h"
-#include "topic/base/topicmanagement.h"
 #include "../../../forms/ui_TopicStudy.h"
 
 TopicStudy::TopicStudy(QWidget *parent) :

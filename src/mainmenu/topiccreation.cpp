@@ -7,7 +7,6 @@
 
 #include "mainmenu/topiccreation.h"
 
-#include "mainmenu/mainmenu.h"
 #include "../../forms/ui_TopicCreation.h"
 #include "utils/database.h"
 

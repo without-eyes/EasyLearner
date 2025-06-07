@@ -8,7 +8,6 @@
 #include "core/mainwindow.h"
 
 #include <qfile.h>
-
 #include "mainmenu/topiccreation.h"
 #include "topic/base/topicmanagement.h"
 #include "topic/content/topiccontent.h"
@@ -17,6 +16,7 @@
 #include "topic/creation/definitionaddition.h"
 #include "topic/creation/questionaddition.h"
 #include "topic/study/studydefinitions.h"
+#include "topic/study/studyquestions.h"
 #include "topic/study/topicstudy.h"
 
 MainWindow::MainWindow() {

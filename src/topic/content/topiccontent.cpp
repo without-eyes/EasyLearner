@@ -7,9 +7,6 @@
 
 #include "topic/content/topiccontent.h"
 
-#include "topic/base/topicmanagement.h"
-#include "topic/content/topicdefinitions.h"
-#include "topic/content/topicquestions.h"
 #include "../../../forms/ui_TopicContent.h"
 
 TopicContent::TopicContent(QWidget *parent) :

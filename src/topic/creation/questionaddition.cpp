@@ -7,8 +7,6 @@
 
 #include "topic/creation/questionaddition.h"
 
-#include "topic/base/topicmanagement.h"
-#include "topic/base/contentmanager.h"
 #include "../../../forms/ui_QuestionAddition.h"
 
 QuestionAddition::QuestionAddition(QWidget *parent) :
@@ -38,7 +36,6 @@ void QuestionAddition::changeButtonState() const {
         ui->createButton->setEnabled(false);
         return;
     }
-
     ui->createButton->setEnabled(true);
 }
 

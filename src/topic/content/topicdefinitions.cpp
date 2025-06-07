@@ -7,8 +7,6 @@
 
 #include "topic/content/topicdefinitions.h"
 
-#include "topic/content/topiccontent.h"
-#include "topic/base/contentmanager.h"
 #include "../../../forms/ui_TopicDefinitions.h"
 
 TopicDefinitions::TopicDefinitions(QWidget *parent) :

@@ -7,8 +7,6 @@
 
 #include "topic/base/topicmanagement.h"
 
-#include "mainmenu/mainmenu.h"
-#include "topic/creation/questionaddition.h"
 #include "topic/base/contentmanager.h"
 #include "../../../forms/ui_TopicManagement.h"
 
@@ -64,5 +62,3 @@ void TopicManagement::showTopicContent() {
 void TopicManagement::goBack() {
     emit requestPageChange(MAIN_MENU_PAGE);
 }
-
-
